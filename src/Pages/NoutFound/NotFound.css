@@ -1,0 +1,65 @@
+:root {
+    --Text-color: #000;
+    --Background-Color: #e0e0e0;
+}
+.dark:root {
+    --Text-color: #fff;
+    --Background-Color: rgb(17, 17, 17);
+}
+
+
+.NotFoundPage {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    color: var(--Text-color);
+    background-color: var(--Background-Color);
+}
+.NotFoundPage h1 {
+    margin: 0;
+}
+.NotFoundPage div:nth-child(1){
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(500px, 80vw);
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 0;
+    grid-gap: 0px;
+    font-size: 30px;
+}
+.NotFoundPage div:nth-child(1) p{
+    margin: 0;
+}
+.NotFoundPage div:nth-child(1) a{
+    margin: 0;
+    text-decoration: underline wavy #f14a2c;
+    color: #f14a2c;
+}
+.NotFoundPage div:nth-child(2){ 
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: min(500px, 80vw);
+    margin: 0;
+    padding: 0;
+    flex-wrap: nowrap;
+    font-size: 30px;
+}
+.NotFoundPage div:nth-child(2) h2 {
+    text-wrap: nowrap;
+}
+.NotFoundPage div:nth-child(2) img{
+    width: 100px;
+}

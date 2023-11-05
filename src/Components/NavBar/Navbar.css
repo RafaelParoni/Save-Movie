@@ -1,0 +1,8 @@
+nav {
+    width: 100vw;
+    height: 50px;
+    background-color: green;
+}
+nav div {
+    background-color: yellow;
+}

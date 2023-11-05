@@ -1,0 +1,110 @@
+import './../Registro.css';
+
+import { initializeApp } from "firebase/app";
+import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
+import bcrypt from "bcryptjs-react";
+
+import { UrlImr } from './FormTwo';
+
+const firebaseApp = initializeApp({
+    apiKey: "AIzaSyCi1wYTsZBEVZp2zAQquOY8mYp7ZTe3Mnw",
+    authDomain: "savemovie-e7ea6.firebaseapp.com",
+    projectId: "savemovie-e7ea6",
+    storageBucket: "savemovie-e7ea6.appspot.com",
+    messagingSenderId: "613203193395",
+    appId: "1:613203193395:web:8430b6069114d133157d46",
+    measurementId: "G-GV5GW3T3ZV"
+});
+
+const db = getFirestore(firebaseApp);
+const userCollectionRef = collection(db, 'users');
+
+
+
+export async function StartNewAccont(){
+    
+    testeBd()
+    var progess = document.getElementById('progress')
+    var progressText = document.getElementById('progressText')
+    progess.style.width =  '25%'
+    var i = 0
+    while(i < 26){
+        progressText.innerHTML = i + '%'
+        i++
+    }
+}
+
+async function testeBd(){
+    const data = await getDocs(userCollectionRef);
+    console.log(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+
+    var progess = document.getElementById('progress')
+    var progressText = document.getElementById('progressText')
+
+    let Email = document.getElementById('email').value
+    let Password = document.getElementById('password').value
+    let Name = document.getElementById('name').value
+    let Img = UrlImr().teste
+    let Termos = document.getElementById('TermosCheck').checked
+
+    var i = 0
+    while(i < data.docs.map((doc) => ({...doc.data(), id: doc.id})).length){
+        if(Email === data.docs.map((doc) => ({...doc.data(), id: doc.id}))[i].Email){
+            console.log('Email já registrado: ' + data.docs.map((doc) => ({...doc.data(), id: doc.id}))[i].Email)
+                alert('Email já cadastrado: ' + + data.docs.map((doc) => ({...doc.data(), id: doc.id}))[i].Email)
+                document.getElementById('Form-One').style.display = 'flex'
+                document.getElementById('Form-Two').style.display = 'none'
+                document.getElementById('Form-Three').style.display = 'none'
+                document.getElementById('BtnStage').style.display = 'flex'
+                document.getElementById('ProgressBar').style.display = 'flex'
+                document.getElementById('LoadDiv').style.display = 'none'
+            return
+        }
+        i++
+    }
+    progess.style.width =  '50%'
+    while(i < 51){
+        progressText.innerHTML = i + '%'
+        i++
+    }
+    const salt = bcrypt.genSaltSync(10);
+    const Passcrypt = bcrypt.hashSync(Password, salt);
+
+    progess.style.width =  '75%'
+    while(i < 76){
+        progressText.innerHTML = i + '%'
+        i++
+    }
+    const user = await addDoc(userCollectionRef, {
+        Email,
+        Name, 
+        Passcrypt,
+        Img,
+        Termos,
+    });  
+    console.log(user)
+
+    progess.style.width =  '100%'
+    while(i < 101){
+        progressText.innerHTML = i + '%'
+        i++
+    }
+
+    setTimeout(function(){
+        window.location = '/'
+    }, 1000)
+}
+
+function CreateNewAccount() {
+
+    
+    return (
+        <div id='LoadDiv' className='LoadingDiv'>
+            <h3>Criando a conta!</h3>
+            <h4 id='progressText' >0%</h4>
+            <div id='progress' className='progressLoading'/>
+        </div>
+    );
+  }
+  
+export default CreateNewAccount;
