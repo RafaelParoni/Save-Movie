@@ -35,6 +35,7 @@
     padding: 0;
     background: var(--backgroundPage-color);
     overflow: hidden;
+    z-index: -2;
 }
 .background li {
     position: absolute;
