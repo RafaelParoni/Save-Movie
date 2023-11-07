@@ -10,34 +10,45 @@
 }
 
 
-.LoginPage {
+.loginPage {
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--Background-Color);
-    color: var(--Text-color);
-
 }
-
-.LoginForm {
-    width: min(500px, 90vw);
-    height: 500px;
-    border-radius: 15px;
-    box-shadow: 0px 0px 5px 1px var(--shadow-color);
-}
-
-.LoginUser {
-    width: 100%;
-    height: auto;
+.loginForm {
+    width: 500px;
+    height: 200px;
     background-color: green;
-    padding: 25px 0 10px 0 ;
+    margin: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}   
+
+.formProfile {
+    background-color: red;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.LoginUser p{
-    font-size: 25px;
+.formProfile img {
+    width: 100px;
+}
+.formProfile span {
+    text-align: center;
+}
+.formProfile span h4 {
+    margin: 5px;
+}
+
+#loginType1 {
+    display: none;
+}
+#loginType2 {
+    display: none;
 }

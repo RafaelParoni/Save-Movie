@@ -1,29 +1,40 @@
-import { useState } from 'react';
-
-
 import './Login.css';
-import ProfileImg from './../../Icons/users/AavatarFemale1.png'
-
 
 
 function LoginPage() {
 
-    const [Name, setName] = useState('')
-    const [Password , setPassword] = useState('')
+
+    setTimeout(function TypeSelector(){
+            if(window.localStorage.getItem('login') !== null){
+                // Mostar Login 1 (Com conta)
+                document.getElementById('loginType2').style.display = 'none'
+                document.getElementById('loginType1').style.display = 'flex'
+            }else{
+                // Mostrar Login 2 (Sem conta)
+                document.getElementById('loginType2').style.display = 'flex'
+                document.getElementById('loginType1').style.display = 'none'
+                
+            }
+        },10
+    )
+    
+    if(window.sessionStorage.getItem('session') !== null){
+        window.history.back()
+        // Mandar de voltar caso tenha session ativa
+        
+    }
     return (
-        <div className='LoginPage'>
-            <form className='LoginForm'>
-                <div className='LoginUser'>
-                    <img alt='UserIcon' src={ProfileImg} height={'150px'} />
-                    <p>Name</p>
-                </div>
-                <div className='form'>
-                    <input type='text' placeholder='Login' value={Name} onChange={(e)=> setName(e.target.value)} autoComplete='on'/>
-                    <input type='text' placeholder='Password' value={Password} onChange={(e)=> setPassword(e.target.value)} autoComplete='on'/>
-                    <button>Entrar</button>
+        <main className='loginPage'>
+            <form id='loginType1' className='loginForm'>
+                <div className='formProfile'>
+                    <img alt='' src={window.localStorage.getItem('imgProfile')} />
+                    <span> Bem vindo de volta <h4>{window.localStorage.getItem('name')}</h4></span>
                 </div>
             </form>
-        </div>
+            <form id='loginType2' className='loginForm'>
+
+            </form>
+        </main>
     );
   }
   
