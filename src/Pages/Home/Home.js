@@ -4,11 +4,6 @@ import Navbar from './../../Components/NavBar/NavBar'
 
 function HomePage() {
     function Teste(){
-      //  window.sessionStorage.setItem('Login', 'email')
-        window.localStorage.setItem('name', 'nome')
-        window.localStorage.setItem('id', '0090717414141')
-        window.localStorage.setItem('IconProfile', 'avatar_01')
-        window.localStorage.setItem('email', 'email@gmail.com')
         console.log(window.sessionStorage)
         console.log(window.localStorage)
     }
@@ -21,7 +16,7 @@ function HomePage() {
                 <legend>Pages:</legend>
                 <ul>
                     <li><a href='/login'> login</a> <br/></li>
-                    <li><a href='/registro'> registro</a> <br/></li>
+                    <li><a href='/register'> registro</a> <br/></li>
                     <li><a href='/autologin'> autologin</a> <br/></li>
                     <li><a href='/profile'> profile</a> <br/></li>
                     <li><a href='/search'> search</a> <br/></li>
