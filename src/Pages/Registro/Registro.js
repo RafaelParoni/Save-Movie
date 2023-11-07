@@ -16,6 +16,7 @@ function RegistroPage() {
 
     if(window.sessionStorage.getItem('session') !== null){
         window.history.back()
+        // Mandar de voltar caso tenha session ativa
     }
 
 
