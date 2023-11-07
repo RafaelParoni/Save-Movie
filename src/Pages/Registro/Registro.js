@@ -12,7 +12,12 @@ import CreateNewAccount from './components/CreateNewAccount';
 
 
 function RegistroPage() {
-    
+
+
+    if(window.sessionStorage.getItem('session') !== null){
+        window.history.back()
+    }
+
 
     return (
         <main className='RegisterPage'>

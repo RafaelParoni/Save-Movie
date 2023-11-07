@@ -22,8 +22,9 @@ const userCollectionRef = collection(db, 'users');
 
 
 export async function StartNewAccont(){
+
     
-    testeBd()
+    CreateNewAccountFunciton()
     var progess = document.getElementById('progress')
     var progressText = document.getElementById('progressText')
     progess.style.width =  '25%'
@@ -34,7 +35,7 @@ export async function StartNewAccont(){
     }
 }
 
-async function testeBd(){
+async function CreateNewAccountFunciton(){
     const data = await getDocs(userCollectionRef);
     console.log(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
 
@@ -83,6 +84,12 @@ async function testeBd(){
         Termos,
     });  
     console.log(user)
+    window.localStorage.clear()
+    window.localStorage.setItem('Mode', 'light')
+    window.localStorage.setItem('login', Email)
+    window.localStorage.setItem('imgProfile', Img)
+    window.localStorage.setItem('name', Name)
+    window.sessionStorage.setItem('session', 'on')
 
     progess.style.width =  '100%'
     while(i < 101){
