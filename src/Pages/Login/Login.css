@@ -1,14 +1,21 @@
 :root {
-    --Text-color: #000;
-    --Background-Color: #e0e0e0;
+    --Text-color: #fff;
+    --Background-Color: rgb(17, 17, 17);
     --shadow-color: #000;
+    --BackgroundInputs: #494949;
 }
 .dark:root {
     --Text-color: #fff;
     --Background-Color: rgb(17, 17, 17);
-    --shadow-color: #fff;
+    --shadow-color: #000;
+    --BackgroundInputs: #494949;
 }
-
+.light:root {
+    --Text-color: #000;
+    --Background-Color: #e0e0e0;
+    --shadow-color: #fff;
+    --BackgroundInputs: #aaaaaa;
+}
 
 .loginPage {
     width: 100vw;
@@ -19,22 +26,46 @@
 }
 .loginForm {
     width: 500px;
-    height: 200px;
-    background-color: green;
+    height: auto;
+    padding: 25px 0 25px 0;
     margin: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    color: var(--Text-color);
+     /* From https://css.glass */
+     background: rgba(255, 255, 255, 0.301);
+     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+     backdrop-filter: blur(5px);
+     -webkit-backdrop-filter: blur(5px);
+     border-radius: 15px;
 }   
+.loginForm fieldset{
+    text-align: center;
+}
+
+.BtnExtraLogin {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.BtnExtraLogin:hover {
+    box-shadow: 0 0 5px 1px #f14a2c;
+    border-color: #f14a2c;
+}
 
 .formProfile {
-    background-color: red;
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: var(--Text-color);
 }
 .formProfile img {
     width: 100px;
@@ -42,10 +73,98 @@
 .formProfile span {
     text-align: center;
 }
+.formProfile p {
+    margin: 0;
+    padding-bottom: 15px;
+}
 .formProfile span h4 {
     margin: 5px;
 }
+.formInputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.InputLogin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: var(--BackgroundInputs);
+    padding: 3px;
+}
+.inputboxLogin{
+    position: relative;
+    background-color: rgba(255, 255, 255, 0);
+    margin: 10px 0px 10px 0px;
+}   
+.inputUserLogin{
+    background: none;
+    border: none;
+    border-bottom: 1px solid #f14a2c ;
+    outline: none;
+    font-size: 15px;
+    width: 95%;
+    color: var(--text-color);
+}
+.labelInputLogin{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    pointer-events: none;
+    transition: .5s;
+    color: var(--text-color);
+}
+.inputUserLogin:focus ~ .labelInputLogin,
+.inputUserLogin:valid ~ .labelInputLogin{
+    top: -10px;
+    font-size: 12px;
+    color: var(--title-color);
+}
+.InputLogin input {
+    width: 95%;
+}
+.InputLogin {
+    width: min(221px, 80%);
+    margin: 10px;
+}
+.InputLogin button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    width: auto;
+    background-color: transparent;
+    color: #f14a2c;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.InputLogin button:hover,
+.InputLogin button:focus {
+    color: var(--text-color);
+}
+.BtnLogin {
+    font-size: 15px;
+    background-color: transparent;
+    color: var(--Text-color);
+    border: 1px solid #f14a2c;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+}
+.BtnLogin:hover{
+    box-shadow: 0px 0px 5px 1px #f14a2c;
+}
+#NoViewPassword {
+    display: none;
+}
 #loginType1 {
     display: none;
 }

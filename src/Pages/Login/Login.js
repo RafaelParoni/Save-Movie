@@ -1,5 +1,9 @@
 import './Login.css';
 
+// import Componentes
+import {LoginType1, LoginType2} from './components/Main'; // type 1 Login com Storage
+// type 2 Login sem Storage
+
 
 function LoginPage() {
 
@@ -25,15 +29,8 @@ function LoginPage() {
     }
     return (
         <main className='loginPage'>
-            <form id='loginType1' className='loginForm'>
-                <div className='formProfile'>
-                    <img alt='' src={window.localStorage.getItem('imgProfile')} />
-                    <span> Bem vindo de volta <h4>{window.localStorage.getItem('name')}</h4></span>
-                </div>
-            </form>
-            <form id='loginType2' className='loginForm'>
-
-            </form>
+            <LoginType1/>
+            <LoginType2/>
         </main>
     );
   }

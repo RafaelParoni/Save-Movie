@@ -3,6 +3,7 @@
     --title-color: #f14a2c;
     --shandow-color: #fff;
     --backgroundDiv: #4b4a4a8a;
+    --BackgroundInputs: #494949;
 
 }
 :root {
@@ -10,6 +11,7 @@
     --title-color: #f14a2c;
     --shandow-color: #000;
     --backgroundDiv: #4b4a4a8a;
+    --BackgroundInputs: #494949;
 
 }
 .light:root {
@@ -17,6 +19,7 @@
     --title-color: #f14a2c;
     --shandow-color: #000;
     --backgroundDiv: #4b4a4a8a;
+    --BackgroundInputs: #aaaaaa;
 }
 
 .RegisterPage {
@@ -132,10 +135,11 @@ h4 {
 .IconInput{
     display: flex;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 15px;
     padding: 3px;
     padding-right: 5px;
     margin: 3px;
+    background-color: var(--BackgroundInputs);
 }
 .inputbox{
     position: relative;

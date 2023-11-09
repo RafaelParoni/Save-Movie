@@ -89,6 +89,7 @@ async function CreateNewAccountFunciton(){
     window.localStorage.setItem('login', Email)
     window.localStorage.setItem('imgProfile', Img)
     window.localStorage.setItem('name', Name)
+    window.localStorage.setItem('passwordCrypt', Passcrypt)
     window.sessionStorage.setItem('session', 'on')
 
     progess.style.width =  '100%'
