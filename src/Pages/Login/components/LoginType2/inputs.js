@@ -20,7 +20,7 @@ function InputsFomrType2() {
 
     return (
         <div className='formInputs'>
-           <div  className='InputLogin'>
+           <div className='InputLogin'>
                 <span><CiLock size={25} color='#f14a2c'/></span>
                 <div className="inputboxLogin">
                     <input type="text" name="LoginFormTwo" id="LoginFormTwo" autoComplete='off' className="inputUserLogin" required />

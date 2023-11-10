@@ -9,18 +9,20 @@ function LoginPage() {
 
 
     setTimeout(function TypeSelector(){
-            if(window.localStorage.getItem('login') !== null){
-                // Mostar Login 1 (Com conta)
-                document.getElementById('loginType2').style.display = 'none'
-                document.getElementById('loginType1').style.display = 'flex'
-            }else{
-                // Mostrar Login 2 (Sem conta)
-                document.getElementById('loginType2').style.display = 'flex'
-                document.getElementById('loginType1').style.display = 'none'
+        var LoginType1 = document.getElementById('loginType1')
+        var LoginType = document.getElementById('loginType1')
+        if(window.localStorage.getItem('login') !== null){
+            // Mostar Login 1 (Com conta)
+            document.getElementById('loginType2').style.display = 'none'
+            document.getElementById('loginType1').style.display = 'flex'
+            document.getElementById('LoginFormOne').value = window.localStorage.getItem('login')
+        }else{
+            //Mostrar Login 2 (Sem conta)
+            document.getElementById('loginType2').style.display = 'flex'
+            document.getElementById('loginType1').style.display = 'none'
                 
-            }
-        },10
-    )
+        }
+    },1)
     
     if(window.sessionStorage.getItem('session') !== null){
         window.history.back()

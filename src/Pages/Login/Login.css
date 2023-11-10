@@ -94,16 +94,20 @@
     border-radius: 15px;
     background-color: var(--BackgroundInputs);
     padding: 3px;
+    transition: 0.5s;
+    border: 1px solid transparent;
+}
+.InputLogin:hover{
+    border: 1px solid #f14a2c;
 }
 .inputboxLogin{
     position: relative;
-    background-color: rgba(255, 255, 255, 0);
     margin: 10px 0px 10px 0px;
+   
 }   
 .inputUserLogin{
     background: none;
     border: none;
-    border-bottom: 1px solid #f14a2c ;
     outline: none;
     font-size: 15px;
     width: 95%;
@@ -165,6 +169,7 @@
 #NoViewPassword {
     display: none;
 }
+
 #loginType1 {
     display: none;
 }

@@ -18,9 +18,10 @@ function InputsFomrType1() {
         }
     }
 
+
     return (
         <div className='formInputs'>
-            <input id='LoginFormOne' type='hidden'  value={window.localStorage.getItem('login')}/>
+            <input id='LoginFormOne' type='hidden'  value={''}/>
             <div  className='InputLogin'>
                 <span><CiLock size={25} color='#f14a2c'/></span>
                 <div className="inputboxLogin">
