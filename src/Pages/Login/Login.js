@@ -9,8 +9,7 @@ function LoginPage() {
 
 
     setTimeout(function TypeSelector(){
-        var LoginType1 = document.getElementById('loginType1')
-        var LoginType = document.getElementById('loginType1')
+
         if(window.localStorage.getItem('login') !== null){
             // Mostar Login 1 (Com conta)
             document.getElementById('loginType2').style.display = 'none'
