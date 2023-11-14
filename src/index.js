@@ -33,12 +33,14 @@ DetectMode()
 
 
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
   <Background/>
     <Routes>
         <Route  path='/' element={<HomePage/>}/>
+        <Route  path='/curtidos' element={<HomePage/>}/>
         <Route  path='/login' element={<LoginPage/>}/>
         <Route  path='/register' element={<RegistroPage/>}/>
         <Route  path='/profile' element={<ProfilePage/>}/>
