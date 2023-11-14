@@ -45,7 +45,7 @@ function SearchNavBtn(){
                         }} 
                         />
                 <button onClick={()=> UpdateValueMovieName('')} id='BtnClearSearch' className='BtnClearSearch'><BiEraser size={20}/></button>
-                <div className='BtnSearch'><button onClick={()=> SearchMovie()} id='BtnSearch'><BiSearchAlt2 size={30}/></button><span id='BtnLoader' class="loader"></span></div>
+                <div className='BtnSearch'><button onClick={()=> SearchMovie()} id='BtnSearch'><BiSearchAlt2 size={30}/></button><span id='BtnLoader' className="loader"></span></div>
             </div>
         </div>
     )
