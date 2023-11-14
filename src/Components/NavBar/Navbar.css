@@ -88,11 +88,14 @@ nav div {
     grid-gap: 10px;
 }
 .BtnSearch{ 
-    height: 50px;
-    width: auto;
+    height: 40px;
+    width: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #f14a2c;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
     margin: 0;
     padding: 0;
 }
@@ -110,10 +113,9 @@ nav div {
     margin: 0;
     padding: 0;
     border: none;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+ 
     cursor: pointer;
-    background-color: #f14a2c;
+    background-color: transparent;
     transform: 0.4s;
 }
 .InputSearch {
@@ -143,6 +145,35 @@ nav div {
     opacity: 0.5;
 }
 
-#BtnSearchON {
+#BtnLoader {
     display: none;
 }
+
+
+.loader {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    background: linear-gradient(0deg, rgba(255, 255,255 , 0.0) 33%, rgb(0, 0, 0));
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    cursor: wait;
+  }
+  .loader::after {
+    content: '';  
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #f14a2c;
+  }
+  @keyframes rotation {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg)}
+  } 
