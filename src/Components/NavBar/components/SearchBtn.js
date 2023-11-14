@@ -2,6 +2,12 @@ import { useState } from 'react';
 import './../Navbar.css'
 import {BiSearchAlt2, BiEraser  } from 'react-icons/bi'
 
+
+export function setMovieSearch(value){
+    document.getElementById('inputSearchMovie').value = value
+    document.getElementById('BtnClearSearch').style.opacity = '1'
+}
+
 function SearchNavBtn(){
     const [SearchMovieName, setSearchMovieName] = useState('')
     const UpdateValueMovieName = (value) => {
@@ -28,6 +34,7 @@ function SearchNavBtn(){
         window.location = `/search?m=${SearchMovieName}`
     }
 
+
     return (
         <div className='MenuBar'>
             <div className='SearchDiv'>
@@ -37,6 +44,7 @@ function SearchNavBtn(){
                     onChange={(e)=> UpdateValueMovieName(e.target.value)} 
                     className='InputSearch' 
                     type='text' 
+                    id='inputSearchMovie'
                     placeholder='Search Movie...'
                     onKeyDown={event => {
                         if (event.key === 'Enter') {
@@ -44,7 +52,7 @@ function SearchNavBtn(){
                         }
                         }} 
                         />
-                <button onClick={()=> UpdateValueMovieName('')} id='BtnClearSearch' className='BtnClearSearch'><BiEraser size={20}/></button>
+                <button onClick={()=> {UpdateValueMovieName(''); document.getElementById('inputSearchMovie').value = '' }} id='BtnClearSearch' className='BtnClearSearch'><BiEraser size={20}/></button>
                 <div className='BtnSearch'><button onClick={()=> SearchMovie()} id='BtnSearch'><BiSearchAlt2 size={30}/></button><span id='BtnLoader' className="loader"></span></div>
             </div>
         </div>
