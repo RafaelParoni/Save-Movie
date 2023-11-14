@@ -1,8 +1,148 @@
+:root {
+    --Text-color: #ffffff50;
+    --BackgroundNavBar: rgb(17, 17, 17);
+    --shadowNavBar: rgba(255, 255, 255, 0.76);
+    --SearchBackground:  rgba(219, 217, 217, 0.76);
+    --SearchTextColor: #000;
+    --inputPlaceholderColor: #000;
+}
+.dark:root {
+    --Text-color: #ffffff52;
+    --BackgroundNavBar: rgb(17, 17, 17);
+    --shadowNavBar: rgba(192, 192, 192, 0.74);
+    --SearchBackground:  rgb(255, 255, 255);
+    --SearchTextColor: #000;
+    --inputPlaceholderColor: #000;
+
+}
+.light:root {
+    --Text-color: #00000052;
+    --BackgroundNavBar: #e0e0e073;
+    --shadowNavBar: #3d3c3ce0;
+    --SearchBackground:  rgb(37, 37, 37);
+    --SearchTextColor: #fff;
+    --inputPlaceholderColor: #fff;
+}
+
+
+
 nav {
+    position: fixed;
+    top: 0;
     width: 100vw;
     height: 50px;
-    background-color: green;
+    box-shadow: 0 0 5px 1px var(--shadowNavBar);
+    border-bottom: 1px solid var(--shadowNavBar);
+    background: var(--BackgroundNavBar);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 nav div {
-    background-color: yellow;
+    width: auto;
+    padding-inline: 15px;
+    height: 100%;
+}
+.Icon button {
+    cursor: pointer;
+    padding: 0;
+    margin-inline: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    height: 50px;
+    border: none;
+    background-color: transparent;
+}
+.Icon button h3 {
+    color: var(--Text-color);
+}
+.Icon button h3 span {
+    color: #f14a2c;
+}
+.Icon button img {
+    height: 45px;
+}
+
+
+
+.MenuBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 50px;
+}
+.SearchDiv {
+    background-color: var(--SearchBackground);
+    border-radius: 5px;
+    width: auto;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 0 0 0;
+    padding: 0;
+    grid-gap: 10px;
+}
+.BtnSearch{ 
+    height: 50px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+.BtnSearch button:active{
+    transform: scale(1.1);
+}
+.BtnSearch button {
+    height: 40px;
+    width: 40px;
+    font-size: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+    background-color: #f14a2c;
+    transform: 0.4s;
+}
+.InputSearch {
+    outline: none;
+    border: none;
+    height: 50px;
+    background-color: transparent;
+    width: 100%;
+    color: var(--inputPlaceholderColor);
+    margin-left: 10px;
+}
+.InputSearch::placeholder{
+    color: var(--inputPlaceholderColor);
+}
+
+.BtnClearSearch {
+    background-color: transparent;
+    color: var(--inputPlaceholderColor);
+    border: none;
+    margin: 0;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.InputSearch:focus::placeholder{
+    opacity: 0.5;
+}
+
+#BtnSearchON {
+    display: none;
 }
