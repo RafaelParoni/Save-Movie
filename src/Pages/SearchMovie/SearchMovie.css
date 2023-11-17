@@ -1,0 +1,65 @@
+:root {
+    --Text-color: #fff;
+    --Background-Color: rgb(17, 17, 17);
+}
+.dark:root {
+    --Text-color: #fff;
+    --Background-Color: rgb(17, 17, 17);
+}
+.light:root {
+    --Text-color: #000;
+    --Background-Color: #e0e0e0;
+}
+
+
+.SearchPage {
+    width: 100vw;
+    height: auto;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+}
+h1 {
+    color: var(--Text-color);
+}
+.TitlesMovies {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 5px;
+    color: var(--Text-color);
+}
+.ListMovies {
+    width: 80vw;
+    height: auto;
+    border: 1px solid red;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: center;
+    grid-gap: 15px;
+}
+.MovieCard {
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    width: 200px;
+    cursor: pointer;
+    transition: 0.2s;
+    text-align: center;
+}
+.MovieCard:hover {
+    transform: scale(1.05);
+}
+.MovieCard img {
+    width: 200px;
+    background-color: red;
+}
+.MovieCard img{
+    background-color: yellow;
+}

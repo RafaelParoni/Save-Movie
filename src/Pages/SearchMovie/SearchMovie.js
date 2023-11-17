@@ -1,69 +1,66 @@
 import './SearchMovie.css';
 import Navbar from './../../Components/NavBar/NavBar'
 
+import { BiSearchAlt } from "react-icons/bi";
+
 import { setMovieSearch } from '../../Components/NavBar/components/SearchBtn';
-import { SearchMovie } from '../../Components/Functions/SearchMovie';
+
+import  api  from '../../Components/Functions/SearchMovie';
+import { SearchMoviePages } from '../../Components/Functions/SearchMoviePages';
 
 
+import { useState } from 'react';
+
+var MoviesPages = 0
 function SearchMoviePage() {
+    const [Topics , SetTopics] = useState([])
     const urlParams = new URLSearchParams(window.location.search);
     const MovieName = urlParams.get("m")
-    var MovieObj = {}
+    var MovieSearchPage = urlParams.get("page")
+    if(MovieSearchPage === undefined || isNaN(MovieSearchPage)){
+        MovieSearchPage = 1
+    }
     
-    function StartSearchMovie(){
+    async function StartSearchMovie(){
         setMovieSearch(MovieName)
+        document.getElementById('MovieNameId').innerHTML = MovieName
 
+        await SearchMoviePages(MovieName).then(function(results){
+            MoviesPages = results
+        })
 
-        SearchMovie(MovieName).then(function(result) {
-            // console.log(result)
-            var i = 0
-            var MoviesObjSearch  = []
-            while(i < result.length){
-                MoviesObjSearch.push(
-                    {name: result[i].name,
-                    banner: result[i].banner,
-                    description: result[i].description,
-                    trailer: result[i].trailer,
-                    year: result[i].banner,
-                    geners: result[i].geners,
-                    Released: result[i].Released,
-                    Runtime: result[i].Runtime,
-                    
-                    }
-                )
-                i++
-            }
+        if(Object.keys(Topics).length > 0){
+            return
+        }
 
-            /* 
-                name: response.data.Title, 
-                banner: response.data.Poster, 
-                description: response.data.Plot, 
-                trailer: response.data.trailer, 
-                year: response.data.Year,
-                geners: response.data.Genre,
-                Released: response.data.Released,
-                Runtime: Runtimevalue,
-            */
-            console.log(result)
-            console.log(MoviesObjSearch)
-            MovieObj = MoviesObjSearch
-        });
+        const response = await api.get(`?s=${MovieName}&apikey=c74f3650&page=${MovieSearchPage}`);
+        SetTopics(response.data.Search)
+      
+
 
     }
     setTimeout(StartSearchMovie,10)
-
     
-    function teste(){
-        console.log(MovieObj)
+
+    function TopicsBox({item}){
+        console.log(item)
+        return <div className="MovieCard">
+                    <img  alt={' image: '+  item.Title} src={item.Poster}/>
+                    <span>{item.Title}</span>
+                </div>
     }
-
-
 
     return (
         <>
             <Navbar/>
-            <h1>SearchMovie</h1>
-            <button onClick={()=> teste()}> TESTEEEEE</button>
+            <main className='SearchPage'>
+                <div className='TitlesMovies'>
+                    <h1 id='MovieNameId'>Movie name</h1> <BiSearchAlt  size={30}/>
+                </div>
+                <div id='list-movies' className='ListMovies'>
+                    {Topics.map((Topics, index) => <TopicsBox item={Topics} />)}
+                </div>
+            </main>
         </>
     );
   }

@@ -2,9 +2,6 @@ import './Home.css';
 import Navbar from './../../Components/NavBar/NavBar'
 
 
-import { SearchMovie } from '../../Components/Functions/SearchMovie';
-
-
 function HomePage() {
     function ConsoleLogStorage(){
         console.log(window.sessionStorage)
@@ -36,7 +33,6 @@ function HomePage() {
         
             <button onClick={()=> ResetSession()}>Reset sessionStorage</button>
             <button onClick={()=> ResetLocalStorage()}>Reset localStorage</button>
-            <button onClick={()=> SearchMovie('Batman')}> Search Movie</button>
             <fieldset style={{width: '200px'}}>
                 <legend>Pages:</legend>
                 <ul>
