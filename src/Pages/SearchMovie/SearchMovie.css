@@ -35,15 +35,14 @@ h1 {
 .ListMovies {
     width: 80vw;
     height: auto;
-    border: 1px solid red;
     display: flex;
     flex-wrap: wrap;
-    align-items: start;
+    align-items: flex-start;
     justify-content: center;
     grid-gap: 15px;
 }
+
 .MovieCard {
-    background-color: green;
     display: flex;
     flex-direction: column;
     align-items: baseline;
@@ -51,15 +50,64 @@ h1 {
     width: 200px;
     cursor: pointer;
     transition: 0.2s;
+    background: rgba(255, 255, 255, 0.301);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding-bottom: 5px;
     text-align: center;
 }
+
 .MovieCard:hover {
     transform: scale(1.05);
 }
 .MovieCard img {
     width: 200px;
-    background-color: red;
 }
-.MovieCard img{
-    background-color: yellow;
+
+@media(max-width:650px){
+    .ListMovies {
+        width: 90vw;
+    }
+    .MovieCard {
+        width: 150px;
+    }
+    .MovieCard img {
+        width: 160px;
+    }
+}
+
+.MovieListOtions {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 15px;
+    background-color: var(--Background-Color);
+    padding: 5px;
+    border-radius: 5px;
+    grid-gap: 5px;
+    background: rgba(255, 255, 255, 0.301);
+     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+     backdrop-filter: blur(5px);
+     -webkit-backdrop-filter: blur(5px);
+}
+.MovieListOtions button {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #000;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.MovieListOtions button:hover {
+    background-color: #f14a2c;
+}
+
+.MovieListOtions div {
+    display: flex;
+    grid-gap: 5px
 }
