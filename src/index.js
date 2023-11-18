@@ -12,17 +12,14 @@ import Background from './Components/Background/Background';
 
 
 function DetectMode(){
-  console.log(window.localStorage.getItem('Mode'))
   var Mode = window.localStorage.getItem('Mode') 
   if(Mode === null || Mode === undefined ){
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       // dark mode
-      console.log('---- Dark Mode')
       document.getElementById('html').setAttribute('class', 'dark')
     }
     if (!window.matchMedia && !window.matchMedia('(prefers-color-scheme: dark)').matches) {
       // Light mode
-      console.log('---- Light Mode')
       document.getElementById('html').setAttribute('class', 'light')
     }
   }else{

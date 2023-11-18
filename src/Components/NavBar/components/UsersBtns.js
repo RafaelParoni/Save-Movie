@@ -42,11 +42,8 @@ function AccountNavbar(){
 
     function testSession(){
         if(window.sessionStorage.getItem('session') === 'on'){
-            console.log(' temos uma sessão')
-
             document.getElementById("LoginBtn").style.display= 'none'
         }else{
-            console.log(' não temos uma sessão')
             document.getElementById("profileBtn").style.display= 'none'
             document.getElementById("sessionButton").style.display= 'none'
             
