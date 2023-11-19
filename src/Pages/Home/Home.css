@@ -1,0 +1,65 @@
+:root {
+    --Text-color: #fff;
+    --Background-Color: rgb(17, 17, 17);
+}
+.dark:root {
+    --Text-color: #fff;
+    --Background-Color: rgb(17, 17, 17);
+}
+.light:root {
+    --Text-color: #000;
+    --Background-Color: #e0e0e0;
+}
+
+.HomePage {
+    width: 100vw;
+    height: auto;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+    color: var(--Text-color);
+}
+.Options {
+    height: 50px;
+    width: 95vw;
+    display: flex;
+    align-items: center;
+    grid-gap: 5px;
+}
+.Options button {
+    cursor: pointer;
+    transition: 0.5s;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #000;
+}
+.Options button:hover {
+    border: 1px solid #f14a2c;
+}
+.Genrs {
+    width: 95vw;
+    height: auto;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: rgba(66, 66, 66, 0.356);
+    margin-bottom: 15px;
+    
+}
+.reultsGenrs {
+    display: flex;
+    overflow-x: auto;
+    grid-gap: 10px;
+}
+.genrs-card {
+    min-width: 100px;
+    height: 150px;
+    background-color: yellow;
+    cursor: pointer;
+    transition: 1s;
+}
+.genrs-card:hover {
+    filter: invert(100%);
+    filter: blur(50%);
+}
