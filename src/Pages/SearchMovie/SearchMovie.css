@@ -56,8 +56,10 @@ h1 {
     -webkit-backdrop-filter: blur(5px);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    border-radius: 5px;
     padding-bottom: 5px;
     text-align: center;
+    color: var(--Text-color);
 }
 
 .MovieCard:hover {
@@ -66,13 +68,20 @@ h1 {
 .MovieCard img {
     width: 200px;
 }
+.MovieCard img::before {
+    content: "\2639" " Image broken " attr(alt);
+    border-radius: 5px;
+}
+.MovieCard span {
+    width: 100%;
+}
 
 @media(max-width:650px){
     .ListMovies {
         width: 90vw;
     }
     .MovieCard {
-        width: 150px;
+        width: 160px;
     }
     .MovieCard img {
         width: 160px;
@@ -80,6 +89,7 @@ h1 {
 }
 
 .MovieListOtions {
+    z-index: 0;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -106,8 +116,30 @@ h1 {
 .MovieListOtions button:hover {
     background-color: #f14a2c;
 }
-
+.MovieListOtions{
+    display: none;
+}
 .MovieListOtions div {
     display: flex;
     grid-gap: 5px
+}
+.MovieListOtions span {
+    color: var(--Text-color);
+}
+
+.ErrorDiv{
+    display: none;
+    padding: 15px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.301);
+     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+     backdrop-filter: blur(5px);
+     -webkit-backdrop-filter: blur(5px);
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+}
+.ErrorDiv h1 {
+    margin: 0;
 }

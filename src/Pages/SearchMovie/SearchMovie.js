@@ -1,7 +1,7 @@
 import './SearchMovie.css';
 import Navbar from './../../Components/NavBar/NavBar'
 
-import { BiSearchAlt,BiSolidChevronLeft ,BiSolidChevronRight   } from "react-icons/bi";
+import { BiSearchAlt,BiSolidChevronLeft ,BiSolidChevronRight,BiGhost,BiInfoSquare     } from "react-icons/bi";
 import { setMovieSearch } from '../../Components/NavBar/components/SearchBtn';
 
 import  api  from '../../Components/Functions/SearchMovie';
@@ -11,6 +11,7 @@ import { SearchMoviePages } from '../../Components/Functions/SearchMoviePages';
 import { useState } from 'react';
 
 var MoviesPages = 0
+var ErrorSearch = false
 function SearchMoviePage() {
     const [Topics , SetTopics] = useState([])
     const [PagesControl, setPagesControl] = useState([])
@@ -29,14 +30,29 @@ function SearchMoviePage() {
             MoviesPages = results
         })
 
-        if(Object.keys(Topics).length > 0){
+        if(Object.keys(Topics).length > 0 || ErrorSearch === true){
             return
         }
 
-        const response = await api.get(`?s=${MovieName}&apikey=c74f3650&page=${MovieSearchPage}`);
-        SetTopics(response.data.Search)
-        PagesCount()    
+
         const response = await api.get(`?s=${MovieName}&apikey=c74f3650&page=${MovieSearchPage}&type=movie`);
+
+        if(response.data.Response === 'False'){
+            document.getElementById('list-movies').style.display = 'none'
+            document.getElementById('list-movies-control').style.display = 'none'
+            document.getElementById('error-search-movie').style.display = 'flex'
+            if(MovieSearchPage > MoviesPages){
+                document.getElementById('error-value').innerText = 'Page not found'
+            }else{
+                document.getElementById('error-value').innerText = response.data.Error
+            }
+            ErrorSearch = true
+            return
+        }else{
+            document.getElementById('error-search-movie').style.display = 'none'
+            SetTopics(response.data.Search)
+            PagesCount()    
+        }
 
     }
     setTimeout(StartSearchMovie,10)
@@ -45,8 +61,8 @@ function SearchMoviePage() {
     function TopicsBox({item}){
 
         return <div className="MovieCard">
-                    <img  alt={' image: '+  item.Title} src={item.Poster}/>
-                    <span>{item.Title}</span>
+                    <img  alt={''} src={item.Poster}/>
+                    <span><b> {item.Title} </b></span>
                 </div>
     }
 
@@ -92,6 +108,7 @@ function SearchMoviePage() {
     }
 
     function PagesControlBox({item}){
+        document.getElementById('list-movies-control').style.display = 'flex'
         var value = 't'
         var FunctionValue = 0
         if(item.FirstPage !== undefined){
@@ -123,15 +140,17 @@ function SearchMoviePage() {
         <>
             <Navbar/>
             <main className='SearchPage'>
-                <div className='TitlesMovies'>
-                    <h1 id='MovieNameId'></h1> <BiSearchAlt  size={30}/>
-                </div>
+                <div className='TitlesMovies'><h1 id='MovieNameId'>Movie Name</h1> <BiSearchAlt  size={30}/></div>
                 <div id='list-movies' className='ListMovies'>
-                    {Topics.map((Topics, index) => <TopicsBox item={Topics} />)}
+                    {Topics.map((Topics) => <TopicsBox item={Topics} />)}
                 </div>
-                <div className='MovieListOtions'>
-                    <div>{PagesControl.map((PagesControl, index) => <PagesControlBox item={PagesControl} />)}</div>
+                <div id='list-movies-control' className='MovieListOtions'>
+                    <div>{PagesControl.map((PagesControl) => <PagesControlBox item={PagesControl} />)}</div>
                     <span>{MovieSearchPage}/{MoviesPages}</span>
+                </div>
+                <div id='error-search-movie' className='ErrorDiv'>
+                    <h1> <BiInfoSquare /> Error 404</h1>
+                    <h2><BiGhost/> <span id='error-value'></span> </h2>
                 </div>
             </main>
         </>
