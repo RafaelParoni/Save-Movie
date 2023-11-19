@@ -36,6 +36,7 @@ function SearchMoviePage() {
         const response = await api.get(`?s=${MovieName}&apikey=c74f3650&page=${MovieSearchPage}`);
         SetTopics(response.data.Search)
         PagesCount()    
+        const response = await api.get(`?s=${MovieName}&apikey=c74f3650&page=${MovieSearchPage}&type=movie`);
 
     }
     setTimeout(StartSearchMovie,10)
