@@ -39,6 +39,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 5;
 }
 nav div {
     width: auto;
