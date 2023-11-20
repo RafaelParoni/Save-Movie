@@ -45,7 +45,7 @@ function SearchNavBtn(){
                     className='InputSearch' 
                     type='text' 
                     id='inputSearchMovie'
-                    placeholder='Search Movie...'
+                    placeholder='Search Movie Name...'
                     onKeyDown={event => {
                         if (event.key === 'Enter') {
                             SearchMovie()

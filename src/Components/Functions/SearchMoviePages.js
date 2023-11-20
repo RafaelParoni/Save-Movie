@@ -1,6 +1,5 @@
 import axios from "axios"
 
-
 export async function SearchMoviePages(value){
 
       const api = axios.create({
