@@ -30,6 +30,7 @@ function RegistroPage() {
                 <FormTwo />
                 <FormThree />
                 <NewStage/>
+                <span>Já tem uma conta? click <a href='/login'>aqui</a> para fazer o login</span>
             </div>
         </main>
     );

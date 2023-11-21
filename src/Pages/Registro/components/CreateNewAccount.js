@@ -83,13 +83,14 @@ async function CreateNewAccountFunciton(){
         Img,
         Termos,
     });  
-    console.log(user)
+    console.log(user.id)
     window.localStorage.clear()
     window.localStorage.setItem('Mode', 'light')
     window.localStorage.setItem('login', Email)
     window.localStorage.setItem('imgProfile', Img)
     window.localStorage.setItem('name', Name)
-    window.localStorage.setItem('passwordCrypt', Passcrypt)
+    window.localStorage.setItem('passwordCrypt', Passcrypt) 
+    window.localStorage.setItem('id', user.id)
     window.sessionStorage.setItem('session', 'on')
 
     progess.style.width =  '100%'
@@ -99,7 +100,7 @@ async function CreateNewAccountFunciton(){
     }
 
     setTimeout(function(){
-        window.location = '/'
+       // window.location = '/'
     }, 1000)
 }
 

@@ -50,6 +50,12 @@ h1 {
 h4 {
     color: var(--text-color);
 }
+span {
+    color: var(--text-color);
+}
+a {
+    color: var(--title-color);
+}
 
 .FormStats {
     width: min(500px, 80vw);;
