@@ -90,6 +90,7 @@
     margin: 0;
     padding: 0 0 25px 0;
 }
+
 .History-Results-Block {
     padding: 5px;
     width: auto;
@@ -125,3 +126,38 @@
 .History-Results-Block button:hover{
     background-color: #f14a2c;
 }
+
+.DispleyHome {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width: 100vw;
+    height: auto;
+}
+.HistoryDiv {
+    grid-area: 1 / 8 / 6 / 12;
+}
+
+.Filmes {
+    grid-area: 1 / 2 / 6 / 8;
+    background-color: green;
+}
+
+
+@media(max-width:650px){
+    .DispleyHome{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .Filmes {
+        grid-area: none;
+    }
+    .HistoryDiv {
+        grid-area: none;
+    }
+}
+
+

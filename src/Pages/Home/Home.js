@@ -92,22 +92,27 @@ function HomePage() {
                     <button onClick={()=> hrefFunc('/')}> <BiHomeAlt2/> Home</button> 
                     <button onClick={()=> hrefFunc('/profile')}> <BiUser/> Perfil</button>
                 </div>
-                <div className='HistoryDiv'>
-                    <div id='History-NoSession' className='History-Error'>
-                        <h2><BiConfused/> No sessions connected </h2>
-                        <span>Try logging in <a href='/login'>here</a></span>
+                <div className='DispleyHome'>
+                    <div className='Filmes'>
+                        <h1>Movies Randoms
+                        </h1>
                     </div>
-                    <div id='History-NoHistory' className='History-Error'>
-                        <h2><BiSad/> No searches done recently! </h2>
-                        <span>Do a search so it may appear here</span>
-                    </div>
-                    <div id='History-Results' className='History-Results'>
-                        <h2>Your last 10 searches:</h2>
-                        {History.map((History) => <HistoryControlBox item={History} />)}
-                    </div>
-                </div>
+                    <div className='HistoryDiv'>
+                        <div id='History-NoSession' className='History-Error'>
+                            <h2><BiConfused/> No sessions connected </h2>
+                            <span>Try logging in <a href='/login'>here</a></span>
+                        </div>
+                        <div id='History-NoHistory' className='History-Error'>
+                            <h2><BiSad/> No searches done recently! </h2>
+                            <span>Do a search so it may appear here</span>
+                        </div>
+                        <div id='History-Results' className='History-Results'>
+                            <h2><span> <BiSend/> </span> Your last 10 searches:</h2>
+                            <div id='History-Results-divs'>{History.map((History) => <HistoryControlBox item={History} />)}</div>
+                        </div>
+                    </div>   
+                </div>  
                 
-        
             </main>
         </>
     );
