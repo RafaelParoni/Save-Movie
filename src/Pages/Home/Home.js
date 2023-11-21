@@ -1,11 +1,12 @@
 import './Home.css';
 import Navbar from './../../Components/NavBar/NavBar' // BiChevronDown
-import {BiSend, BiHomeAlt2, BiHeart,BiUser } from 'react-icons/bi'
+import {BiSend, BiHomeAlt2, BiHeart, BiUser, BiConfused, BiTagAlt, BiSearchAlt2, BiSad, BiTrashAlt} from 'react-icons/bi'
 
 
 // Banco de dados
 import { initializeApp   } from "firebase/app";
 import {collection, getDocs, getFirestore} from "firebase/firestore";
+import { useState } from 'react';
 
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyCi1wYTsZBEVZp2zAQquOY8mYp7ZTe3Mnw",
@@ -20,10 +21,10 @@ const firebaseApp = initializeApp({
 
 // History
 
-var Session = false
-var Hisotry = false
 
 function HomePage() {
+
+    const [History, SetHistory] = useState([])
     
    
 
@@ -42,19 +43,20 @@ function HomePage() {
     }
  
     async function DestaqueHome(){
-        console.log(window.sessionStorage.getItem('session'))
+        if(Object.keys(History).length > 0){
+            return
+        }
         var resultsHistory = ''
         await SearchHistoryUser().then(function(returns){
             resultsHistory = returns
         })
-        console.log(resultsHistory)
         if(window.sessionStorage.getItem('session') === null){
-            console.log('Não temos uma sessão aqui')
+            document.getElementById('History-NoSession').style.display = 'flex'
         }else if(resultsHistory.length === 0){
-            console.log('Não temos nenhum historico seu!')
+            document.getElementById('History-NoHistory').style.display = 'flex'
         }else{
-            console.log('Carregando historico')
-            console.log(resultsHistory)
+            document.getElementById('History-Results').style.display = 'flex'
+            SetHistory(resultsHistory)
         }
     }
     setTimeout(DestaqueHome,10)
@@ -66,6 +68,20 @@ function HomePage() {
         window.location = value
     }
 
+    function SearchMovieHistory(Movie){
+        window.location = '/search?m=' + Movie
+    }
+    async function DeletHistory(value){
+        alert('Deleting history: ' + value)
+    }
+
+    function HistoryControlBox({item}){
+        console.log(item)
+        return <div key={item.id} className='History-Results-Div'> 
+            <div className='History-Results-Block'><BiTagAlt size={25}/> <input type='text' placeholder={item.name}  disabled/> <button onClick={()=> SearchMovieHistory(item.name)}><BiSearchAlt2 size={25}/></button></div> <button onClick={()=> DeletHistory(item.id)} className='BtnDelHistory'><BiTrashAlt size={20}/></button>
+        </div>
+    }   
+
     return (
         <>
             <Navbar/>
@@ -75,6 +91,20 @@ function HomePage() {
                     <button onClick={()=> hrefFunc('/curtidos')}> <BiHeart/> Curtidos</button> 
                     <button onClick={()=> hrefFunc('/')}> <BiHomeAlt2/> Home</button> 
                     <button onClick={()=> hrefFunc('/profile')}> <BiUser/> Perfil</button>
+                </div>
+                <div className='HistoryDiv'>
+                    <div id='History-NoSession' className='History-Error'>
+                        <h2><BiConfused/> No sessions connected </h2>
+                        <span>Try logging in <a href='/login'>here</a></span>
+                    </div>
+                    <div id='History-NoHistory' className='History-Error'>
+                        <h2><BiSad/> No searches done recently! </h2>
+                        <span>Do a search so it may appear here</span>
+                    </div>
+                    <div id='History-Results' className='History-Results'>
+                        <h2>Your last 10 searches:</h2>
+                        {History.map((History) => <HistoryControlBox item={History} />)}
+                    </div>
                 </div>
                 
         

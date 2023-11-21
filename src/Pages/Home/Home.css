@@ -1,6 +1,7 @@
 :root {
     --Text-color: #fff;
     --BackgroundScroll: rgb(17, 17, 17);
+    --BackgroundScroll: rgb(158, 155, 155);
 }
 .dark:root {
     --Text-color: #fff;
@@ -10,7 +11,7 @@
 .light:root {
     --Text-color: #000;
     --Background-Color: #e0e0e0;
-    --BackgroundScroll: rgb(77, 77, 77);
+    --BackgroundScroll: rgb(158, 155, 155);
 }
 
 .HomePage {
@@ -39,4 +40,88 @@
 }
 .Options button:hover {
     border: 1px solid #f14a2c;
+}
+.HistoryDiv {
+    width: min(550px, 90vw);
+    background: rgba(255, 255, 255, 0.301);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 15px;
+}
+.History-Error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 150px;
+}
+#History-NoSession,
+#History-NoHistory,
+#History-Results {
+    display: none;
+}
+.History-Results-Div {
+    display: flex;
+    justify-content: center;
+    grid-gap: 5px;
+    padding-inline: 10px;
+}
+.BtnDelHistory{
+    background-color: #ff0000;
+    height: 38px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none; 
+    transition: 0.2s;
+}
+.BtnDelHistory:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px 1px #000;
+}
+.History-Results {
+    padding: 25px 0 25px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.History-Results h2{
+    margin: 0;
+    padding: 0 0 25px 0;
+}
+.History-Results-Block {
+    padding: 5px;
+    width: auto;
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    grid-gap: 5px;
+    color: var(--Text-color);
+    border-radius: 5px;
+    background-color: var(--BackgroundScroll);
+    margin-bottom: 20px;
+}
+.History-Results-Block input {
+    width: 100%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+.History-Results-Block input::placeholder {
+    color: var(--Text-color);
+}
+.History-Results-Block button{
+    border: none;
+    padding: 0 5px 0 5px;
+    background-color: transparent;
+    cursor: pointer;
+    height: auto;
+    color: var(--Text-color);
+    transition: 0.5s;
+    border-radius: 5px;
+}
+.History-Results-Block button:hover{
+    background-color: #f14a2c;
 }
