@@ -24,10 +24,15 @@ const firebaseApp = initializeApp({
 
 function HomePage() {
 
+    
+    function hrefFunc(value){
+        window.location = value
+    }
+
+    
+    // History Funcitons -- >
     const [History, SetHistory] = useState([])
     
-   
-
     async function SearchHistoryUser(){
         if(window.sessionStorage.getItem('session') !== null){
             const db = getFirestore(firebaseApp);
@@ -41,8 +46,8 @@ function HomePage() {
         }
 
     }
- 
-    async function DestaqueHome(){
+
+    async function HistoryType(){
         if(Object.keys(History).length > 0){
             return
         }
@@ -59,18 +64,12 @@ function HomePage() {
             SetHistory(resultsHistory)
         }
     }
-    setTimeout(DestaqueHome,10)
-
-
-
-
-    function hrefFunc(value){
-        window.location = value
-    }
+    setTimeout(HistoryType,10)
 
     function SearchMovieHistory(Movie){
         window.location = '/search?m=' + Movie
     }
+
     async function DeletHistory(value){
         alert('Deleting history: ' + value)
     }
@@ -94,8 +93,7 @@ function HomePage() {
                 </div>
                 <div className='DispleyHome'>
                     <div className='Filmes'>
-                        <h1>Movies Randoms
-                        </h1>
+                        <h1> <BiHeart/> Movies for you:</h1>
                     </div>
                     <div className='HistoryDiv'>
                         <div id='History-NoSession' className='History-Error'>
