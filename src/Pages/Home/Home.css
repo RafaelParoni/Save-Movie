@@ -133,8 +133,8 @@
     grid-template-rows: repeat(5, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    width: 100vw;
-    height: auto;
+    width: 90vw;
+    grid-gap: 15px;
 }
 .HistoryDiv {
     grid-area: 1 / 8 / 6 / 12;
@@ -142,7 +142,12 @@
 
 .Filmes {
     grid-area: 1 / 2 / 6 / 8;
-    background-color: green;
+    text-align: center;
+    background: rgba(88, 88, 88, 0.301);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 15px;
 }
 
 
@@ -154,6 +159,12 @@
     }
     .Filmes {
         grid-area: none;
+        width: 95vw;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
     .HistoryDiv {
         grid-area: none;
