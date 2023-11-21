@@ -57,6 +57,10 @@ function SearchNavBtn(){
         var HistoryUser = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
         console.log(HistoryUser)
         var id = HistoryUser.length + 1
+        if(HistoryUser.length > 9){
+            id = HistoryUser.length - Math.floor((Math.random() * 10) + 1)
+            console.log(HistoryUser.length)
+        }
         var userId =  window.localStorage.getItem('id')
         console.log(id)
         await setDoc(doc(db, userId, id.toString()), MovieHistory);
