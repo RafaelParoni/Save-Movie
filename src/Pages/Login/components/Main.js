@@ -19,7 +19,7 @@ export function LoginType1() {
             <ProfileFomrType1/>
             <InputsFomrType1/>
             <LoginFunciton/>
-            <span className='detailsLogin'>não é voce? <button onClick={()=> LogOutFull()}>aqui</button> para sair</span>
+            <span className='detailsLogin'>não é voce?  click <button onClick={()=> LogOutFull()}>aqui</button> para sair</span>
         </div>
     );
   }
@@ -31,7 +31,7 @@ export function LoginType1() {
             <h3>Conecte-se com:</h3>
             <InputsFomrType2/>
             <LoginFunciton/>
-            <span>nãõ é voce? click aqui para sair</span>
+            <span>não tem uma conta? Click <a href='/register'>Aqui</a> para fazer o registro</span>
         </div>
     );
   }
