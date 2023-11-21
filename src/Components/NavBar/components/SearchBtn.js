@@ -2,6 +2,20 @@ import { useState } from 'react';
 import './../Navbar.css'
 import {BiSearchAlt2, BiEraser  } from 'react-icons/bi'
 
+// Banco de dados
+import { initializeApp   } from "firebase/app";
+import {collection, getDocs, getFirestore, setDoc, doc} from "firebase/firestore";
+
+const firebaseApp = initializeApp({
+    apiKey: "AIzaSyCi1wYTsZBEVZp2zAQquOY8mYp7ZTe3Mnw",
+    authDomain: "savemovie-e7ea6.firebaseapp.com",
+    projectId: "savemovie-e7ea6",
+    storageBucket: "savemovie-e7ea6.appspot.com",
+    messagingSenderId: "613203193395",
+    appId: "1:613203193395:web:8430b6069114d133157d46",
+    measurementId: "G-GV5GW3T3ZV"
+});
+
 
 export function setMovieSearch(value){
     document.getElementById('inputSearchMovie').value = value
@@ -19,7 +33,7 @@ function SearchNavBtn(){
         }
     }
 
-    function SearchMovie(){
+    async function SearchMovie(){
         var LoadElement = document.getElementById('BtnLoader')
         var SearchElement = document.getElementById('BtnSearch')
         LoadElement.style.display = 'flex'
@@ -31,6 +45,21 @@ function SearchNavBtn(){
             },1000)
             return
         }
+        var MovieHistory = {
+            name: SearchMovieName
+        }
+        console.log(MovieHistory)
+        const db = getFirestore(firebaseApp);
+        const HistoryUserID = collection(db, window.localStorage.getItem('id'));
+        console.log(window.localStorage.getItem('id'))
+
+        const data = await getDocs(HistoryUserID);
+        var HistoryUser = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
+        console.log(HistoryUser)
+        var id = HistoryUser.length + 1
+        var userId =  window.localStorage.getItem('id')
+        console.log(id)
+        await setDoc(doc(db, userId, id.toString()), MovieHistory);
         window.location = `/search?m=${SearchMovieName}`
     }
 
