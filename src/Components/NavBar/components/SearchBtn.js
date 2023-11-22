@@ -51,7 +51,6 @@ function SearchNavBtn(){
         console.log(MovieHistory)
         const db = getFirestore(firebaseApp);
         const HistoryUserID = collection(db, window.localStorage.getItem('id'));
-        console.log(window.localStorage.getItem('id'))
 
         const data = await getDocs(HistoryUserID);
         var HistoryUser = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
@@ -61,9 +60,9 @@ function SearchNavBtn(){
             id = HistoryUser.length - Math.floor((Math.random() * 10) + 1)
             console.log(HistoryUser.length)
         }
-        var userId =  window.localStorage.getItem('id')
+        var collectionUser = 'history-' + window.localStorage.getItem('id')
         console.log(id)
-        await setDoc(doc(db, userId, id.toString()), MovieHistory);
+        await setDoc(doc(db, collectionUser, id.toString()), MovieHistory);
         window.location = `/search?m=${SearchMovieName}`
     }
 

@@ -72,7 +72,9 @@ function HomePage() {
     async function SearchHistoryUser(){
         if(window.sessionStorage.getItem('session') !== null){
             const db = getFirestore(firebaseApp);
-            const HistoryUserID = collection(db, window.localStorage.getItem('id'));
+            var collectionUser = 'history-' + window.localStorage.getItem('id')
+
+            const HistoryUserID = collection(db, collectionUser);
 
             const data = await getDocs(HistoryUserID);
             var HistoryUser = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
