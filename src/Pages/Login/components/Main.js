@@ -15,11 +15,11 @@ export function LoginType1() {
 
     return (
         <div id='loginType1' className='loginForm'>
-            <h3>Conecte-se com:</h3>
+            <h3>Connect with:</h3>
             <ProfileFomrType1/>
             <InputsFomrType1/>
             <LoginFunciton/>
-            <span className='detailsLogin'>não é voce?  click <button onClick={()=> LogOutFull()}>aqui</button> para sair</span>
+            <span className='detailsLogin'>Don't have an account? Click <button onClick={()=> LogOutFull()}> HERE </button> to register</span>
         </div>
     );
   }
@@ -28,10 +28,10 @@ export function LoginType1() {
 
     return (
         <div id='loginType2' className='loginForm'>
-            <h3>Conecte-se com:</h3>
+            <h3>Connect with:</h3>
             <InputsFomrType2/>
             <LoginFunciton/>
-            <span>não tem uma conta? Click <a href='/register'>Aqui</a> para fazer o registro</span>
+            <span>Don't have an account? Click <a href='/register'> HERE </a> to register</span>
         </div>
     );
   }

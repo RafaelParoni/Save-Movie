@@ -78,7 +78,7 @@ function LoginFunciton() {
     }
 
     return (
-        <button className='BtnLogin' onClick={()=> LoginAccontType1()}> <CiApple size={20}/> Entrar</button>
+        <button className='BtnLogin' onClick={()=> LoginAccontType1()}> <CiApple size={20}/> Log In</button>
     );
   }
   
