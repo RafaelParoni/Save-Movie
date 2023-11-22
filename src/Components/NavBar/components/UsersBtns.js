@@ -7,7 +7,7 @@ BiAdjust Dark Mode Icon
 BiLogOutCircle LogOut Icon
 BiLogInCircle LogIn Icon
 BiHomeAlt2 Home Icon
-BiHeart  Like Icon
+BiBookmark  Save Icon
 BiUser  Perfil Icon
 BiShare  Share Icon 
 

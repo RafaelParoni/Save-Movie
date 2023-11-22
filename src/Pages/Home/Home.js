@@ -1,6 +1,6 @@
 import './Home.css';
 import Navbar from './../../Components/NavBar/NavBar' // BiChevronDown
-import {BiSend, BiHomeAlt2, BiHeart, BiUser, BiConfused,BiTrophy, BiTagAlt, BiSearchAlt2, BiSad, BiTrashAlt} from 'react-icons/bi'
+import {BiSend, BiHomeAlt2, BiBookmark, BiUser, BiConfused,BiTrophy, BiTagAlt, BiSearchAlt2, BiSad, BiTrashAlt} from 'react-icons/bi'
 
 
 // Functions
@@ -124,10 +124,10 @@ function HomePage() {
             <Navbar/>
             <main className='HomePage'>
                 <div className='Options'>
-                    <BiSend/> Sugestões: 
-                    <button onClick={()=> hrefFunc('/curtidos')}> <BiHeart/> Curtidos</button> 
+                    <BiSend/> suggestions: 
+                    <button onClick={()=> hrefFunc('/curtidos')}> <BiBookmark/> Saves</button> 
                     <button onClick={()=> hrefFunc('/')}> <BiHomeAlt2/> Home</button> 
-                    <button onClick={()=> hrefFunc('/profile')}> <BiUser/> Perfil</button>
+                    <button onClick={()=> hrefFunc('/profile')}> <BiUser/> Profile</button>
                 </div>
                 <div className='DispleyHome'>
                     <div className='MoviesDiv'>
