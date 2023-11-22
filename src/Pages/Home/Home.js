@@ -22,8 +22,7 @@ const firebaseApp = initializeApp({
     measurementId: "G-GV5GW3T3ZV"
 });
 
-
-// History
+var HistoryValue = 'loading'
 
 
 function HomePage() {
@@ -47,7 +46,6 @@ function HomePage() {
         setRandomMovie(Movies)
     }
     setTimeout(RandomMovieSearch,10)
-
     function RandomMoviesControlBox({item}){
         var Title = item.titleText.text
         if(Title.length > 15){
@@ -61,8 +59,7 @@ function HomePage() {
         }else{
             Poster = item.primaryImage.url
         }
-
-        return <div className='MovieRandom'>
+        return <div id='MoviesCard' className='MovieRandom'>
             <img alt={'Image: ' + Title} src={Poster} />
             <span>{Title}</span>
         </div>
@@ -95,11 +92,11 @@ function HomePage() {
             resultsHistory = returns
         })
         if(window.sessionStorage.getItem('session') === null){
-            document.getElementById('History-NoSession').style.display = 'flex'
+            HistoryValue = 'Session'
         }else if(resultsHistory.length === 0){
-            document.getElementById('History-NoHistory').style.display = 'flex'
+            HistoryValue = 'Error'
         }else{
-            document.getElementById('History-Results').style.display = 'flex'
+            HistoryValue = 'Results'
             SetHistory(resultsHistory)
         }
     }
@@ -134,22 +131,35 @@ function HomePage() {
                     <div className='MoviesDiv'>
                         <h1> <BiTrophy /> Movies for you:</h1>
                         <div className='MoviesReults'>
+                            {Object.keys(RandomMovies).length === 0 && (
+                                <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                            )}
                             {RandomMovies.map((RandomMovies) => <RandomMoviesControlBox item={RandomMovies} />)}
                         </div>
                     </div>
                     <div className='HistoryDiv'>
                         <h2><span> <BiSend/> </span> Your last 10 searches:</h2>
-                        <div id='History-NoSession' className='History-Error'>
-                            <h2><BiConfused/> No sessions connected </h2>
-                            <span>Try logging in <a href='/login'>here</a></span>
-                        </div>
-                        <div id='History-NoHistory' className='History-Error'>
-                            <h2><BiSad/> No searches done recently! </h2>
-                            <span>Do a search so it may appear here</span>
-                        </div>
-                        <div id='History-Results' className='History-Results'>
-                            <div id='History-Results-divs'>{History.map((History) => <HistoryControlBox item={History} />)}</div>
-                        </div>
+                        {HistoryValue === 'loading' && (
+                                <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                        )}
+                        {HistoryValue === 'Session' && (
+                            <div id='History-NoSession' className='History-Error'>
+                                <h2><BiConfused/> No sessions connected </h2>
+                                <span>Try logging in <a href='/login'>here</a></span>
+                            </div>
+                        )}
+                        {HistoryValue === 'Error' && (
+                            <div id='History-NoHistory' className='History-Error'>
+                                <h2><BiSad/> No searches done recently! </h2>
+                                <span>Do a search so it may appear here</span>
+                            </div>
+                        )}
+                        {HistoryValue === 'Results' && (
+                            <div id='History-Results' className='History-Results'>
+                                <div id='History-Results-divs'>{History.map((History) => <HistoryControlBox item={History} />)}</div>
+                            </div>
+                        )}
+    
                     </div>   
                 </div>  
                 
