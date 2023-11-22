@@ -148,8 +148,8 @@ function NewStage() {
     }
     return (
         <div id='BtnStage'  className='NewStage'>
-            {stage !== 1 && (<button onClick={()=> ReturnStageForm()}>Voltar</button>)}
-            <button onClick={()=> NewStageForm()}>Proximo</button>
+            {stage !== 1 && (<button onClick={()=> ReturnStageForm()}>Return</button>)}
+            <button onClick={()=> NewStageForm()}>Next</button>
         </div>
     );
   }

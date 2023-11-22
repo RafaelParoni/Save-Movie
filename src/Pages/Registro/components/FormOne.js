@@ -94,9 +94,9 @@ function FormOne() {
                 <button onClick={()=> ViewPassword(false)}><span id='ViewPasswordTwo'><CiRead size={25}/></span> <span id='NoViewPasswordTwo'><CiUnread size={25}/></span></button>
             </div>
             <div className='PasswordStrong'>
-                <span>Força da senha:</span>
+                <span>Password strength:</span>
                 <div id='passwordStrongIndicator'>
-                    <span id='passwordWeak'>fraca<CiFaceFrown/></span>  <span id='passwordMedium'>Média <CiFaceMeh/> </span>  <span id='passwordStrong'>Forte <CiFaceSmile/> </span>
+                    <span id='passwordWeak'>Weak<CiFaceFrown/></span>  <span id='passwordMedium'>Average <CiFaceMeh/> </span>  <span id='passwordStrong'>Strong <CiFaceSmile/> </span>
                 </div>
             </div>
         </main>

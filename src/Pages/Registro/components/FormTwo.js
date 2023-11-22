@@ -38,9 +38,9 @@ function FormTwo() {
                 </div>
             </div>
             <div className='selectImg'>
-                <h4>Escolha uma foto de perfil <CiImageOn size={25}/> </h4>
+                <h4>Choose a profile photo <CiImageOn size={25}/> </h4>
                 <span className="btn-file">
-                    Procurar arquivos...<input onChange={(evt)=> {LoadImg(evt); testeFunciton()}} type='file' accept='image/png, image/jpg' id='input-image'/>
+                Browse files...<input onChange={(evt)=> {LoadImg(evt); testeFunciton()}} type='file' accept='image/png, image/jpg' id='input-image'/>
                 </span>
                 <img alt='' src='' id='userImage' height={150} />
                 <span id='name-image'></span>
