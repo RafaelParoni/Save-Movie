@@ -1,6 +1,6 @@
 import './Home.css';
 import Navbar from './../../Components/NavBar/NavBar' // BiChevronDown
-import {BiSend, BiHomeAlt2, BiHeart, BiUser, BiConfused, BiTagAlt, BiSearchAlt2, BiSad, BiTrashAlt} from 'react-icons/bi'
+import {BiSend, BiHomeAlt2, BiHeart, BiUser, BiConfused,BiTrophy, BiTagAlt, BiSearchAlt2, BiSad, BiTrashAlt} from 'react-icons/bi'
 
 
 // Functions
@@ -132,12 +132,13 @@ function HomePage() {
                 </div>
                 <div className='DispleyHome'>
                     <div className='MoviesDiv'>
-                        <h1> <BiHeart/> Movies for you:</h1>
+                        <h1> <BiTrophy /> Movies for you:</h1>
                         <div className='MoviesReults'>
                             {RandomMovies.map((RandomMovies) => <RandomMoviesControlBox item={RandomMovies} />)}
                         </div>
                     </div>
                     <div className='HistoryDiv'>
+                        <h2><span> <BiSend/> </span> Your last 10 searches:</h2>
                         <div id='History-NoSession' className='History-Error'>
                             <h2><BiConfused/> No sessions connected </h2>
                             <span>Try logging in <a href='/login'>here</a></span>
@@ -147,7 +148,6 @@ function HomePage() {
                             <span>Do a search so it may appear here</span>
                         </div>
                         <div id='History-Results' className='History-Results'>
-                            <h2><span> <BiSend/> </span> Your last 10 searches:</h2>
                             <div id='History-Results-divs'>{History.map((History) => <HistoryControlBox item={History} />)}</div>
                         </div>
                     </div>   
