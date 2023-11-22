@@ -42,7 +42,7 @@
     border: 1px solid #f14a2c;
 }
 .HistoryDiv {
-    width: min(550px, 90vw);
+      
     background: rgba(255, 255, 255, 0.301);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
@@ -139,8 +139,7 @@
 .HistoryDiv {
     grid-area: 1 / 8 / 6 / 12;
 }
-
-.Filmes {
+.MoviesDiv {
     grid-area: 1 / 2 / 6 / 8;
     text-align: center;
     background: rgba(88, 88, 88, 0.301);
@@ -150,14 +149,13 @@
     border-radius: 15px;
 }
 
-
 @media(max-width:650px){
     .DispleyHome{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    .Filmes {
+    .MoviesDiv {
         grid-area: none;
         width: 95vw;
         text-align: center;
@@ -169,6 +167,40 @@
     .HistoryDiv {
         grid-area: none;
     }
+}
+.MoviesReults {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 5px;
+    padding-bottom: 15px;
+
+}
+.MovieRandom {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+    background: rgba(88, 88, 88, 0.301);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: 0.5s;
+}
+.MovieRandom:hover {
+    transform: scale(1.05);
+}
+.MovieRandom img {
+    height: 200px;
+    max-width: 150px;
+}
+.MovieRandom span {
+    width: 100%;
 }
 
 

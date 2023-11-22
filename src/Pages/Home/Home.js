@@ -3,6 +3,10 @@ import Navbar from './../../Components/NavBar/NavBar' // BiChevronDown
 import {BiSend, BiHomeAlt2, BiHeart, BiUser, BiConfused, BiTagAlt, BiSearchAlt2, BiSad, BiTrashAlt} from 'react-icons/bi'
 
 
+// Functions
+
+import { RandomMoviesApi } from '../../Components/Functions/RandomMovie';
+
 // Banco de dados
 import { initializeApp   } from "firebase/app";
 import {collection, getDocs, getFirestore} from "firebase/firestore";
@@ -29,7 +33,42 @@ function HomePage() {
         window.location = value
     }
 
-    
+
+    // Random Movies Funcitons --> 
+    const [RandomMovies, setRandomMovie] = useState([])
+    async function RandomMovieSearch(){     
+        if(Object.keys(RandomMovies).length > 0){
+            return
+        }
+        var Movies = []
+        await RandomMoviesApi().then(function(result){
+            Movies = result.results
+        })
+        setRandomMovie(Movies)
+    }
+    setTimeout(RandomMovieSearch,10)
+
+    function RandomMoviesControlBox({item}){
+        var Title = item.titleText.text
+        if(Title.length > 15){
+            Title = Title.slice(0,15)
+            Title = Title.concat("", "...")
+          }
+
+        var Poster = ''
+        if(item.primaryImage === null){
+            Poster = 'url.com'
+        }else{
+            Poster = item.primaryImage.url
+        }
+
+        return <div className='MovieRandom'>
+            <img alt={'Image: ' + Title} src={Poster} />
+            <span>{Title}</span>
+        </div>
+    }
+
+
     // History Funcitons -- >
     const [History, SetHistory] = useState([])
     
@@ -65,6 +104,7 @@ function HomePage() {
         }
     }
     setTimeout(HistoryType,10)
+    
 
     function SearchMovieHistory(Movie){
         window.location = '/search?m=' + Movie
@@ -75,7 +115,6 @@ function HomePage() {
     }
 
     function HistoryControlBox({item}){
-        console.log(item)
         return <div key={item.id} className='History-Results-Div'> 
             <div className='History-Results-Block'><BiTagAlt size={25}/> <input type='text' placeholder={item.name}  disabled/> <button onClick={()=> SearchMovieHistory(item.name)}><BiSearchAlt2 size={25}/></button></div> <button onClick={()=> DeletHistory(item.id)} className='BtnDelHistory'><BiTrashAlt size={20}/></button>
         </div>
@@ -92,8 +131,11 @@ function HomePage() {
                     <button onClick={()=> hrefFunc('/profile')}> <BiUser/> Perfil</button>
                 </div>
                 <div className='DispleyHome'>
-                    <div className='Filmes'>
+                    <div className='MoviesDiv'>
                         <h1> <BiHeart/> Movies for you:</h1>
+                        <div className='MoviesReults'>
+                            {RandomMovies.map((RandomMovies) => <RandomMoviesControlBox item={RandomMovies} />)}
+                        </div>
                     </div>
                     <div className='HistoryDiv'>
                         <div id='History-NoSession' className='History-Error'>
