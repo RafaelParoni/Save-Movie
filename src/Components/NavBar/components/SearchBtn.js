@@ -61,7 +61,6 @@ function SearchNavBtn(){
             id = HistoryUser.length - Math.floor((Math.random() * 10) + 1)
             console.log(HistoryUser.length)
         }
-        var collectionUser = 'history-' + window.localStorage.getItem('id')
         console.log(id)
         await setDoc(doc(db, collectionUser, id.toString()), MovieHistory);
         window.location = `/search?m=${SearchMovieName}`
