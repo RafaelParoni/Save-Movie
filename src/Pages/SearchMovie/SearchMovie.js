@@ -11,7 +11,9 @@ import { SearchMoviePages } from '../../Components/Functions/SearchMoviePages';
 import { useState } from 'react';
 
 var MoviesPages = 0
-var ErrorSearch = false
+var MovieListValue = 'Loading'
+
+
 function SearchMoviePage() {
     const [Topics , SetTopics] = useState([])
     const [PagesControl, setPagesControl] = useState([])
@@ -30,28 +32,19 @@ function SearchMoviePage() {
             MoviesPages = results
         })
 
-        if(Object.keys(Topics).length > 0 || ErrorSearch === true){
+        if(Object.keys(Topics).length > 0 || MovieListValue === 'Error'){
             return
         }
 
 
         const response = await api.get(`?s=${MovieName}&apikey=c74f3650&page=${MovieSearchPage}&type=movie`);
-
         if(response.data.Response === 'False'){
-            document.getElementById('list-movies').style.display = 'none'
-            document.getElementById('list-movies-control').style.display = 'none'
-            document.getElementById('error-search-movie').style.display = 'flex'
-            if(MovieSearchPage > MoviesPages){
-                document.getElementById('error-value').innerText = 'Page not found'
-            }else{
-                document.getElementById('error-value').innerText = response.data.Error
-            }
-            ErrorSearch = true
-            return
+            MovieListValue = 'Error'
+            document.getElementById('ErrorDivId').style.display = 'flex'
         }else{
-            document.getElementById('error-search-movie').style.display = 'none'
             SetTopics(response.data.Search)
             PagesCount()    
+            MovieListValue = 'Results'
         }
 
     }
@@ -108,7 +101,6 @@ function SearchMoviePage() {
     }
 
     function PagesControlBox({item}){
-        document.getElementById('list-movies-control').style.display = 'flex'
         var value = 't'
         var FunctionValue = 0
         if(item.FirstPage !== undefined){
@@ -141,17 +133,26 @@ function SearchMoviePage() {
             <Navbar/>
             <main className='SearchPage'>
                 <div className='TitlesMovies'><h1 id='MovieNameId'>Movie Name</h1> <BiSearchAlt  size={30}/></div>
-                <div id='list-movies' className='ListMovies'>
+                {Object.keys(Topics).length > 5 && (
+                    <>
+                    <div id='list-movies' className='ListMovies'>
                     {Topics.map((Topics) => <TopicsBox item={Topics} />)}
-                </div>
-                <div id='list-movies-control' className='MovieListOtions'>
-                    <div>{PagesControl.map((PagesControl) => <PagesControlBox item={PagesControl} />)}</div>
-                    <span>{MovieSearchPage}/{MoviesPages}</span>
-                </div>
-                <div id='error-search-movie' className='ErrorDiv'>
+                    </div>
+                    <div id='list-movies-control' className='MovieListOtions'>
+                        <div>{PagesControl.map((PagesControl) => <PagesControlBox item={PagesControl} />)}</div>
+                        <span>{MovieSearchPage}/{MoviesPages}</span>
+                    </div>
+                    </>
+                )}
+                {Object.keys(Topics).length === 0 && (
+                    <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                )}
+                <div className='ErrorDiv' id='ErrorDivId'>
                     <h1> <BiInfoSquare /> Error 404</h1>
-                    <h2><BiGhost/> <span id='error-value'></span> </h2>
+                    <h2><BiGhost/> <span>Not found</span> </h2>
                 </div>
+
+
             </main>
         </>
     );
