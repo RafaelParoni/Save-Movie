@@ -1,5 +1,5 @@
 import './../Navbar.css'
-import {BiBrightnessHalf, BiAdjust, BiLogOutCircle, BiLogInCircle , BiHomeAlt2,BiHeart,BiShare,BiUser  } from 'react-icons/bi'
+import {BiBrightnessHalf, BiAdjust, BiLogOutCircle, BiLogInCircle , BiHomeAlt2,BiBookmark ,BiShare,BiUser  } from 'react-icons/bi'
 /* 
 
 BiBrightnessHalf Light Mode Icon 
@@ -31,12 +31,12 @@ function AccountNavbar(){
     }
 
     var buttonLogin = (
-        <button onClick={()=> hrefFunc('/login')} id='LoginBtn'><BiLogInCircle size={20}/> Entrar </button>
+        <button onClick={()=> hrefFunc('/login')} id='LoginBtn'><BiLogInCircle size={20}/> log in </button>
     )
     var ButtonSession = (
         <>
-            <button onClick={()=> hrefFunc('/profile')} id='profileBtn'><BiUser size={20}/> Perfil</button>
-            <button onClick={()=> hrefFunc('sair')} id='sessionButton'><BiLogOutCircle size={20}/> Sair </button>
+            <button onClick={()=> hrefFunc('/profile')} id='profileBtn'><BiUser size={20}/> Profile</button>
+            <button onClick={()=> hrefFunc('sair')} id='sessionButton'><BiLogOutCircle size={20}/> Exit </button>
         </>
     )
 
@@ -66,9 +66,9 @@ function AccountNavbar(){
         <div className='Account'>
             <div className='largeNavBar'>
                 <button onClick={()=> hrefFunc('/')}> <BiHomeAlt2 size={20}/> Home</button>
-                <button onClick={()=> hrefFunc('/curtidos')}><BiHeart size={20} /> Curtidos</button>
-                <button onClick={()=> EditMode()}><span  id='darkIcon'><BiAdjust size={20} /></span> <span id='lightIcon'><BiBrightnessHalf size={20} /></span> Dark</button>
-                <button onClick={()=> hrefFunc('share')}><BiShare size={20}/> Partilhar </button>
+                <button onClick={()=> hrefFunc('/curtidos')}><BiBookmark size={20} /> Saves</button>
+                <button onClick={()=> EditMode()}><span  id='darkIcon'><BiAdjust size={20} /></span> <span id='lightIcon'><BiBrightnessHalf size={20} /></span> <span id='TextIcon'>Light</span></button>
+                <button onClick={()=> hrefFunc('share')}><BiShare size={20}/> Share </button>
                 {ButtonSession}
                 {buttonLogin}
             </div>
