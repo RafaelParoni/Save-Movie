@@ -9,7 +9,7 @@ import { RandomMoviesApi } from '../../Components/Functions/RandomMovie';
 
 // Banco de dados
 import { initializeApp   } from "firebase/app";
-import {collection, getDocs, getFirestore} from "firebase/firestore";
+import {collection, getDocs, getFirestore, deleteDoc, doc} from "firebase/firestore";
 import { useState } from 'react';
 
 const firebaseApp = initializeApp({
@@ -31,6 +31,8 @@ function HomePage() {
     function hrefFunc(value){
         window.location = value
     }
+
+    const db = getFirestore(firebaseApp);
 
 
     // Random Movies Funcitons --> 
@@ -71,7 +73,6 @@ function HomePage() {
     
     async function SearchHistoryUser(){
         if(window.sessionStorage.getItem('session') !== null){
-            const db = getFirestore(firebaseApp);
             var collectionUser = 'history-' + window.localStorage.getItem('id')
 
             const HistoryUserID = collection(db, collectionUser);
@@ -110,11 +111,15 @@ function HomePage() {
     }
 
     async function DeletHistory(value){
+        var collectionUser = 'history-' + window.localStorage.getItem('id')
+        const userDoc = doc(db, collectionUser, value)
+        await deleteDoc(userDoc);
+        document.getElementById('HistoryId-' + value).remove()
         alert('Deleting history: ' + value)
     }
 
     function HistoryControlBox({item}){
-        return <div key={item.id} className='History-Results-Div'> 
+        return <div id={'HistoryId-' + item.id} className='History-Results-Div'> 
             <div className='History-Results-Block'><BiTagAlt size={25}/> <input type='text' placeholder={item.name}  disabled/> <button onClick={()=> SearchMovieHistory(item.name)}><BiSearchAlt2 size={25}/></button></div> <button onClick={()=> DeletHistory(item.id)} className='BtnDelHistory'><BiTrashAlt size={20}/></button>
         </div>
     }   
