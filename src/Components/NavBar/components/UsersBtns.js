@@ -22,11 +22,13 @@ function AccountNavbar(){
             document.getElementById('lightIcon').style.display = 'flex'
             document.getElementById('darkIcon').style.display = 'none'
             document.getElementById('html').setAttribute('class', 'light')
+            document.getElementById('TextIcon').innerText = 'Light'
         }else{
             window.localStorage.setItem('Mode', 'dark')
             document.getElementById('lightIcon').style.display = 'none'
             document.getElementById('darkIcon').style.display = 'flex'
             document.getElementById('html').setAttribute('class', 'dark')
+            document.getElementById('TextIcon').innerText = 'Dark'
         }
     }
 
@@ -61,13 +63,28 @@ function AccountNavbar(){
             window.location = value
         }
     }
+   function setMode(){
+        var Mode = window.localStorage.getItem('Mode')
+        if(Mode === 'light'){
+            console.info('Light')
+            document.getElementById('darkIcon').style.display = 'none'
+            document.getElementById('lightIcon').style.display = 'flex'
+            document.getElementById('TextIcon').innerText = 'Light'
+        }else{
+            console.info('Dark')
+            document.getElementById('darkIcon').style.display = 'flex'
+            document.getElementById('lightIcon').style.display = 'none'
+            document.getElementById('TextIcon').innerText = 'Dark'
+        }
+   }
+   setTimeout(setMode,10)
 
     return (
         <div className='Account'>
             <div className='largeNavBar'>
                 <button onClick={()=> hrefFunc('/')}> <BiHomeAlt2 size={20}/> Home</button>
                 <button onClick={()=> hrefFunc('/curtidos')}><BiBookmark size={20} /> Saves</button>
-                <button onClick={()=> EditMode()}><span  id='darkIcon'><BiAdjust size={20} /></span> <span id='lightIcon'><BiBrightnessHalf size={20} /></span> <span id='TextIcon'>Light</span></button>
+                <button onClick={()=> EditMode()}><span  id='darkIcon'><BiAdjust size={20} /></span> <span id='lightIcon'><BiBrightnessHalf size={20} /></span> <span id='TextIcon'>Mode</span></button>
                 <button onClick={()=> hrefFunc('share')}><BiShare size={20}/> Share </button>
                 {ButtonSession}
                 {buttonLogin}
