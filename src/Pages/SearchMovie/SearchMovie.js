@@ -46,6 +46,7 @@ function SearchMoviePage() {
             PagesCount()    
             MovieListValue = 'Results'
         }
+        document.getElementById('loadingDiv').style.display = 'none'
 
     }
     setTimeout(StartSearchMovie,10)
@@ -145,7 +146,7 @@ function SearchMoviePage() {
                     </>
                 )}
                 {Object.keys(Topics).length === 0 && (
-                    <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                    <div id='loadingDiv' className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
                 )}
                 <div className='ErrorDiv' id='ErrorDivId'>
                     <h1> <BiInfoSquare /> Error 404</h1>
