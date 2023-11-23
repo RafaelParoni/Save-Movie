@@ -49,21 +49,20 @@ function SearchNavBtn(){
             name: SearchMovieName
         }
         console.log(MovieHistory)
-        const db = getFirestore(firebaseApp);
-        var collectionUser = 'history-' + window.localStorage.getItem('id')
-        const HistoryUserID = collection(db, collectionUser);
-
-        const data = await getDocs(HistoryUserID);
-        var HistoryUser = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
-        console.log(HistoryUser)
-        var id = HistoryUser.length + 1
-        if(HistoryUser.length > 9){
-            id = HistoryUser.length - Math.floor((Math.random() * 10) + 1)
-            console.log(HistoryUser.length)
+        if(window.sessionStorage.getItem('session') === 'on'){
+            const db = getFirestore(firebaseApp);
+            var collectionUser = 'history-' + window.localStorage.getItem('id')
+            const HistoryUserID = collection(db, collectionUser);
+    
+            const data = await getDocs(HistoryUserID);
+            var HistoryUser = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
+            var id = HistoryUser.length + 1
+            if(HistoryUser.length > 9){
+                id = HistoryUser.length - Math.floor((Math.random() * 10) + 1)
+            }
+            await setDoc(doc(db, collectionUser, id.toString()), MovieHistory);
         }
-        console.log(id)
-        await setDoc(doc(db, collectionUser, id.toString()), MovieHistory);
-        window.location = `/search?m=${SearchMovieName}`
+       window.location = `/search?m=${SearchMovieName}`
     }
 
 
