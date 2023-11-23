@@ -1,0 +1,127 @@
+:root {
+    --Text-color: #fff;
+    --BackgroundScroll: rgb(17, 17, 17);
+    --BackgroundScroll: rgb(158, 155, 155);
+}
+.dark:root {
+    --Text-color: #fff;
+    --Background-Color: rgb(17, 17, 17);
+    --BackgroundScroll: rgb(77, 77, 77);
+}
+.light:root {
+    --Text-color: #000;
+    --Background-Color: #e0e0e0;
+    --BackgroundScroll: rgb(158, 155, 155);
+}
+
+.DetailsPage{
+    width: 100vw;
+    height: 100vh;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--Text-color);
+}
+.DetailsMovieDiv {
+    width: min(700px, 65vw);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.301);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 50px;
+    border-radius: 15px;
+}
+.MovieTrailer {
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+.TrailerNotFound {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.301);
+    border-radius: 5px;
+}
+.MovieInfo {
+    display: flex;
+}
+.MoviePoster{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.MoviePoster h1 {
+    max-width: 200px;
+}
+.MovieInfo h1 {
+    margin: 0;
+}
+.MoviePlot{
+    width: 400px;
+    height: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.MoviePlot span {
+    text-align: center;
+    width: 80%;
+}
+.MoviePlot p {
+    padding: 0;
+    margin: 0;
+    margin-top: 15px;
+}
+
+.genre-list {
+    margin-top: 10px;
+    display: flex;
+    grid-gap: 5px;
+    flex-wrap: wrap;
+}
+.genre-list div {
+    background-color: #f14a2c;
+    padding: 5px;
+    border-radius: 5px;
+}
+.StremingMovie {
+    width: 200px;
+    height: auto;
+}
+.StremingMovieNotFound {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: auto;
+}
+@media(max-width:650px){ 
+    .DetailsPage {
+        display: flex;
+        align-items: flex-start;
+        margin-top: 100px;
+        height: calc(100vh + 250px);
+    }
+    .MovieInfo {
+        display: flex;
+        flex-direction: column;
+    }
+    .MoviePlot {
+        width: 60vw; 
+    }
+    .MovieTrailer iframe,
+    .TrailerNotFound {
+        height: 500px;
+    }
+}
