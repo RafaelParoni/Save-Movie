@@ -5,6 +5,7 @@ function LogOutFull(){
     window.localStorage.removeItem('imgProfile')
     window.localStorage.removeItem('name')
     window.localStorage.removeItem('passwordCrypt')
+    window.localStorage.removeItem('id')
     window.location.reload()
     
 }
