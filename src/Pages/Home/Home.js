@@ -61,7 +61,8 @@ function HomePage() {
         }else{
             Poster = item.primaryImage.url
         }
-        return <div id='MoviesCard' className='MovieRandom'>
+
+        return <div onClick={() => {window.location = '/details?d=' + item.id}} id='MoviesCard' className='MovieRandom'>
             <img alt={'Image: ' + Title} src={Poster} />
             <span>{Title}</span>
         </div>

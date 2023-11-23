@@ -43,7 +43,7 @@ root.render(
         <Route  path='/register' element={<RegistroPage/>}/>
         <Route  path='/profile' element={<ProfilePage/>}/>
         <Route  path='/search' element={<SearchMoviePage/>}/>
-        <Route  path='/detils' element={<DetailsPage/>}/>
+        <Route  path='/details' element={<DetailsPage/>}/>
         <Route  path='*' element={<NotFoundPage/>}/>
     </Routes>
 

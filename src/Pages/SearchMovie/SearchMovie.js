@@ -53,8 +53,7 @@ function SearchMoviePage() {
     
 
     function TopicsBox({item}){
-
-        return <div className="MovieCard">
+        return <div onClick={()=> {window.location = '/details?d=' + item.imdbID}} className="MovieCard">
                     <img  alt={''} src={item.Poster}/>
                     <span><b> {item.Title} </b></span>
                 </div>
