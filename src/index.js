@@ -9,6 +9,7 @@ import RegistroPage from './Pages/Registro/Registro';
 import ProfilePage from './Pages/Profile/Profile';
 import SearchMoviePage from './Pages/SearchMovie/SearchMovie';
 import Background from './Components/Background/Background';
+import DetailsPage from './Pages/DetailsMovie/Details';
 
 
 function DetectMode(){
@@ -42,6 +43,7 @@ root.render(
         <Route  path='/register' element={<RegistroPage/>}/>
         <Route  path='/profile' element={<ProfilePage/>}/>
         <Route  path='/search' element={<SearchMoviePage/>}/>
+        <Route  path='/detils' element={<DetailsPage/>}/>
         <Route  path='*' element={<NotFoundPage/>}/>
     </Routes>
 
