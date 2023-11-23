@@ -66,12 +66,10 @@ function AccountNavbar(){
    function setMode(){
         var Mode = window.localStorage.getItem('Mode')
         if(Mode === 'light'){
-            console.info('Light')
             document.getElementById('darkIcon').style.display = 'none'
             document.getElementById('lightIcon').style.display = 'flex'
             document.getElementById('TextIcon').innerText = 'Light'
         }else{
-            console.info('Dark')
             document.getElementById('darkIcon').style.display = 'flex'
             document.getElementById('lightIcon').style.display = 'none'
             document.getElementById('TextIcon').innerText = 'Dark'
