@@ -133,6 +133,7 @@ h4 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    color: var(--Text-color);
 }
 
 @media(max-width:650px){ 
