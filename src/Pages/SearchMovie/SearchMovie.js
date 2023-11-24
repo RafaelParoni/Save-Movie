@@ -3,6 +3,8 @@ import Navbar from './../../Components/NavBar/NavBar'
 
 import { BiSearchAlt,BiSolidChevronLeft ,BiSolidChevronRight,BiGhost,BiInfoSquare     } from "react-icons/bi";
 import { setMovieSearch } from '../../Components/NavBar/components/SearchBtn';
+import { SaveHistory } from '../../Components/Functions/SaveHistory';
+
 
 import  api  from '../../Components/Functions/SearchMovie';
 import { SearchMoviePages } from '../../Components/Functions/SearchMoviePages';
@@ -47,6 +49,7 @@ function SearchMoviePage() {
         }else{
             SetTopics(response.data.Search)
             PagesCount()    
+            SaveHistory(MovieName) // Salvar Histórico
             MovieListValue = 'Results'
         }
         document.getElementById('loadingDiv').style.display = 'none'
