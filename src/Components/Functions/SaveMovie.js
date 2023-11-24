@@ -34,7 +34,7 @@ export async function SaveMovie(NameMovie, IdMovie, PosterMovie){
     var i = 0
      while(i < SavesUser.length){
          if(SavesUser[i].id === IdMovie ){ // Verifica se já tem um Filme salvo se se for true deleta o filme do bd
-            if(!window.confirm('Deseja Deletar ' + NameMovie + 'de sua conta?')){return}
+            if(!window.confirm('Deseja Deletar ' + NameMovie + ' de sua conta?')){return}
             await deleteDoc(userDoc);
             return
          }
@@ -42,4 +42,4 @@ export async function SaveMovie(NameMovie, IdMovie, PosterMovie){
      }
      if(!window.confirm('Deseja salvar ' + NameMovie + ' em sua conta?')){return}
      await setDoc(doc(db, collectionUser, IdMovie), MovieSave); // Salva um filme no bd
-    }
+}
