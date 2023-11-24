@@ -79,12 +79,14 @@ function DetailsPage() {
                 var ServicesObj = []
                 var x = 0
                 while( x < result.data.result.streamingInfo.pt.length){
+
                     ServicesObj.push({
                         service: result.data.result.streamingInfo.pt[x].service,
                         link: result.data.result.streamingInfo.pt[x].link,
                         })
                     x++
                 }
+
                 Services = {ServicesObj}
             }
         })
@@ -93,12 +95,11 @@ function DetailsPage() {
                 BtnSave = false
             }
         })
-        setService(Services)
+        setService(Services.ServicesObj)
         setDetails(DetailsObj)
         setTrailer(Trailer)
         setGeneros(genre)
         setSaveMovie(BtnSave)
-        console.log(BtnSave)
 
     }
     setTimeout(validation,10)
@@ -110,9 +111,8 @@ function DetailsPage() {
     }
 
     function ServicesDisplay({item}){
-        console.log(item)
         return (
-            <h2>Rerutn</h2>
+            <button className='serviceBtn' onClick={()=> window.open(item.link) }>{item.service}</button>
         )
     }
 

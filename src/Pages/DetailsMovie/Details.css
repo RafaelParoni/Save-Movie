@@ -97,8 +97,9 @@
     border-radius: 5px;
 }
 .StremingMovie {
-    width: 200px;
+    width: auto;
     height: auto;
+    grid-gap: 5px;;
 }
 .StremingMovieNotFound {
     text-align: center;
@@ -106,6 +107,17 @@
     align-items: center;
     width: 200px;
     height: auto;
+    
+
+}
+.serviceBtn {
+    padding: 5px;
+    color: var(--Text-color);
+    background-color: #f14a2c;
+    border: none;
+    border-radius: 5px;
+    margin-inline: 5px;
+    font-size: 20px;
 }
 
 h4 {
@@ -122,6 +134,7 @@ h4 {
     border-radius: 5px;
     cursor: pointer;
 }
+
 @media(max-width:650px){ 
     .DetailsPage {
         display: flex;
