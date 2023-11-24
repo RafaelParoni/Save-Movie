@@ -136,7 +136,7 @@ function HomePage() {
             <main className='HomePage'>
                 <div className='Options'>
                     <BiSend/> suggestions: 
-                    <button onClick={()=> hrefFunc('/curtidos')}> <BiBookmark/> Saves</button> 
+                    <button onClick={()=> hrefFunc('/saves')}> <BiBookmark/> Saves</button> 
                     <button onClick={()=> hrefFunc('/')}> <BiHomeAlt2/> Home</button> 
                     <button onClick={()=> hrefFunc('/profile')}> <BiUser/> Profile</button>
                 </div>

@@ -81,7 +81,7 @@ function AccountNavbar(){
         <div className='Account'>
             <div className='largeNavBar'>
                 <button onClick={()=> hrefFunc('/')}> <BiHomeAlt2 size={20}/> Home</button>
-                <button onClick={()=> hrefFunc('/curtidos')}><BiBookmark size={20} /> Saves</button>
+                <button onClick={()=> hrefFunc('/saves')}><BiBookmark size={20} /> Saves</button>
                 <button onClick={()=> EditMode()}><span  id='darkIcon'><BiAdjust size={20} /></span> <span id='lightIcon'><BiBrightnessHalf size={20} /></span> <span id='TextIcon'>Mode</span></button>
                 <button onClick={()=> hrefFunc('share')}><BiShare size={20}/> Share </button>
                 {ButtonSession}
