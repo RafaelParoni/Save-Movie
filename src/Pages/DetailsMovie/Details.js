@@ -41,9 +41,7 @@ function DetailsPage() {
         var Trailer = []
         var genre = []
         var BtnSave = true
-        console.log('teste')
         await DetailsMovieSearch(MovieId).then(function(result){
-            console.log(result.results)
 
             var banner = ''
             if(result.results.primaryImage === null){
