@@ -116,7 +116,6 @@ function HomePage() {
         const userDoc = doc(db, collectionUser, value)
         await deleteDoc(userDoc);
         document.getElementById('HistoryId-' + value).remove()
-        alert('Deleting history: ' + value)
     }
 
     function HistoryControlBox({item}){

@@ -54,7 +54,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 150px;
+    height: 100px;
 }
 .History-Results-Div {
     display: flex;
