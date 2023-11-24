@@ -7,6 +7,10 @@ import {BiSend, BiHomeAlt2, BiBookmark, BiUser, BiConfused,BiTrophy, BiTagAlt, B
 
 import { RandomMoviesApi } from '../../Components/Functions/RandomMovie';
 
+// import images
+
+import ErrorImage from './../../Images/404.png'
+
 // Banco de dados
 import { initializeApp   } from "firebase/app";
 import {collection, getDocs, getFirestore, deleteDoc, doc} from "firebase/firestore";
@@ -21,6 +25,8 @@ const firebaseApp = initializeApp({
     appId: "1:613203193395:web:8430b6069114d133157d46",
     measurementId: "G-GV5GW3T3ZV"
 });
+
+
 
 var HistoryValue = 'loading'
 
@@ -56,8 +62,8 @@ function HomePage() {
           }
 
         var Poster = ''
-        if(item.primaryImage === null){
-            Poster = 'url.com'
+        if(item.primaryImage === null || item.primaryImage === 'N/A'){
+            Poster = ErrorImage
         }else{
             Poster = item.primaryImage.url
         }

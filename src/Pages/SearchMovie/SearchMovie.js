@@ -7,6 +7,9 @@ import { setMovieSearch } from '../../Components/NavBar/components/SearchBtn';
 import  api  from '../../Components/Functions/SearchMovie';
 import { SearchMoviePages } from '../../Components/Functions/SearchMoviePages';
 
+// import images
+
+import ErrorImage from './../../Images/404.png'
 
 import { useState } from 'react';
 
@@ -53,8 +56,12 @@ function SearchMoviePage() {
     
 
     function TopicsBox({item}){
+        var poster = item.Poster
+        if(item.Poster === 'N/A' || item.Poster === undefined || item.Poster === null){
+            poster = ErrorImage
+        }
         return <div onClick={()=> {window.location = '/details?d=' + item.imdbID}} className="MovieCard">
-                    <img  alt={''} src={item.Poster}/>
+                    <img  alt={''} src={poster}/>
                     <span><b> {item.Title} </b></span>
                 </div>
     }
