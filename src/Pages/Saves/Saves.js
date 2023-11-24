@@ -43,15 +43,21 @@ function SavesPage() {
     }
     setTimeout(SearchMovies,10)
 
+    function confirmRemoveMovie(movie){
+        if(!window.confirm('Deseja Deletar ' + movie.name + ' de sua conta?')){return}
+        SaveMovie(movie.name, movie.id, movie.poster, '2');
+        document.getElementById(movie.id).remove()
+    }
+
     function MovieListDisplay({movie}){
 
         return (
-            <div className='Movie'>
+            <div className='Movie' id={movie.id}>
                 <img src={movie.poster} alt={movie.name}/>
                 <span><b>{movie.name}</b></span>
                 <div className='functionsMovie'>
                     <button onClick={()=> LinkMovie(movie.id)} className='HoverBtn'><BiLinkExternal />  <span className='HoverSpan'>  Open details Movie </span></button>
-                    <button onClick={()=> SaveMovie(movie.name, movie.id, movie.poster)} className='HoverBtn'><BiBookmarkMinus/>  <span className='HoverSpan'>  Remove Movie in save </span></button>
+                    <button onClick={()=> confirmRemoveMovie(movie)} className='HoverBtn'><BiBookmarkMinus/>  <span className='HoverSpan'>  Remove Movie in save </span></button>
                     <button onClick={()=> DownloadBanner(movie.poster, movie.name)} className='HoverBtn'><BiDownload/> <span className='HoverSpan'> Download banner </span></button>
                 </div>
             </div> 

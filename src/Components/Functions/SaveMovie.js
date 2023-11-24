@@ -15,9 +15,7 @@ const firebaseApp = initializeApp({
 
 
 
-export async function SaveMovie(NameMovie, IdMovie, PosterMovie){
-
-
+export async function SaveMovie(NameMovie, IdMovie, PosterMovie, type){
     var MovieSave = {
         name: NameMovie,
         id: IdMovie,
@@ -31,15 +29,22 @@ export async function SaveMovie(NameMovie, IdMovie, PosterMovie){
 
     const data = await getDocs(SavesUserID);
     var SavesUser = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
-    var i = 0
-     while(i < SavesUser.length){
-         if(SavesUser[i].id === IdMovie ){ // Verifica se já tem um Filme salvo se se for true deleta o filme do bd
-            if(!window.confirm('Deseja Deletar ' + NameMovie + ' de sua conta?')){return}
-            await deleteDoc(userDoc);
-            return
+
+    if(type === '2'){
+        
+        await deleteDoc(userDoc);
+    }else{
+        var u = 0
+         while(u < SavesUser.length){
+             if(SavesUser[u].id === IdMovie ){ // Verifica se já tem um Filme salvo se se for true deleta o filme do bd
+                if(!window.confirm('Deseja Deletar ' + NameMovie + ' de sua conta?')){return}
+                await deleteDoc(userDoc);
+                return
+             }
+             u++
          }
-         i++
-     }
-     if(!window.confirm('Deseja salvar ' + NameMovie + ' em sua conta?')){return}
-     await setDoc(doc(db, collectionUser, IdMovie), MovieSave); // Salva um filme no bd
+         if(!window.confirm('Deseja salvar ' + NameMovie + ' em sua conta?')){return}
+         await setDoc(doc(db, collectionUser, IdMovie), MovieSave); // Salva um filme no bd
+    }
+
 }
