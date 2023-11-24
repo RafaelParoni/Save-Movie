@@ -40,6 +40,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     z-index: 5;
+    transition: 1s;
 }
 nav div {
     width: auto;
@@ -224,6 +225,8 @@ nav div {
   .SmallNavBar {
     display: none;
     width: auto;
+    padding: 0;
+    margin: 0;
   }
   @media(max-width:650px){
     .largeNavBar {
@@ -233,3 +236,110 @@ nav div {
         display: flex;
     }
 }
+
+
+.SmallNavBarBtns {
+    position: absolute;
+    width: 300px;
+    height: auto;
+    background-color: var(--BackgroundNavBar);
+    border-radius: 5px;
+    right: -300px;
+    top: 50px;
+
+    opacity: 0;
+    transition: 1s;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.SmallNavBarBtns button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: var(--Text-color);
+    transition: 1s;
+    border-bottom: 1px solid var(--Text-color);
+}
+
+.BtnOpenSmallNavbar {
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0.4);
+}
+.BtnOpenSmallNavbar:hover ~ .SmallNavBarBtns {
+    opacity: 1;
+    right: 0;
+}
+.SmallNavBarBtns:hover {
+    opacity: 1;
+    right: 0;
+}
+
+
+#menu_checkbox {
+    display: none;
+  }
+  
+  label {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+  }
+  
+  label:before {
+    content: "";
+    transition: 1.2s cubic-bezier(0, 0.96, 1, 0.02) background-color;
+  }
+  
+  label div {
+    position: relative;
+    top: 0;
+    height: 12px;
+    background-color: var(--Text-color);
+    margin-bottom: 12px;
+    transition: 0.3s ease transform, 0.3s ease top, 0.3s ease width,
+      0.3s ease right;
+    border-radius: 2px;
+  }
+  
+  label div:first-child {
+    transform-origin: 0;
+  }
+  
+  label div:last-child {
+    margin-bottom: 0;
+    transform-origin: 60px;
+  }
+  
+  label div:nth-child(2) {
+    right: 0;
+    width: 60px;
+  }
+  
+  #menu_checkbox:hover + label:before {
+    background-color: #4caf50;
+  }
+  
+  #menu_checkbox:hover + label div:first-child {
+    top: -6px;
+    transform: rotateZ(45deg);
+  }
+  
+  #menu_checkbox:hover + label div:last-child {
+    top: 6px;
+    transform: rotateZ(45deg);
+  }
+  
+  #menu_checkbox:hover + label div:nth-child(2) {
+    width: 75px;
+    top: 0;
+    right: 13px;
+    transform: rotateZ(-45deg);
+  }
+

@@ -23,12 +23,20 @@ function AccountNavbar(){
             document.getElementById('darkIcon').style.display = 'none'
             document.getElementById('html').setAttribute('class', 'light')
             document.getElementById('TextIcon').innerText = 'Light'
+
+            document.getElementById('darkIconSmall').style.display = 'none'
+            document.getElementById('lightIconSmall').style.display = 'flex'
+            document.getElementById('TextIconSmall').innerText = 'Light'
         }else{
             window.localStorage.setItem('Mode', 'dark')
             document.getElementById('lightIcon').style.display = 'none'
             document.getElementById('darkIcon').style.display = 'flex'
             document.getElementById('html').setAttribute('class', 'dark')
             document.getElementById('TextIcon').innerText = 'Dark'
+
+            document.getElementById('darkIconSmall').style.display = 'flex'
+            document.getElementById('lightIconSmall').style.display = 'none'
+            document.getElementById('TextIconSmall').innerText = 'Dark'
         }
     }
 
@@ -42,12 +50,26 @@ function AccountNavbar(){
         </>
     )
 
+    var buttonLoginSmall = (
+        <button onClick={()=> hrefFunc('/login')} id='LoginBtnSmall'><BiLogInCircle size={20}/> log in </button>
+    )
+    var ButtonSessionSmall = (
+        <>
+            <button onClick={()=> hrefFunc('/profile')} id='profileBtnSmall'><BiUser size={20}/> Profile</button>
+            <button onClick={()=> hrefFunc('sair')} id='sessionButtonSmall'><BiLogOutCircle size={20}/> Exit </button>
+        </>
+    )
+
     function testSession(){
         if(window.sessionStorage.getItem('session') === 'on'){
             document.getElementById("LoginBtn").style.display= 'none'
+            document.getElementById("LoginBtnSmall").style.display= 'none'
         }else{
             document.getElementById("profileBtn").style.display= 'none'
             document.getElementById("sessionButton").style.display= 'none'
+
+            document.getElementById("profileBtnSmall").style.display= 'none'
+            document.getElementById("sessionButtonSmall").style.display= 'none'
             
         }
     }
@@ -69,10 +91,18 @@ function AccountNavbar(){
             document.getElementById('darkIcon').style.display = 'none'
             document.getElementById('lightIcon').style.display = 'flex'
             document.getElementById('TextIcon').innerText = 'Light'
+
+            document.getElementById('darkIconSmall').style.display = 'none'
+            document.getElementById('lightIconSmall').style.display = 'flex'
+            document.getElementById('TextIconSmall').innerText = 'Light'
         }else{
             document.getElementById('darkIcon').style.display = 'flex'
             document.getElementById('lightIcon').style.display = 'none'
             document.getElementById('TextIcon').innerText = 'Dark'
+
+            document.getElementById('darkIconSmall').style.display = 'flex'
+            document.getElementById('lightIconSmall').style.display = 'none'
+            document.getElementById('TextIconSmall').innerText = 'Dark'
         }
    }
    setTimeout(setMode,10)
@@ -88,7 +118,22 @@ function AccountNavbar(){
                 {buttonLogin}
             </div>
             <div className='SmallNavBar'>
-                <h3>Small</h3>
+                <div className='BtnOpenSmallNavbar'>
+                    <input type="checkbox" name='menu_checkbox' id="menu_checkbox"/>
+                    <label for="menu_checkbox">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    </label>
+                </div>
+                <div className='SmallNavBarBtns'>
+                    <button onClick={()=> hrefFunc('/')}> <BiHomeAlt2 size={20}/> Home</button>
+                    <button onClick={()=> hrefFunc('/saves')}><BiBookmark size={20} /> Saves</button>
+                    <button onClick={()=> EditMode()}><span  id='darkIconSmall'><BiAdjust size={20} /></span> <span id='lightIconSmall'><BiBrightnessHalf size={20} /></span> <span id='TextIconSmall'>Mode</span></button>
+                    <button onClick={()=> hrefFunc('share')}><BiShare size={20}/> Share </button>
+                    {buttonLoginSmall}
+                    {ButtonSessionSmall}
+                </div>
             </div>
         </div>
     )
