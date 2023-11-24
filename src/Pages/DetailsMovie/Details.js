@@ -6,10 +6,13 @@ import Navbar from './../../Components/NavBar/NavBar'
 import { DetailsMovieSearch } from '../../Components/Functions/DetailsMovie';
 import { TrailerMovieSearch } from '../../Components/Functions/TrailerMoveSearch';
 import { StremingSearch } from '../../Components/Functions/StremingSearch';
+import { SaveMovie } from '../../Components/Functions/SaveMovie';
+import { TestSaveMovie } from '../../Components/Functions/TestSaveMovie';
+
 
 import { useState } from 'react';
 
-import { BiSad, BiMessageAltDetail, BiMehBlank  } from "react-icons/bi";
+import { BiSad, BiMessageAltDetail, BiMehBlank, BiConfused, BiBookmarkPlus, BiBookmarkAltMinus   } from "react-icons/bi";
 
 
 
@@ -21,6 +24,7 @@ function DetailsPage() {
     const [Trailer, setTrailer] = useState([])
     const [Generos, setGeneros] = useState([])
     const [Services, setService] = useState([])
+    const [SavesMovie, setSaveMovie] = useState('')
 
     async function validation(){
         if(MovieId === '' || MovieId === null){ // Verifcação de Id na URL /details?d=(???????) ou /details(????) =* /details?d=tt4154664
@@ -32,6 +36,7 @@ function DetailsPage() {
         var DetailsObj = []
         var Trailer = []
         var genre = []
+        var BtnSave = true
         await DetailsMovieSearch(MovieId).then(function(result){
             DetailsObj.push({
                 id: result.results.id, 
@@ -70,11 +75,17 @@ function DetailsPage() {
                 Services = {ServicesObj}
             }
         })
+        await TestSaveMovie(MovieId).then(function(result){
+            if(result === false){
+                BtnSave = false
+            }
+        })
         setService(Services)
         setDetails(DetailsObj)
         setTrailer(Trailer)
         setGeneros(genre)
-        console.table(DetailsObj)
+        setSaveMovie(BtnSave)
+        console.log(BtnSave)
 
     }
     setTimeout(validation,10)
@@ -102,7 +113,7 @@ function DetailsPage() {
                     {Object.keys(Details).length === 0 && (<div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>)}
                     {Object.keys(Details).length > 0 && (
                         <>
-                                <h1>{Details[0].name}</h1>
+                            <h1>{Details[0].name}</h1>
                             <div className='MovieInfo'>
                                 <div className='MoviePoster'>
                                     <img alt='' src={Details[0].banner} width={200}/>
@@ -133,12 +144,25 @@ function DetailsPage() {
                                     <h1><BiMehBlank/>Not found</h1>
                                 </div>
                              )}
-                             {Services != 'NotFound' && (
+                             {Services !== 'NotFound' && (
                                  <div className='StremingMovie'>
                                     {Services.map((Services) => <ServicesDisplay item={Services} />)}
                                  </div>
                              )}
-                             <span>Add function for SaveMovie in profile</span>
+                             <h4>Save Movie:</h4>
+                             {window.sessionStorage.getItem('session') !== null && (
+                                <>
+                                    {SavesMovie === false && (<button className='BtnSaveMovie' onClick={()=> {SaveMovie(Details[0].name, Details[0].id, Details[0].banner); setSaveMovie(true)}}> <BiBookmarkPlus/> Salvar</button>)}
+                                    {SavesMovie === true && (<button className='BtnSaveMovie' onClick={()=> {SaveMovie(Details[0].name, Details[0].id, Details[0].banner); setSaveMovie(false)}}> <BiBookmarkAltMinus/> Deletar</button>)}
+                                </>
+
+                             )}
+                             {window.sessionStorage.getItem('session') === null && (
+                                <div id='History-NoSession' className='History-Error'>
+                                    <h2><BiConfused/> No sessions connected </h2>
+                                    <span>Try logging in <a href='/login'>here</a></span>
+                                </div>
+                             )}
                         </>
                     )}
                 </div>

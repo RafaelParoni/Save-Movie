@@ -17,9 +17,10 @@
 .DetailsPage{
     width: 100vw;
     height: 100vh;
-    margin-top: 50px;
+    margin-top: 100px;
+    padding-bottom: 50px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     color: var(--Text-color);
 }
@@ -106,6 +107,21 @@
     width: 200px;
     height: auto;
 }
+
+h4 {
+    margin: 0;
+    padding: 0;
+}
+
+.BtnSaveMovie {
+    background-color: #f14a2c;
+    margin: 20px;
+    padding: 5px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 @media(max-width:650px){ 
     .DetailsPage {
         display: flex;
@@ -125,3 +141,5 @@
         height: 500px;
     }
 }
+
+
