@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
+
+// import css
 import './index.css';
+
+// import pages
 import HomePage from './Pages/Home/Home';
 import NotFoundPage from './Pages/NoutFound/NotFound';
 import LoginPage from './Pages/Login/Login';
@@ -10,6 +14,7 @@ import ProfilePage from './Pages/Profile/Profile';
 import SearchMoviePage from './Pages/SearchMovie/SearchMovie';
 import Background from './Components/Background/Background';
 import DetailsPage from './Pages/DetailsMovie/Details';
+import SavesPage from './Pages/Saves/Saves';
 
 
 function DetectMode(){
@@ -38,7 +43,7 @@ root.render(
   <Background/>
     <Routes>
         <Route  path='/' element={<HomePage/>}/>
-        <Route  path='/curtidos' element={<HomePage/>}/>
+        <Route  path='/saves' element={<SavesPage/>}/>
         <Route  path='/login' element={<LoginPage/>}/>
         <Route  path='/register' element={<RegistroPage/>}/>
         <Route  path='/profile' element={<ProfilePage/>}/>
