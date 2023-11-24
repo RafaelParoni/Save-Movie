@@ -9,6 +9,10 @@ import { StremingSearch } from '../../Components/Functions/StremingSearch';
 import { SaveMovie } from '../../Components/Functions/SaveMovie';
 import { TestSaveMovie } from '../../Components/Functions/TestSaveMovie';
 
+// import images
+
+import ErrorImage from './../../Images/404.png'
+
 
 import { useState } from 'react';
 
@@ -37,11 +41,20 @@ function DetailsPage() {
         var Trailer = []
         var genre = []
         var BtnSave = true
+        console.log('teste')
         await DetailsMovieSearch(MovieId).then(function(result){
+            console.log(result.results)
+
+            var banner = ''
+            if(result.results.primaryImage === null){
+                banner = ErrorImage
+            }else{
+                banner = result.results.primaryImage.url
+            }
             DetailsObj.push({
                 id: result.results.id, 
                 name: result.results.titleText.text,
-                banner: result.results.primaryImage.url,
+                banner: banner,
                 plot: result.results.plot.plotText.plainText,
                 lenguage: result.results.plot.language.id,
             })
@@ -116,7 +129,7 @@ function DetailsPage() {
                             <h1>{Details[0].name}</h1>
                             <div className='MovieInfo'>
                                 <div className='MoviePoster'>
-                                    <img alt='' src={Details[0].banner} width={200}/>
+                                    <img alt={'Image: '+ Details[0].name} src={Details[0].banner} width={200}/>
                                 </div>
                                 <div className='MoviePlot'>
                                     <span> <BiMessageAltDetail/> {Details[0].plot}</span>
