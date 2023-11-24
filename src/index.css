@@ -1,3 +1,18 @@
+.dark:root {
+  --backgroundPage-color: #141313;
+  --backgroundDiv-color: #282829;
+}
+:root {
+  --backgroundPage-color: #141313;
+  --backgroundDiv-color: #282829;
+}
+.light:root {
+  --backgroundPage-color: #999999;
+  --backgroundDiv-color: #ffffff33;
+}
+
+
+
 body {
   margin: 0;
   padding: 0;
@@ -7,6 +22,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  background-color: var(--backgroundPage-color);
 }
 
 

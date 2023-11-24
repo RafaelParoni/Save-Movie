@@ -40,7 +40,6 @@ DetectMode()
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-  <Background/>
     <Routes>
         <Route  path='/' element={<HomePage/>}/>
         <Route  path='/saves' element={<SavesPage/>}/>
