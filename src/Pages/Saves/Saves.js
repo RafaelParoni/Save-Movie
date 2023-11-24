@@ -52,7 +52,7 @@ function SavesPage() {
                 <div className='functionsMovie'>
                     <button onClick={()=> LinkMovie(movie.id)} className='HoverBtn'><BiLinkExternal />  <span className='HoverSpan'>  Open details Movie </span></button>
                     <button onClick={()=> SaveMovie(movie.name, movie.id, movie.poster)} className='HoverBtn'><BiBookmarkMinus/>  <span className='HoverSpan'>  Remove Movie in save </span></button>
-                    <button onClick={()=> DownloadBanner(movie.poster)} className='HoverBtn'><BiDownload/> <span className='HoverSpan'> Download banner </span></button>
+                    <button onClick={()=> DownloadBanner(movie.poster, movie.name)} className='HoverBtn'><BiDownload/> <span className='HoverSpan'> Download banner </span></button>
                 </div>
             </div> 
         )
