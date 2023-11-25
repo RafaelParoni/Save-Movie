@@ -123,6 +123,13 @@ function HomePage() {
     async function DeletHistory(value){
         var collectionUser = 'history-' + window.localStorage.getItem('id')
         const userDoc = doc(db, collectionUser, value)
+        const HistoryUserID = collection(db, collectionUser);
+        const data = await getDocs(HistoryUserID);
+        var historyLength = data.docs.map((doc) => ({...doc.data(), id: doc.id})).length
+        if(historyLength === 1){
+            HistoryValue = 'Error'
+        }
+
         await deleteDoc(userDoc);
         document.getElementById('HistoryId-' + value).remove()
     }
