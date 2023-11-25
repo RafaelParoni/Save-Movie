@@ -109,7 +109,7 @@ function CreateNewAccount() {
     
     return (
         <div id='LoadDiv' className='LoadingDiv'>
-            <h3>Criando a conta!</h3>
+            <h3>Creating the account!</h3>
             <h4 id='progressText' >0%</h4>
             <div id='progress' className='progressLoading'/>
         </div>

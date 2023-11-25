@@ -163,8 +163,8 @@ function DetailsPage() {
                              <h4>Save Movie:</h4>
                              {window.sessionStorage.getItem('session') !== null && (
                                 <>
-                                    {SavesMovie === false && (<button className='BtnSaveMovie' onClick={()=> {SaveMovie(Details[0].name, Details[0].id, Details[0].banner); setSaveMovie(true)}}> <BiBookmarkPlus/> Salvar</button>)}
-                                    {SavesMovie === true && (<button className='BtnSaveMovie' onClick={()=> {SaveMovie(Details[0].name, Details[0].id, Details[0].banner); setSaveMovie(false)}}> <BiBookmarkAltMinus/> Deletar</button>)}
+                                    {SavesMovie === false && (<button className='BtnSaveMovie' onClick={()=> {SaveMovie(Details[0].name, Details[0].id, Details[0].banner); setSaveMovie(true)}}> <BiBookmarkPlus/> To save</button>)}
+                                    {SavesMovie === true && (<button className='BtnSaveMovie' onClick={()=> {SaveMovie(Details[0].name, Details[0].id, Details[0].banner); setSaveMovie(false)}}> <BiBookmarkAltMinus/> Delete</button>)}
                                 </>
 
                              )}

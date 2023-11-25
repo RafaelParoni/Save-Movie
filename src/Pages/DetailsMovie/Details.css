@@ -118,6 +118,7 @@
     border-radius: 5px;
     margin-inline: 5px;
     font-size: 20px;
+    cursor: pointer;
 }
 
 h4 {

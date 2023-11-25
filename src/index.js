@@ -12,7 +12,6 @@ import LoginPage from './Pages/Login/Login';
 import RegistroPage from './Pages/Registro/Registro';
 import ProfilePage from './Pages/Profile/Profile';
 import SearchMoviePage from './Pages/SearchMovie/SearchMovie';
-import Background from './Components/Background/Background';
 import DetailsPage from './Pages/DetailsMovie/Details';
 import SavesPage from './Pages/Saves/Saves';
 
