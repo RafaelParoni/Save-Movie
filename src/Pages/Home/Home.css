@@ -33,7 +33,7 @@
 }
 .Options button {
     cursor: pointer;
-    transition: 0.5s;
+    transition: 0.1s;
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #000;
@@ -186,7 +186,7 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    transition: 0.5s;
+    transition: 0.2s;
 }
 .MovieRandom:hover {
     transform: scale(1.05);
