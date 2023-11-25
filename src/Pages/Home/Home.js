@@ -69,11 +69,14 @@ function HomePage() {
         }
 
         return <div onClick={() => {window.location = '/details?d=' + item.id}} id='MoviesCard' className='MovieRandom'>
-            <img alt={'Image: ' + Title} src={Poster} />
+            <img alt={'Image: ' + Title} src={Poster} onError={onImageError} />
             <span>{Title}</span>
         </div>
     }
 
+    const onImageError = (e) => {
+        e.target.src = ErrorImage
+    }
 
     // History Funcitons -- >
     const [History, SetHistory] = useState([])
@@ -129,6 +132,8 @@ function HomePage() {
             <div className='History-Results-Block'><BiTagAlt size={25}/> <input type='text' placeholder={item.name}  disabled/> <button onClick={()=> SearchMovieHistory(item.name)}><BiSearchAlt2 size={25}/></button></div> <button onClick={()=> DeletHistory(item.id)} className='BtnDelHistory'><BiTrashAlt size={20}/></button>
         </div>
     }   
+
+
 
     return (
         <>
