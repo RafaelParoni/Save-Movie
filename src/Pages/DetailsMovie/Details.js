@@ -70,6 +70,7 @@ function DetailsPage() {
             }
         })
         await StremingSearch(MovieId).then(function(result){
+            console.log(result)
             if(result.name === "AxiosError"){
                 Services = 'NotFound'
                 return
@@ -95,10 +96,12 @@ function DetailsPage() {
                 BtnSave = false
             }
         })
-        if(!Services === 'NotFound'){
-            setService(Services.ServicesObj)
-        }else{
+        console.log(Services)
+        if(Services === 'NotFound'){
             setService(Services)
+
+        }else{
+            setService(Services.ServicesObj)
         }
         setDetails(DetailsObj)
         setTrailer(Trailer)
