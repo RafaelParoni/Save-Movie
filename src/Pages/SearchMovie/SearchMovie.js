@@ -70,7 +70,7 @@ function SearchMoviePage() {
                 window.location = '/pt/details?d=' + item.imdbID
             }else{
                 window.location = '/details?d=' + item.imdbID
-            }
+            } // correto
         }
         return <div onClick={()=> MovieDeatilsLocation()} className="MovieCard">
                     <img  alt={''} src={poster}/>
