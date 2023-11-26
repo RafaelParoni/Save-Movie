@@ -31,8 +31,11 @@ function SearchNavBtn(){
             },1000)
             return
         }
-        
-       window.location = `/search?m=${SearchMovieName}`
+        if(window.location.pathname.includes("/pt/")){
+            window.location = `/pt/search?m=${SearchMovieName}`
+        }else{
+            window.location = `/search?m=${SearchMovieName}`
+        }
     }
 
 

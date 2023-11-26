@@ -39,7 +39,7 @@ function setLanguage(){
     if(window.navigator.language === "pt-BR"){
       window.localStorage.setItem('Language', 'pt')
       console.log(window.location)
-      window.location = '/br/'
+      window.location = '/pt/'
     }else{
       window.localStorage.setItem('Language', 'us')
     }
