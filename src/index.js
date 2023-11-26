@@ -46,15 +46,15 @@ function setLanguage(){
   }else{
     if(window.localStorage.getItem('Language') === "pt"){
 
-      if(!window.location.pathname.includes("/br/")){ 
+      if(!window.location.pathname.includes("/pt/")){ 
 
-        window.location = '/br' + window.location.pathname
+        window.location = '/pt' + window.location.pathname
   
       }
   
     }else{
       console.log(window.location)
-      if(window.location.pathname.includes("/br/")){
+      if(window.location.pathname.includes("/pt/")){
         var locationUs = window.location.pathname
         locationUs = locationUs.slice(3, locationUs.length)
 
@@ -90,6 +90,7 @@ root.render(
 
         <Route  path='*' element={<NotFoundPage/>}/>
 
+    </Routes>
   </BrowserRouter>
 );
 
