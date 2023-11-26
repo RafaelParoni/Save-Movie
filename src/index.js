@@ -72,6 +72,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <Routes>
+        <Route  path='/pt/' element={<HomePage/>}/>
+        <Route  path='/pt/saves' element={<SavesPage/>}/>
+        <Route  path='/pt/login' element={<LoginPage/>}/>
+        <Route  path='/pt/register' element={<RegistroPage/>}/>
+        <Route  path='/pt/profile' element={<ProfilePage/>}/>
+        <Route  path='/pt/search' element={<SearchMoviePage/>}/>
+        <Route  path='/pt/details' element={<DetailsPage/>}/>
+        
         <Route  path='/' element={<HomePage/>}/>
         <Route  path='/saves' element={<SavesPage/>}/>
         <Route  path='/login' element={<LoginPage/>}/>
@@ -79,8 +87,8 @@ root.render(
         <Route  path='/profile' element={<ProfilePage/>}/>
         <Route  path='/search' element={<SearchMoviePage/>}/>
         <Route  path='/details' element={<DetailsPage/>}/>
+
         <Route  path='*' element={<NotFoundPage/>}/>
-    </Routes>
 
   </BrowserRouter>
 );
