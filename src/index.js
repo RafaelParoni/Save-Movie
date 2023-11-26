@@ -47,18 +47,16 @@ function setLanguage(){
     if(window.localStorage.getItem('Language') === "pt"){
 
       if(!window.location.pathname.includes("/pt/")){ 
-
-        window.location = '/pt' + window.location.pathname
+        window.location = '/pt' + window.location.pathname +  window.location.search
   
       }
   
     }else{
-      console.log(window.location)
       if(window.location.pathname.includes("/pt/")){
         var locationUs = window.location.pathname
         locationUs = locationUs.slice(3, locationUs.length)
 
-        window.location = locationUs
+        window.location = locationUs + window.location.search
       }
     }
   }
