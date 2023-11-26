@@ -66,7 +66,6 @@ function LoginFunciton() {
             window.localStorage.setItem('login', user.Email)
             window.localStorage.setItem('imgProfile', user.Img)
             window.localStorage.setItem('name', user.Name)
-            window.localStorage.setItem('passwordCrypt', user.Passcrypt)
             window.localStorage.setItem('id', user.id)
             window.sessionStorage.setItem('session', 'on')
             window.history.back()
