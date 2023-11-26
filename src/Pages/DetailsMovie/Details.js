@@ -70,20 +70,19 @@ function DetailsPage() {
             }
         })
         await StremingSearch(MovieId).then(function(result){
-            if(result.name === 'AxiosError'){
+            if(result.name === "AxiosError"){
                 Services = 'NotFound'
                 return
             }
-            if(result.data.result.streamingInfo.pt.length === 0 || result.code === "ERR_BAD_REQUEST"){
+            if(result.data.result.streamingInfo.us.length === 0 || result.code === "ERR_BAD_REQUEST"){
                 Services = 'NotFound'
             }else{
                 var ServicesObj = []
                 var x = 0
-                while( x < result.data.result.streamingInfo.pt.length){
-
+                while( x < result.data.result.streamingInfo.us.length){
                     ServicesObj.push({
-                        service: result.data.result.streamingInfo.pt[x].service,
-                        link: result.data.result.streamingInfo.pt[x].link,
+                        service: result.data.result.streamingInfo.us[x].service,
+                        link: result.data.result.streamingInfo.us[x].link,
                         })
                     x++
                 }
@@ -96,7 +95,11 @@ function DetailsPage() {
                 BtnSave = false
             }
         })
-        setService(Services.ServicesObj)
+        if(!Services === 'NotFound'){
+            setService(Services.ServicesObj)
+        }else{
+            setService(Services)
+        }
         setDetails(DetailsObj)
         setTrailer(Trailer)
         setGeneros(genre)
@@ -247,7 +250,7 @@ function DetailsPage() {
                             <span>Services:</span>
                             {Services === 'NotFound' && (
                                 <div className='StremingMovieNotFound'>
-                                    <h1><BiMehBlank/>Not found</h1>
+                                    <h1><BiMehBlank/>Services not found</h1>
                                 </div>
                              )}
                              {Services !== 'NotFound' && (
