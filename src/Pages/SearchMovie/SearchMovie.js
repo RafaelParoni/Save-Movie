@@ -25,11 +25,9 @@ function SearchMoviePage() {
     const urlParams = new URLSearchParams(window.location.search);
     const MovieName = urlParams.get("m")
     var MovieSearchPage = urlParams.get("page")
-    console.log(MovieName)
     if(MovieSearchPage === undefined || isNaN(MovieSearchPage) || MovieSearchPage === '' || MovieSearchPage === null){
         MovieSearchPage = 1
     }
-
     
     async function StartSearchMovie(){
         setMovieSearch(MovieName)
@@ -65,14 +63,7 @@ function SearchMoviePage() {
         if(item.Poster === 'N/A' || item.Poster === undefined || item.Poster === null){
             poster = ErrorImage
         }
-        function MovieDeatilsLocation(){
-            if(window.location.pathname.includes("/pt/")){
-                window.location = '/pt/details?d=' + item.imdbID
-            }else{
-                window.location = '/details?d=' + item.imdbID
-            }
-        }
-        return <div onClick={()=> MovieDeatilsLocation()} className="MovieCard">
+        return <div onClick={()=> {window.location = '/details?d=' + item.imdbID}} className="MovieCard">
                     <img  alt={''} src={poster}/>
                     <span><b> {item.Title} </b></span>
                 </div>
