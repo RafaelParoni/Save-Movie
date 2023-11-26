@@ -34,6 +34,38 @@ function DetectMode(){
 DetectMode()
 
 
+function setLanguage(){
+  if(window.localStorage.getItem('Language') === null){
+    if(window.navigator.language === "pt-BR"){
+      window.localStorage.setItem('Language', 'pt')
+      console.log(window.location)
+      window.location = '/br/'
+    }else{
+      window.localStorage.setItem('Language', 'us')
+    }
+  }else{
+    if(window.localStorage.getItem('Language') === "pt"){
+
+      if(!window.location.pathname.includes("/br/")){ 
+
+        window.location = '/br' + window.location.pathname
+  
+      }
+  
+    }else{
+      console.log(window.location)
+      if(window.location.pathname.includes("/br/")){
+        var locationUs = window.location.pathname
+        locationUs = locationUs.slice(3, locationUs.length)
+
+        window.location = locationUs
+      }
+    }
+  }
+}
+setLanguage()
+
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
