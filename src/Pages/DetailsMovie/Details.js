@@ -17,6 +17,9 @@ import ErrorImage from './../../Images/404.png'
 import { useState } from 'react';
 
 import { BiSad, BiMessageAltDetail, BiMehBlank, BiConfused, BiBookmarkPlus, BiBookmarkAltMinus   } from "react-icons/bi";
+import { SiApple, SiNetflix, SiPrime, SiHbo, SiHulu, SiStarz, SiShowtime, SiMubi, SiNow      } from "react-icons/si";
+import { TbBrandDisney,TbError404  } from "react-icons/tb";
+
 
 
 
@@ -109,8 +112,100 @@ function DetailsPage() {
     }
 
     function ServicesDisplay({item}){
+        var NameService = ''
+        var IconService = ''
+        switch(item.service){
+            case 'netflix':
+                NameService = ' Netflix'
+                IconService = <SiNetflix/>
+            break
+            case 'prime':
+                NameService = ' Prime'
+                IconService = <SiPrime/>
+            break
+            case 'disney':
+                NameService = ' Disney+'
+                IconService = <TbBrandDisney/>
+            break
+            case 'hbo':
+                NameService = ' HBO Max'
+                IconService = <SiHbo/>
+            break
+            case 'hulu':
+                NameService = ' Hulu'
+                IconService = <SiHulu/>
+            break
+            case 'peacock':
+                NameService = ' Peacock'
+                IconService = <TbError404/>
+            break
+            case 'paramount':
+                NameService = ' Paramount+'
+                IconService = <TbError404/>
+            break
+            case 'starz':
+                NameService = ' Starz'
+                IconService = <SiStarz/>
+            break
+            case 'showtime':
+                NameService = ' Showtime'
+                IconService = <SiShowtime/>
+            break
+            case 'apple':
+                NameService = ' Apple'
+                IconService = <SiApple/>
+            break
+            case 'mubi':
+                NameService = ' Mubi'
+                IconService = <SiMubi/>
+            break
+            case 'stan':
+                NameService = ' Stan'
+                IconService = <TbError404/>
+            break
+            case 'now':
+                NameService = ' Now'
+                IconService = <SiNow/>
+            break
+            case 'crave':
+                NameService = ' Crave'
+                IconService = <TbError404/>
+            break
+            case 'all4':
+                NameService = ' All 4'
+                IconService = <TbError404/>
+            break
+            case 'iplayer':
+                NameService = ' BBC iPlayer'
+                IconService = <TbError404/>
+            break
+            case 'britBox':
+                NameService = ' BritBox'
+                IconService = <TbError404/>
+            break
+            case 'hotstar':
+                NameService = ' Hotstar'
+                IconService = <TbError404/>
+            break
+            case 'zee5':
+                NameService = ' Zee5'
+                IconService = <TbError404/>
+            break
+            case 'curiosity':
+                NameService = ' Curiosity Stream'
+                IconService = <TbError404/>
+            break
+            case 'wow':
+                NameService = ' Wow'
+                IconService = <TbError404/>
+            break
+            default: 
+                NameService = item.service
+                IconService = <TbError404/>
+            break
+        }
         return (
-            <button className='serviceBtn' onClick={()=> window.open(item.link) }>{item.service}</button>
+            <button className='serviceBtn' onClick={()=> window.open(item.link) }>{IconService}{NameService}</button>
         )
     }
 

@@ -104,8 +104,9 @@
     text-align: center;
     display: flex;
     align-items: center;
-    width: 200px;
+    width: auto;
     height: auto;
+    font-size: 10px;
     
 
 }
