@@ -94,6 +94,7 @@ nav div {
     margin: 0 0 0 0;
     padding: 0;
     grid-gap: 10px;
+    z-index: 5;
 }
 .BtnSearch{ 
     height: 40px;
@@ -134,6 +135,8 @@ nav div {
     width: 100%;
     color: var(--inputPlaceholderColor);
     margin-left: 10px;
+    z-index: 3;
+
 }
 .InputSearch::placeholder{
     color: var(--inputPlaceholderColor);
@@ -148,6 +151,19 @@ nav div {
     opacity: 0;
     transition: 0.3s;
 
+}
+
+.alert-search {
+  position: absolute;
+  width: 150px;
+  height: auto;
+  margin-top: 0;
+  opacity: 0;
+  transition: 0.5s;
+  z-index: 0;
+  background-color: #f14a2c;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .InputSearch:focus::placeholder{

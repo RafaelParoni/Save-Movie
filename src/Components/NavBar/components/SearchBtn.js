@@ -9,14 +9,25 @@ export function setMovieSearch(value){
 }
 
 function SearchNavBtn(){
+
+    
     const [SearchMovieName, setSearchMovieName] = useState('')
     const UpdateValueMovieName = (value) => {
         setSearchMovieName(value)
         if(value === ''){
             document.getElementById('BtnClearSearch').style.opacity = '0'
+            if(window.location.pathname.includes("/pt/")){
+                document.getElementById('msgSearchSpan').style.opacity = '0'
+                document.getElementById('msgSearchSpan').style.marginTop = '0px'
+            }
         }else{
             document.getElementById('BtnClearSearch').style.opacity = '1'
+            if(window.location.pathname.includes("/pt/")){
+                document.getElementById('msgSearchSpan').style.opacity = '1'
+                document.getElementById('msgSearchSpan').style.marginTop = '80px'
+            }
         }
+
     }
 
     async function SearchMovie(){
@@ -66,8 +77,10 @@ function SearchNavBtn(){
                         }
                         }} 
                         />
+                <span id='msgSearchSpan' className='alert-search'>Digite o nome dos filmes em inglês!</span>
                 <button onClick={()=> {UpdateValueMovieName(''); document.getElementById('inputSearchMovie').value = '' }} id='BtnClearSearch' className='BtnClearSearch'><BiEraser size={20}/></button>
-                <div className='BtnSearch'><button onClick={()=> SearchMovie()} id='BtnSearch'><BiSearchAlt2 size={30}/></button><span id='BtnLoader' className="loader"></span></div>
+                <div className='BtnSearch'><button onClick={()=> SearchMovie()} id='BtnSearch'><BiSearchAlt2 size={30}/></button><span id='BtnLoader' className="loader"></span> </div>
+                
             </div>
         </div>
     )
