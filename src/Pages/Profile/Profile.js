@@ -111,6 +111,43 @@ function ProfilePage() {
 
     }
 
+    var Language = {
+        userInfo: 'user information',
+        name: 'Name: ',
+        imgChoose: 'Choose a profile photo',
+        browseFiles:' Browse files...',
+
+        Here: 'here',
+
+        // No sessions connected
+        NoSession: 'No sessions connected ',
+        NoSessionDescription: 'Try logging in ',
+
+        UpdataInfo: 'Save updates',
+
+    }
+    
+    function setLanguage(){
+        if(window.location.pathname.includes("/pt/")){
+            Language = {
+                userInfo: 'informações do usuarios',
+                name: 'Nome: ',
+                imgChoose: 'Escolha uma foto de perfil',
+                browseFiles:'Procurar arquivos...',
+
+                Here: 'AQUI',
+        
+                // No sessions connected
+                NoSession: 'Nenhuma conta conectada',
+                NoSessionDescription: 'Tente fazer login por ',
+
+                UpdataInfo: 'Salvar atualizações',
+               
+            }
+        }
+    }
+    setLanguage()
+
     return (
         <>
         <Navbar/>
@@ -122,13 +159,13 @@ function ProfilePage() {
                         <img src={user.img} alt="Img profile" id='userImage'/>
                     </div>
                     <div className='details-profile'>
-                        <h4>Info user: </h4>
+                        <h4>{Language.userInfo} </h4>
                         <div className='info-div'>
                             <label>Email: </label>
                             <input id='input-email' placeholder={user.email} value={Email} onChange={(e)=> setNewEmail(e.target.value)}/>
                         </div>
                         <div className='info-div'>
-                            <label>Name: </label>
+                            <label>{Language.name} </label>
                             <input id='input-name' placeholder={user.fullName} value={Name} onChange={(e)=> setNewName(e.target.value)}/>
 
                         </div>
@@ -137,14 +174,14 @@ function ProfilePage() {
                             <input id='input-name' placeholder={user.id} disabled/>
                         </div>
                         <div className='selectImg'>
-                            <h4>Choose a profile photo </h4>
+                            <h4>{Language.imgChoose} </h4>
                             <span className="btn-file">
-                            Browse files...<input onChange={(evt)=> {createUrlImg(evt); loadImg()}} type='file' accept='image/png, image/jpg' id='input-image'/>
+                            {Language.browseFiles}<input onChange={(evt)=> {createUrlImg(evt); loadImg()}} type='file' accept='image/png, image/jpg' id='input-image'/>
                             </span>
                             <span id='name-image'></span>
                             <button onClick={()=> resetImg()} id='reset-img-btn'><BiEraser size={25}/></button>
                         </div>
-                        <button className='save-infos' onClick={() => saveNewInfos()}>Salvar atualizações</button>
+                        <button className='save-infos' onClick={() => saveNewInfos()}>{Language.UpdataInfo}</button>
                     </div>
                 </div>
             )}
@@ -155,8 +192,8 @@ function ProfilePage() {
             )}
             {profileValue === 'noSession' && (
                 <div className='no-session-div'>
-                    <h2><BiConfused/>No session</h2>
-                    <span> teste fazer login clicando <a href='/login'>AQUI</a></span>
+                    <h2><BiConfused/> {Language.NoSession}</h2>
+                    <span> {Language.NoSessionDescription} <a href='/login'>{Language.Here}</a></span>
                 </div>
             )}
         </main>
