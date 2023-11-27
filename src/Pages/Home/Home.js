@@ -138,7 +138,54 @@ function HomePage() {
         return <div id={'HistoryId-' + item.id} className='History-Results-Div'> 
             <div className='History-Results-Block'><BiTagAlt size={25}/> <input type='text' placeholder={item.name}  disabled/> <button onClick={()=> SearchMovieHistory(item.name)}><BiSearchAlt2 size={25}/></button></div> <button onClick={()=> DeletHistory(item.id)} className='BtnDelHistory'><BiTrashAlt size={20}/></button>
         </div>
-    }   
+    }       
+
+    var Language = {
+        suggestions: 'suggestions:',
+        saves: 'saves',
+        home: 'Home',
+        Profile: 'Profile',
+
+        MoviesForYou: 'Movies for you:',
+
+        YourLastSearches: 'Your last 10 searches:',
+
+        Here: 'here',
+
+        // No sessions connected
+        NoSession: 'No sessions connected ',
+        NoSessionDescription: 'Try logging in ',
+
+        /// No Searches done recently
+        NoSearches: 'No searches done recently!',
+        NoSearchesDescription: 'Do a search so it may appear here',
+    }
+
+    function setLanguage(){
+        if(window.location.pathname.includes("/pt/")){
+            Language = {
+                suggestions: 'sugestões:',
+                saves: 'Salvos',
+                home: 'Inicio',
+                Profile: 'Perfil',
+        
+                MoviesForYou: ' filmes para você:',
+        
+                YourLastSearches: 'Suas últimas 10 pesquisas:',
+        
+                Here: 'AQUI',
+        
+                // No sessions connected
+                NoSession: 'Nenhuma conta conectada',
+                NoSessionDescription: 'Tente fazer login por ',
+        
+                /// No Searches done recently
+                NoSearches: 'Nenhuma pesquisa feita recentemente!',
+                NoSearchesDescription: 'Faça uma pesquisa para que apareça aqui',
+            }
+        }
+    }
+    setLanguage()
 
 
 
@@ -147,14 +194,14 @@ function HomePage() {
             <Navbar/>
             <main className='HomePage'>
                 <div className='Options'>
-                    <BiSend/> suggestions: 
-                    <button onClick={()=> hrefFunc('/saves')}> <BiBookmark/> Saves</button> 
-                    <button onClick={()=> hrefFunc('/')}> <BiHomeAlt2/> Home</button> 
-                    <button onClick={()=> hrefFunc('/profile')}> <BiUser/> Profile</button>
+                    <BiSend/> {Language.suggestions}
+                    <button onClick={()=> hrefFunc('/saves')}> <BiBookmark/> {Language.home}</button> 
+                    <button onClick={()=> hrefFunc('/')}> <BiHomeAlt2/> {Language.saves}</button> 
+                    <button onClick={()=> hrefFunc('/profile')}> <BiUser/> {Language.Profile}</button>
                 </div>
                 <div className='DispleyHome'>
                     <div className='MoviesDiv'>
-                        <h1> <BiTrophy /> Movies for you:</h1>
+                        <h1> <BiTrophy />{Language.MoviesForYou}</h1>
                         <div className='MoviesReults'>
                             {Object.keys(RandomMovies).length === 0 && (
                                 <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
@@ -163,20 +210,20 @@ function HomePage() {
                         </div>
                     </div>
                     <div className='HistoryDiv'>
-                        <h2><span> <BiSend/> </span> Your last 10 searches:</h2>
+                        <h2><span> <BiSend/> </span>{Language.YourLastSearches}</h2>
                         {HistoryValue === 'loading' && (
                                 <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
                         )}
                         {HistoryValue === 'Session' && (
                             <div id='History-NoSession' className='History-Error'>
-                                <h2><BiConfused/> No sessions connected </h2>
-                                <span>Try logging in <a href='/login'>here</a></span>
+                                <h2><BiConfused/>{Language.NoSession}</h2>
+                                <span>{Language.NoSessionDescription}<a href='/login'>{Language.Here}</a></span>
                             </div>
                         )}
                         {HistoryValue === 'Error' && (
                             <div id='History-NoHistory' className='History-Error'>
-                                <h2><BiSad/> No searches done recently! </h2>
-                                <span>Do a search so it may appear here</span>
+                                <h2><BiSad/> {Language.NoSearches} </h2>
+                                <span>{Language.NoSearchesDescription}</span>
                             </div>
                         )}
                         {HistoryValue === 'Results' && (
