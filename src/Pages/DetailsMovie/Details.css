@@ -16,8 +16,9 @@
 
 .DetailsPage{
     width: 100vw;
-    height: 100vh;
-    margin-top: 100px;
+    height: auto;
+    padding-top: 100px;
+    padding-bottom: 50px;
     display: flex;
     align-items: flex-start;
     justify-content: center;
