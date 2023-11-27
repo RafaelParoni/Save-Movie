@@ -49,6 +49,43 @@ function SavesPage() {
         document.getElementById(movie.id).remove()
     }
 
+
+    var Language = {
+        TitlePage: 'Save Movies',
+        Nosessions: 'No sessions connected',
+        NoSession: 'No sessions connected ',
+        NoSessionDescription: 'Try logging in ',
+
+        // MoviesListDisplay
+        OpenDetails: 'Open details Movie',
+        RemoveMovie: 'Remove Movie',
+        DownloadBanner: 'Downloader banner',
+
+        here: 'Here',
+   
+    }
+    
+    function setLanguage(){
+        if(window.location.pathname.includes("/pt/")){
+            Language = {
+                TitlePage: 'Filmes salvos!',
+
+                NoSession: 'Nenhuma conta conectada',
+                NoSessionDescription: 'Tente fazer login por ',
+
+                // MoviesListDisplay
+                OpenDetails: 'Abrir detalhes do filme!',
+                RemoveMovie: 'Remover filme da lista de salvos!',
+                DownloadBanner: 'Bixar banner',
+
+
+                here: 'Aqui',
+               
+            }
+        }
+    }
+    setLanguage()
+
     function MovieListDisplay({movie}){
 
         return (
@@ -56,9 +93,9 @@ function SavesPage() {
                 <img src={movie.poster} alt={movie.name}/>
                 <span><b>{movie.name}</b></span>
                 <div className='functionsMovie'>
-                    <button onClick={()=> LinkMovie(movie.id)} className='HoverBtn'><BiLinkExternal />  <span className='HoverSpan'>  Open details Movie </span></button>
-                    <button onClick={()=> confirmRemoveMovie(movie)} className='HoverBtn'><BiBookmarkMinus/>  <span className='HoverSpan'>  Remove Movie in save </span></button>
-                    <button onClick={()=> DownloadBanner(movie.poster, movie.name)} className='HoverBtn'><BiDownload/> <span className='HoverSpan'> Download banner </span></button>
+                    <button onClick={()=> LinkMovie(movie.id)} className='HoverBtn'><BiLinkExternal />  <span className='HoverSpan'>  {Language.OpenDetails} </span></button>
+                    <button onClick={()=> confirmRemoveMovie(movie)} className='HoverBtn'><BiBookmarkMinus/>  <span className='HoverSpan'>  {Language.RemoveMovie}  </span></button>
+                    <button onClick={()=> DownloadBanner(movie.poster, movie.name)} className='HoverBtn'><BiDownload/> <span className='HoverSpan'> {Language.DownloadBanner}  </span></button>
                 </div>
             </div> 
         )
@@ -68,14 +105,14 @@ function SavesPage() {
         <main className='SavesPage'>
             <Navbar/>
             <div  className='content'>
-                <h2>Saved Movies</h2>
+                <h2>  {Language.TitlePage}</h2>
                 <div className='ListMoviesSaves'>
                     {MoviesList.map((MoviesList) => <MovieListDisplay movie={MoviesList} />)}
                 </div>
                 {window.sessionStorage.getItem('session') !== 'on' && (
                     <div id='History-NoSession' className='History-Error'>
-                        <h2><BiConfused/> No sessions connected </h2>
-                    <span>Try logging in <a href='/login'>here</a></span>
+                        <h2><BiConfused/>  {Language.NoSession}</h2>
+                    <span>  {Language.NoSessionDescription} <a href='/login'>here</a></span>
                 </div>
                 )}
                 {loading === true && (
