@@ -89,7 +89,7 @@ function FormOne() {
                 <span><CiUnlock size={25} color='#f14a2c'/></span>
                 <div className="inputbox">
                     <input type="password" name="ConfirmPassword" id="ConfirmPassword" autoComplete='off' className="inputUser" required />
-                    <label  className="labelInput" id='ConfirmPassword' >Confirm Pass...</label>
+                    <label  className="labelInput" id='ConfirmPassword' >Confirm Pass..</label>
                 </div>
                 <button onClick={()=> ViewPassword(false)}><span id='ViewPasswordTwo'><CiRead size={25}/></span> <span id='NoViewPasswordTwo'><CiUnread size={25}/></span></button>
             </div>

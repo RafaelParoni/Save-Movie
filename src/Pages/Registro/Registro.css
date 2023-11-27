@@ -171,6 +171,8 @@ a {
     pointer-events: none;
     transition: .5s;
     color: var(--text-color);
+    width: auto;
+    height: auto;
 }
 .inputUser:focus ~ .labelInput,
 .inputUser:valid ~ .labelInput{
