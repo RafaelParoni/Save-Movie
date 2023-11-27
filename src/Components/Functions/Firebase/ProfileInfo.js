@@ -1,6 +1,6 @@
 // Banco de dados
 import { initializeApp   } from "firebase/app";
-import {collection, getDocs, getFirestore, setDoc, doc} from "firebase/firestore";
+import {collection, getDocs, getFirestore} from "firebase/firestore";
 
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyCi1wYTsZBEVZp2zAQquOY8mYp7ZTe3Mnw",
