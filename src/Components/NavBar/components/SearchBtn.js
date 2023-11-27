@@ -38,7 +38,17 @@ function SearchNavBtn(){
         }
     }
 
-
+    var Language = {
+        placeholderSearch: 'Movie Name...'
+    }
+    function setLanguage(){
+        if(window.location.pathname.includes("/pt/")){
+            Language = {
+                placeholderSearch: 'Nome do filme...'
+            }
+        }
+    }
+    setLanguage()
     return (
         <div className='MenuBar'>
             <div className='SearchDiv'>
@@ -49,7 +59,7 @@ function SearchNavBtn(){
                     className='InputSearch' 
                     type='text' 
                     id='inputSearchMovie'
-                    placeholder='Search Movie Name...'
+                    placeholder={Language.placeholderSearch}
                     onKeyDown={event => {
                         if (event.key === 'Enter') {
                             SearchMovie()

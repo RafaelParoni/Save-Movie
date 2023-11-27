@@ -41,22 +41,22 @@ function AccountNavbar(){
     }
 
     var buttonLogin = (
-        <button onClick={()=> hrefFunc('/login')} id='LoginBtn'><BiLogInCircle size={20}/> log in </button>
+        <button onClick={()=> hrefFunc('/login')} id='LoginBtn'><BiLogInCircle size={20}/> <a id='loginL' href={false}>Log in</a> </button>
     )
     var ButtonSession = (
         <>
-            <button onClick={()=> hrefFunc('/profile')} id='profileBtn'><BiUser size={20}/> Profile</button>
-            <button onClick={()=> hrefFunc('sair')} id='sessionButton'><BiLogOutCircle size={20}/> Exit </button>
+            <button onClick={()=> hrefFunc('/profile')} id='profileBtn'><BiUser size={20}/> <a id='profileL' href={false}>Profile</a></button>
+            <button onClick={()=> hrefFunc('sair')} id='sessionButton'><BiLogOutCircle size={20}/> <a id='exitL' href={false}>Exit</a> </button>
         </>
     )
 
     var buttonLoginSmall = (
-        <button onClick={()=> hrefFunc('/login')} id='LoginBtnSmall'><BiLogInCircle size={20}/> log in </button>
+        <button onClick={()=> hrefFunc('/login')} id='LoginBtnSmall'><BiLogInCircle size={20}/> <a id='loginS'href={false}>Log in</a> </button>
     )
     var ButtonSessionSmall = (
         <>
-            <button onClick={()=> hrefFunc('/profile')} id='profileBtnSmall'><BiUser size={20}/> Profile</button>
-            <button onClick={()=> hrefFunc('sair')} id='sessionButtonSmall'><BiLogOutCircle size={20}/> Exit </button>
+            <button onClick={()=> hrefFunc('/profile')} id='profileBtnSmall'><BiUser size={20}/> <a id='profileS' href={false}>Profile</a></button>
+            <button onClick={()=> hrefFunc('sair')} id='sessionButtonSmall'><BiLogOutCircle size={20}/> <a id='exitS' href={false}>Exit</a> </button>
         </>
     )
 
@@ -107,13 +107,39 @@ function AccountNavbar(){
    }
    setTimeout(setMode,10)
 
+   function EditText(id, text){
+        document.getElementById(id).innerHTML = text
+   }
+
+   function setLanguage(){
+        if(window.location.pathname.includes("/pt/")){ 
+            EditText('homeL', 'Inicio')
+            EditText('savesL', 'Salvos')
+            EditText('shareL', 'Partilhar')
+            EditText('profileL', 'Perfil')
+            EditText('exitL', 'Sair')
+            EditText('loginL', 'Entrar')
+
+            EditText('homeS', 'Inicio')
+            EditText('savesS', 'Salvos')
+            EditText('shareS', 'Partilhar')
+            EditText('profileS', 'Perfil')
+            EditText('exitS', 'Sair')
+            EditText('loginS', 'Entrar')
+
+
+        }
+   }
+   setTimeout(setLanguage,10)
+
+
     return (
         <div className='Account'>
             <div className='largeNavBar'>
-                <button onClick={()=> hrefFunc('/')}> <BiHomeAlt2 size={20}/> Home</button>
-                <button onClick={()=> hrefFunc('/saves')}><BiBookmark size={20} /> Saves</button>
-                <button onClick={()=> EditMode()}><span  id='darkIcon'><BiAdjust size={20} /></span> <span id='lightIcon'><BiBrightnessHalf size={20} /></span> <span id='TextIcon'>Mode</span></button>
-                <button onClick={()=> hrefFunc('share')}><BiShare size={20}/> Share </button>
+                <button  onClick={()=> hrefFunc('/')}> <BiHomeAlt2 size={20}/> <a href={false} id='homeL'> Home </a></button>
+                <button onClick={()=> hrefFunc('/saves')}><BiBookmark size={20} /> <a href={false} id='savesL'> Saves </a></button>
+                <button onClick={()=> EditMode()}><span  id='darkIcon'><BiAdjust size={20} /></span> <span id='lightIcon'><BiBrightnessHalf size={20} /></span> <span id='TextIcon'> Modo</span></button>
+                <button  onClick={()=> hrefFunc('share')}><BiShare size={20}/> <a href={false} id='shareL'> Share </a> </button>
                 {ButtonSession}
                 {buttonLogin}
             </div>
@@ -127,10 +153,10 @@ function AccountNavbar(){
                     </label>
                 </div>
                 <div className='SmallNavBarBtns'>
-                    <button onClick={()=> hrefFunc('/')}> <BiHomeAlt2 size={20}/> Home</button>
-                    <button onClick={()=> hrefFunc('/saves')}><BiBookmark size={20} /> Saves</button>
+                    <button onClick={()=> hrefFunc('/')}> <BiHomeAlt2 size={20}/> <a href={false} id='homeS'> Home </a></button>
+                    <button onClick={()=> hrefFunc('/saves')}><BiBookmark size={20} /> <a href={false} id='savesS'> Saves </a></button>
                     <button onClick={()=> EditMode()}><span  id='darkIconSmall'><BiAdjust size={20} /></span> <span id='lightIconSmall'><BiBrightnessHalf size={20} /></span> <span id='TextIconSmall'>Mode</span></button>
-                    <button onClick={()=> hrefFunc('share')}><BiShare size={20}/> Share </button>
+                    <button onClick={()=> hrefFunc('share')}><BiShare size={20}/> <a href={false} id='shareS'> Share </a> </button>
                     {buttonLoginSmall}
                     {ButtonSessionSmall}
                 </div>
