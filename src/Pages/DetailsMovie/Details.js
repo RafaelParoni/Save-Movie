@@ -30,7 +30,7 @@ function DetailsPage() {
     const [Details, setDetails] = useState([])
     const [Trailer, setTrailer] = useState([])
     const [Generos, setGeneros] = useState([])
-    const [Services, setService] = useState([])
+    const [Services, setService] = useState({})
     const [SavesMovie, setSaveMovie] = useState('')
 
     async function validation(){
@@ -78,17 +78,29 @@ function DetailsPage() {
             if(result.data.result.streamingInfo.us.length === 0 || result.code === "ERR_BAD_REQUEST"){
                 Services = 'NotFound'
             }else{
-                var ServicesObj = []
-                var x = 0
-                while( x < result.data.result.streamingInfo.us.length){
-                    ServicesObj.push({
-                        service: result.data.result.streamingInfo.us[x].service,
-                        link: result.data.result.streamingInfo.us[x].link,
-                        })
-                    x++
-                }
+                // array = {
+                // }
+                
+                // array["netflix"] = ["outro oi"]
+                // array["prime"] = ["outro oi"]
+                
+                // var a = Object.keys(array)
+                // a.forEach((chave) => console.log(chave, array[chave]))
+                 
+                // array["netflix"] = [array["netflix"],["oi"]]
+                
+                
+                // a.forEach((chave) => console.log(chave, array[chave]))
 
-                Services = {ServicesObj}
+
+                var servicesObj = {}
+
+                result.data.result.streamingInfo.us.forEach(element => {
+                    servicesObj[element.service] = element.link
+                });
+
+
+                Services = servicesObj
             }
         })
         await TestSaveMovie(MovieId).then(function(result){
@@ -96,28 +108,31 @@ function DetailsPage() {
                 BtnSave = false
             }
         })
-        console.log(Services)
+
         if(Services === 'NotFound'){
             setService(Services)
 
         }else{
-            setService(Services.ServicesObj)
+            setService(Services)
+
         }
         setDetails(DetailsObj)
         setTrailer(Trailer)
         setGeneros(genre)
         setSaveMovie(BtnSave)
 
+
     }
     setTimeout(validation,10)
 
     function GenreDisplay({item}){
         return (
-            <div className='genre'> {item.text} </div>
+            <div className='genre' key={item.text}> {item.text} </div>
         )
     }
 
     function ServicesDisplay({item}){
+        console.log(item)
         var NameService = ''
         var IconService = ''
         switch(item.service){
@@ -211,11 +226,9 @@ function DetailsPage() {
             break
         }
         return (
-            <button className='serviceBtn' onClick={()=> window.open(item.link) }>{IconService}{NameService}</button>
+            <button className='serviceBtn' key={item.service} onClick={()=> window.open(item.link) }>{IconService}{NameService}</button>
         )
     }
-
-
 
     return (
         <>
@@ -233,7 +246,7 @@ function DetailsPage() {
                                 <div className='MoviePlot'>
                                     <span> <BiMessageAltDetail/> {Details[0].plot}</span>
                                     <p>Genres</p>
-                                    <div className='genre-list'>{Generos.map((Generos) => <GenreDisplay item={Generos} />)}</div>
+                                    <div className='genre-list'>{Generos.map((genero) => <GenreDisplay key={genero.text} item={genero} />)}</div>
                                 </div>
                             </div>
                             <div className='MovieTrailer'>
@@ -257,15 +270,18 @@ function DetailsPage() {
                                 </div>
                              )}
                              {Services !== 'NotFound' && (
-                                 <div className='StremingMovie'>
-                                    {Services.map((Services) => <ServicesDisplay item={Services} />)}
+                                 <div className='StremingMovie' >
+                                    {Object.entries(Services).map(([key, value]) => 
+                                            <ServicesDisplay key={key} item={{service: key, link: value}} />
+                                        )}
                                  </div>
                              )}
+    
                              <h4>Save Movie:</h4>
                              {window.sessionStorage.getItem('session') !== null && (
                                 <>
                                     {SavesMovie === false && (<button className='BtnSaveMovie' onClick={()=> {SaveMovie(Details[0].name, Details[0].id, Details[0].banner); setSaveMovie(true)}}> <BiBookmarkPlus/> To save</button>)}
-                                    {SavesMovie === true && (<button className='BtnSaveMovie' onClick={()=> {SaveMovie(Details[0].name, Details[0].id, Details[0].banner); setSaveMovie(false)}}> <BiBookmarkAltMinus/> Delete</button>)}
+                                    {SavesMovie === true &&  (<button className='BtnSaveMovie' onClick={()=> {SaveMovie(Details[0].name, Details[0].id, Details[0].banner); setSaveMovie(false)}}> <BiBookmarkAltMinus/> Delete</button>)}
                                 </>
 
                              )}

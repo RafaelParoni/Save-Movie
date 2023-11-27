@@ -126,8 +126,6 @@ function AccountNavbar(){
             EditText('profileS', 'Perfil')
             EditText('exitS', 'Sair')
             EditText('loginS', 'Entrar')
-
-
         }
    }
    setTimeout(setLanguage,10)

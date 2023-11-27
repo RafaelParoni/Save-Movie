@@ -99,7 +99,7 @@ async function CreateNewAccountFunciton(){
     }
 
     setTimeout(function(){
-       // window.location = '/'
+        window.location = '/'
     }, 1000)
 }
 
