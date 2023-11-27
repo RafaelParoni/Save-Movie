@@ -39,12 +39,12 @@ h2 {
     text-align: center;
 }
 .ListMoviesSaves {
-    width: 90%;
+    width: 100%;
     height: auto;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     padding: 15px 5px 15px 5px;
     grid-gap: 10px;
 }
