@@ -107,7 +107,7 @@ function SavesPage() {
             <div  className='content'>
                 <h2>  {Language.TitlePage}</h2>
                 <div className='ListMoviesSaves'>
-                    {MoviesList.map((MoviesList) => <MovieListDisplay movie={MoviesList} />)}
+                    {MoviesList.map((MoviesList) => <MovieListDisplay key={MoviesList.name} movie={MoviesList} />)}
                 </div>
                 {window.sessionStorage.getItem('session') !== 'on' && (
                     <div id='History-NoSession' className='History-Error'>
