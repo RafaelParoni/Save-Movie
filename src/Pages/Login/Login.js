@@ -28,6 +28,8 @@ function LoginPage() {
         // Mandar de voltar caso tenha session ativa
         
     }
+
+
     return (
         <main className='loginPage'>
             <LoginType1/>

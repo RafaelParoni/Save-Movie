@@ -11,15 +11,38 @@ import InputsFomrType2 from './LoginType2/inputs';
 import LoginFunciton from './LoginFunction';
 import LogOutFull from '../../../Components/Functions/LogOutFull';
 
+var Language = {
+    Connect: 'Connect with:',
+    NotYou1: "Isn't this your account? Click ",
+    NotYou2: "to log in",
+    DontHaveAnAccount1: "Don't have an account? Click ",
+    DontHaveAnAccount2: "to register",
+    Here: 'Here',
+}
+
+function setLanguage(){
+    if(window.location.pathname.includes("/pt/")){
+        Language = {
+            Connect: 'Entrar com:',
+            NotYou1: "Esta não é sua conta? Clique ",
+            NotYou2: " Para fazer login",
+            DontHaveAnAccount1: "Não tem uma conta? Clique ",
+            DontHaveAnAccount2: " Para criar uma!",
+            Here: 'Aqui',
+        }
+    }
+}
+setLanguage()
+
 export function LoginType1() {
 
     return (
         <div id='loginType1' className='loginForm'>
-            <h3>Connect with:</h3>
+            <h3>{Language.Connect}</h3>
             <ProfileFomrType1/>
             <InputsFomrType1/>
             <LoginFunciton/>
-            <span className='detailsLogin'>Don't have an account? Click <button onClick={()=> LogOutFull()}> HERE </button> to register</span>
+            <span className='detailsLogin'>{Language.NotYou1} <button onClick={()=> LogOutFull()}> {Language.Here} </button> {Language.NotYou2}</span>
         </div>
     );
   }
@@ -28,10 +51,10 @@ export function LoginType1() {
 
     return (
         <div id='loginType2' className='loginForm'>
-            <h3>Connect with:</h3>
+            <h3>{Language.Connect}</h3>
             <InputsFomrType2/>
             <LoginFunciton/>
-            <span>Don't have an account? Click <a href='/register'> HERE </a> to register</span>
+            <span>{Language.DontHaveAnAccount1}<a href='/register'> {Language.Here} </a> {Language.DontHaveAnAccount2}</span>
         </div>
     );
   }

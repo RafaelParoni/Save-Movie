@@ -76,8 +76,23 @@ function LoginFunciton() {
         }
     }
 
+    var Language = {
+        Login: 'Log In',
+   
+    }
+    
+    function setLanguage(){
+        if(window.location.pathname.includes("/pt/")){
+            Language = {
+                Login: 'Entrar',
+               
+            }
+        }
+    }
+    setLanguage()
+
     return (
-        <button className='BtnLogin' onClick={()=> LoginAccontType1()}> <CiApple size={20}/> Log In</button>
+        <button className='BtnLogin' onClick={()=> LoginAccontType1()}> <CiApple size={20}/> {Language.Login}</button>
     );
   }
   

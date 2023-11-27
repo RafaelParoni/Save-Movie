@@ -18,6 +18,20 @@ function InputsFomrType2() {
         }
     }
 
+    var Language = {
+        Password: 'Password...'
+   
+    }
+    
+    function setLanguage(){
+        if(window.location.pathname.includes("/pt/")){
+            Language = {
+                Password: 'Senha...'
+            }
+        }
+    }
+    setLanguage()
+
     return (
         <div className='formInputs'>
            <div className='InputLogin'>
@@ -31,7 +45,7 @@ function InputsFomrType2() {
                 <span><CiLock size={25} color='#f14a2c'/></span>
                 <div className="inputboxLogin">
                     <input type="password" name="PasswordFormTwo" id="PasswordFormTwo" autoComplete='off' className="inputUserLogin" required />
-                    <label  className="labelInputLogin">Password...</label>
+                    <label  className="labelInputLogin">{Language.Password}</label>
                 </div>
                 <button  onClick={()=> ViewPassword()} ><span id='ViewPasswordTwo'><CiRead size={25}/></span> <span id='NoViewPasswordTwo'><CiUnread size={25}/></span></button>
             </div>
