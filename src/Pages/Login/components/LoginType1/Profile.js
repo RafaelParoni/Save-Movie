@@ -1,5 +1,5 @@
 import './../../Login.css';
-
+import { ProfileInfo } from '../../../../Components/Functions/Firebase/ProfileInfo';
 
 function ProfileFomrType1() {
 
@@ -18,11 +18,28 @@ function ProfileFomrType1() {
     }
     setLanguage()
 
+    var userInfo = {
+        'img': window.localStorage.getItem('imgProfile'),
+        'name': window.localStorage.getItem('name'),
+        'email': window.localStorage.getItem('login'),
+    }
+
+    async function updateData(){
+        var id = window.localStorage.getItem('id')
+        await ProfileInfo(id).then(function(result){
+            window.localStorage.setItem('imgProfile', result.Img)
+            window.localStorage.setItem('login', result.Email)
+            window.localStorage.setItem('name', result.Name)
+        })
+
+    }
+    updateData()
+
     return (
         <div className='formProfile'>
-            <img alt='' src={window.localStorage.getItem('imgProfile')} />
-            <span> {Language.WelcomeBack} <h4>{window.localStorage.getItem('name')}</h4></span>
-            <p>{window.localStorage.getItem('login')}</p>
+            <img alt='' src={userInfo.img} />
+            <span> {Language.WelcomeBack} <h4>{userInfo.name}</h4></span>
+            <p>{userInfo.email}</p>
         </div>
     );
   }
