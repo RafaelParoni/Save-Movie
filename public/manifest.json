@@ -1,6 +1,6 @@
 {
   "short_name": "Save Movie",
-  "name": "Create React App Sample",
+  "name": "SaveMovie",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
