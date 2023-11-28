@@ -14,21 +14,21 @@ const firebaseApp = initializeApp({
 
 
 export async function ProfileInfo(iduser){
-    if(window.sessionStorage.getItem('session') === 'on'){
-        const db = getFirestore(firebaseApp);
-        var collectionUser = 'users'
-        const userCollection = collection(db, collectionUser);
 
-        const data = await getDocs(userCollection);
-        var InfoUser = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
-        var i = 0
-        while(i < data.docs.map((doc) => ({...doc.data(), id: doc.id})).length){
-            if(iduser === data.docs.map((doc) => ({...doc.data(), id: doc.id}))[i].id){
-                InfoUser = data.docs.map((doc) => ({...doc.data(), id: doc.id}))[i]
-            }
-            i++
+    const db = getFirestore(firebaseApp);
+    var collectionUser = 'users'
+    const userCollection = collection(db, collectionUser);
+
+    const data = await getDocs(userCollection);
+    var InfoUser = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
+    var i = 0
+    while(i < data.docs.map((doc) => ({...doc.data(), id: doc.id})).length){
+        if(iduser === data.docs.map((doc) => ({...doc.data(), id: doc.id}))[i].id){
+        InfoUser = data.docs.map((doc) => ({...doc.data(), id: doc.id}))[i]
         }
-        
-        return InfoUser
+        i++
     }
+       
+    return InfoUser
+    
 } 
