@@ -2,13 +2,13 @@ import './../Login.css';
 import {CiApple} from 'react-icons/ci'
 import bcrypt from "bcryptjs-react";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
-
 import { initializeApp } from "firebase/app";
+import { FIREBASE_KEY } from '../../../Components/Functions/keys/importKey';
 
 import { ProfileInfo } from '../../../Components/Functions/Firebase/ProfileInfo';
 
 const firebaseApp = initializeApp({
-    apiKey: "AIzaSyCi1wYTsZBEVZp2zAQquOY8mYp7ZTe3Mnw",
+    apiKey: FIREBASE_KEY,
     authDomain: "savemovie-e7ea6.firebaseapp.com",
     projectId: "savemovie-e7ea6",
     storageBucket: "savemovie-e7ea6.appspot.com",

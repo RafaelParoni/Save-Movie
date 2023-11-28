@@ -2,12 +2,13 @@ import './../Registro.css';
 
 import { initializeApp } from "firebase/app";
 import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
+import { FIREBASE_KEY } from '../../../Components/Functions/keys/importKey';
 import bcrypt from "bcryptjs-react";
 
 import { UrlImr } from './FormTwo';
 
 const firebaseApp = initializeApp({
-    apiKey: "AIzaSyCi1wYTsZBEVZp2zAQquOY8mYp7ZTe3Mnw",
+    apiKey: FIREBASE_KEY,
     authDomain: "savemovie-e7ea6.firebaseapp.com",
     projectId: "savemovie-e7ea6",
     storageBucket: "savemovie-e7ea6.appspot.com",

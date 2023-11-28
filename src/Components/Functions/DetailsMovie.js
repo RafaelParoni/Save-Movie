@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { MOVIEDATABASE_KEY } from "./keys/importKey";
 export async function DetailsMovieSearch(value){
     
     const options = {
@@ -7,7 +7,7 @@ export async function DetailsMovieSearch(value){
         url: 'https://moviesdatabase.p.rapidapi.com/titles/' + value,
         params: {info: 'base_info'},
         headers: {
-          'X-RapidAPI-Key': '4d1fc03470msh98ed2d469a33f37p102184jsn7cab8e913b66',
+          'X-RapidAPI-Key': MOVIEDATABASE_KEY,
           'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
         }
       };

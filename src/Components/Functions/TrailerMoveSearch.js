@@ -1,12 +1,12 @@
 import axios from "axios";
-
+import { MOVIE_MINI_DATABASE_KEY } from "./keys/importKey";
 export async function TrailerMovieSearch(value){
     
     const options = {
         method: 'GET',
         url: 'https://moviesminidatabase.p.rapidapi.com/movie/id/' + value,
         headers: {
-          'X-RapidAPI-Key': '4d1fc03470msh98ed2d469a33f37p102184jsn7cab8e913b66',
+          'X-RapidAPI-Key': MOVIE_MINI_DATABASE_KEY,
           'X-RapidAPI-Host': 'moviesminidatabase.p.rapidapi.com'
         }
       };

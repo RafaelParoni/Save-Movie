@@ -1,5 +1,5 @@
  import axios from "axios";
- 
+ import { STREAMING_KEY } from "./keys/importKey";
  
  export async function StremingSearch(id){
     const options = {
@@ -10,7 +10,7 @@
           imdb_id: id
         },
         headers: {
-          'X-RapidAPI-Key': '4d1fc03470msh98ed2d469a33f37p102184jsn7cab8e913b66',
+          'X-RapidAPI-Key': STREAMING_KEY,
           'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
         }
     };      

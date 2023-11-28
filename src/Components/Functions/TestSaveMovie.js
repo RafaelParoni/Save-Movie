@@ -1,9 +1,10 @@
 // Banco de dados
 import { initializeApp   } from "firebase/app";
 import {collection, getDocs, getFirestore} from "firebase/firestore";
+import { FIREBASE_KEY } from "./keys/importKey";
 
 const firebaseApp = initializeApp({
-    apiKey: "AIzaSyCi1wYTsZBEVZp2zAQquOY8mYp7ZTe3Mnw",
+    apiKey: FIREBASE_KEY,
     authDomain: "savemovie-e7ea6.firebaseapp.com",
     projectId: "savemovie-e7ea6",
     storageBucket: "savemovie-e7ea6.appspot.com",
