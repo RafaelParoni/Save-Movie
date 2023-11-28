@@ -68,7 +68,9 @@
     color: var(--Text-color);
 }
 .formProfile img {
-    width: 100px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
 }
 .formProfile span {
     text-align: center;
