@@ -5,6 +5,8 @@ import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 import { initializeApp } from "firebase/app";
 
+import { ProfileInfo } from '../../../Components/Functions/Firebase/ProfileInfo';
+
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyCi1wYTsZBEVZp2zAQquOY8mYp7ZTe3Mnw",
     authDomain: "savemovie-e7ea6.firebaseapp.com",
@@ -58,6 +60,17 @@ function LoginFunciton() {
             return(false)
         }
 
+
+    }
+
+    async function updateData(){
+        var id = window.localStorage.getItem('id')
+        await ProfileInfo(id).then(function(result){
+            window.localStorage.setItem('imgProfile', result.Img)
+            window.localStorage.setItem('login', result.Email)
+            window.localStorage.setItem('name', result.Name)
+        })
+
     }
 
     async function PasswordTest(user){
@@ -68,6 +81,8 @@ function LoginFunciton() {
             window.localStorage.setItem('name', user.Name)
             window.localStorage.setItem('id', user.id)
             window.sessionStorage.setItem('session', 'on')
+            updateData()
+        
             window.history.back()
             return
         }else{
