@@ -262,6 +262,8 @@ nav div {
     border: none;
     cursor: pointer;
     border-bottom: 5px solid transparent;
+    text-align: center;
+    padding: 5px 0 5px 0;
   }
   .language-input:hover{
     border-bottom: 5px solid #f14a2c;
@@ -270,7 +272,7 @@ nav div {
       background-color: var(--inputPlaceholderColor);
       color: var(--Text-color);
       border: none;
-      padding: 5px;
+      padding: 5px 0 5px 0;
   }
 
   .SmallNavBar {
@@ -285,6 +287,10 @@ nav div {
     }
     .SmallNavBar {
         display: flex;
+    }
+    .language-input{
+      border-top: 1px solid #fff;
+      padding: 5px 0 5px 0;
     }
 }
 
@@ -312,7 +318,8 @@ nav div {
     border: none;
     color: var(--Text-color);
     transition: 1s;
-    border-bottom: 1px solid var(--Text-color);
+    padding: 5px 0 5px 0;
+    border-bottom: 1px solid rgba(134, 134, 134, 0.521);
 }
 
 .BtnOpenSmallNavbar {

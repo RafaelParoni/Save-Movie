@@ -170,6 +170,10 @@ function AccountNavbar(){
                     <button onClick={()=> hrefFunc('share')}><BiShare size={20}/> <a href={false} id='shareS'> Share </a> </button>
                     {buttonLoginSmall}
                     {ButtonSessionSmall}
+                    <select onChange={(e)=> EditLanguage(e.target.value)} className='language-input' name="language" id="language">
+                        <option value="pt">pt-br</option>
+                        <option value="us"> en-us</option>
+                    </select>
                 </div>
             </div>
         </div>
