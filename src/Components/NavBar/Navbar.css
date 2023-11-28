@@ -1,5 +1,5 @@
 :root {
-    --Text-color: #ffffff50;
+    --Text-color: #ffffff;
     --BackgroundNavBar: rgb(17, 17, 17);
     --shadowNavBar: #ffffffc2;
     --SearchBackground:  rgba(219, 217, 217, 0.76);
@@ -7,7 +7,7 @@
     --inputPlaceholderColor: #000;
 }
 .dark:root {
-    --Text-color: #ffffff52;
+    --Text-color: #ffffff;
     --BackgroundNavBar: rgb(17, 17, 17);
     --shadowNavBar: #c0c0c0bd;
     --SearchBackground:  rgb(255, 255, 255);
@@ -16,8 +16,8 @@
 
 }
 .light:root {
-    --Text-color: #00000052;
-    --BackgroundNavBar: #e0e0e073;
+    --Text-color: #000000;
+    --BackgroundNavBar: #e0e0e0d8;
     --shadowNavBar: #3d3c3ce0;
     --SearchBackground:  rgb(37, 37, 37);
     --SearchTextColor: #fff;
