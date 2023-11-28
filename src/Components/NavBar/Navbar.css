@@ -244,6 +244,35 @@ nav div {
     display: none;
   }
 
+
+
+  .language-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: auto;
+    border-bottom: 5px solid transparent;
+  }
+  .language-input{
+    outline: none;
+    height: auto;
+    background-color: transparent;
+    color: var(--Text-color);
+    border: none;
+    cursor: pointer;
+    border-bottom: 5px solid transparent;
+  }
+  .language-input:hover{
+    border-bottom: 5px solid #f14a2c;
+  }
+  .language-input option{
+      background-color: var(--inputPlaceholderColor);
+      color: var(--Text-color);
+      border: none;
+      padding: 5px;
+  }
+
   .SmallNavBar {
     display: none;
     width: auto;

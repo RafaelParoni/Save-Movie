@@ -1,5 +1,7 @@
 import './../Navbar.css'
 import {BiBrightnessHalf, BiAdjust, BiLogOutCircle, BiLogInCircle , BiHomeAlt2,BiBookmark ,BiShare,BiUser  } from 'react-icons/bi'
+import { IoLanguage } from "react-icons/io5";
+
 /* 
 
 BiBrightnessHalf Light Mode Icon 
@@ -127,8 +129,14 @@ function AccountNavbar(){
             EditText('exitS', 'Sair')
             EditText('loginS', 'Entrar')
         }
+        document.getElementById('language').value = window.localStorage.getItem('Language')
    }
    setTimeout(setLanguage,10)
+
+    function EditLanguage(newLanguage){
+        window.localStorage.setItem('Language', newLanguage)
+        window.location.reload()
+    }
 
 
     return (
@@ -136,10 +144,15 @@ function AccountNavbar(){
             <div className='largeNavBar'>
                 <button  onClick={()=> hrefFunc('/')}> <BiHomeAlt2 size={20}/> <a href={false} id='homeL'> Home </a></button>
                 <button onClick={()=> hrefFunc('/saves')}><BiBookmark size={20} /> <a href={false} id='savesL'> Saves </a></button>
-                <button onClick={()=> EditMode()}><span  id='darkIcon'><BiAdjust size={20} /></span> <span id='lightIcon'><BiBrightnessHalf size={20} /></span> <span id='TextIcon'> Modo</span></button>
                 <button  onClick={()=> hrefFunc('share')}><BiShare size={20}/> <a href={false} id='shareL'> Share </a> </button>
                 {ButtonSession}
                 {buttonLogin}
+                <button onClick={()=> EditMode()}><span  id='darkIcon'><BiAdjust size={20} /></span> <span id='lightIcon'><BiBrightnessHalf size={20} /></span> <span id='TextIcon'> Modo</span></button>
+                <label className='language-label'  for='language'><IoLanguage color='fff'/></label>
+                <select onChange={(e)=> EditLanguage(e.target.value)} className='language-input' name="language" id="language">
+                    <option value="pt"> pt-br</option>
+                    <option value="us"> en-us</option>
+                </select>
             </div>
             <div className='SmallNavBar'>
                 <div className='BtnOpenSmallNavbar'>
