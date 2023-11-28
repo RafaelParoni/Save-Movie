@@ -90,6 +90,8 @@
     display: flex;
     grid-gap: 5px;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 .genre-list div {
     background-color: #f14a2c;
