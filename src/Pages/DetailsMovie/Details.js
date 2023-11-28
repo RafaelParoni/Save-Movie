@@ -70,12 +70,7 @@ function DetailsPage() {
             }
         })
         await StremingSearch(MovieId).then(function(result){
-            console.log(result)
-            if(result.name === "AxiosError"){
-                Services = 'NotFound'
-                return
-            }
-            if(result.data.result.streamingInfo.us.length === 0 || result.code === "ERR_BAD_REQUEST"){
+            if(result.name === "AxiosError" || Object.keys(result.data.result.streamingInfo).length === 0 || result.data.result.streamingInfo.us.length === 0 || result.code === "ERR_BAD_REQUEST" ){
                 Services = 'NotFound'
             }else{
                 // array = {
