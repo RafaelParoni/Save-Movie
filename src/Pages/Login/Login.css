@@ -189,3 +189,17 @@
     text-decoration: underline wavy #f14a2c;
     cursor: pointer;
 }
+
+.error-msg {
+    color: #f81111;
+    border: 1px solid #f81111;
+    padding: 5px 15px 5px 15px;
+    border-radius: 5px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 10px;
+}
+.error-msg span {
+    color: var(--Text-color);
+}

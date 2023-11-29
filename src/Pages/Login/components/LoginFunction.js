@@ -20,6 +20,30 @@ const firebaseApp = initializeApp({
 
 function LoginFunciton() {
 
+    var Language = {
+        login: 'Log In',
+        password_error: ' wrong password',
+        email_error: ' incorrect e-mail',
+        noPassword_error: ' put a password!',
+        noEmail_error: ' put an e-mail',
+   
+    }
+    
+    function setLanguage(){
+        if(window.location.pathname.includes("/pt/")){
+            Language = {
+                login: 'Entrar',
+                password_error: ' senha incorreta',
+                email_error: ' e-mail incorreto',
+                noPassword_error: 'coloque uma senha!',
+                noEmail_error: 'coloque um e-mail!',
+               
+            }
+        }
+    }
+    setLanguage()
+
+
     const db = getFirestore(firebaseApp);
     const userCollectionRef = collection(db, 'users');
 
@@ -27,7 +51,7 @@ function LoginFunciton() {
     var login = ''
     var password = ''
 
-    function LoginAccontType1(){
+    function loginAccont(){
 
         if(document.getElementById('loginType1').style.display === 'flex'){
             login = document.getElementById('LoginFormOne').value
@@ -37,8 +61,21 @@ function LoginFunciton() {
             password = document.getElementById('PasswordFormTwo').value
         }
 
+        if(login === '' || login === null || login === undefined){
+            document.getElementById('error-divType1').style.display = 'flex'
+            document.getElementById('error-spanType1').innerText = Language.noEmail_error
+
+            document.getElementById('error-divType2').style.display = 'flex'
+            document.getElementById('error-spanType2').innerText = Language.noEmail_error
+            return
+        }
+
         if(password === '' || password === null || password === undefined){
-            alert('Senha incorreta!')
+            document.getElementById('error-divType1').style.display = 'flex'
+            document.getElementById('error-spanType1').innerText = Language.noPassword_error
+
+            document.getElementById('error-divType2').style.display = 'flex'
+            document.getElementById('error-spanType2').innerText = Language.noPassword_error
             return
         }
 
@@ -56,7 +93,12 @@ function LoginFunciton() {
             i++
         }
         if( i ===  data.docs.map((doc) => ({...doc.data(), id: doc.id})).length){
-            alert('Email não encontrado')
+            document.getElementById('error-divType1').style.display = 'flex'
+            document.getElementById('error-spanType1').innerText = Language.email_error
+
+            document.getElementById('error-divType2').style.display = 'flex'
+            document.getElementById('error-spanType2').innerText = Language.email_error
+            //alert('Email não encontrado')
             return(false)
         }
 
@@ -86,28 +128,18 @@ function LoginFunciton() {
             window.history.back()
             return
         }else{
-            alert('Senha incorreta!')
+            document.getElementById('error-divType1').style.display = 'flex'
+            document.getElementById('error-spanType1').innerText = Language.password_error
+
+            document.getElementById('error-divType2').style.display = 'flex'
+            document.getElementById('error-spanType2').innerText = Language.password_error
             return
         }
     }
 
-    var Language = {
-        Login: 'Log In',
-   
-    }
-    
-    function setLanguage(){
-        if(window.location.pathname.includes("/pt/")){
-            Language = {
-                Login: 'Entrar',
-               
-            }
-        }
-    }
-    setLanguage()
 
     return (
-        <button className='BtnLogin' onClick={()=> LoginAccontType1()}> <CiApple size={20}/> {Language.Login}</button>
+        <button className='BtnLogin' onClick={()=> loginAccont()}> <CiApple size={20}/> {Language.login}</button>
     );
   }
   

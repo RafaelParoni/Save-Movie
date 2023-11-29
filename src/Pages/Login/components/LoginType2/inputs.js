@@ -1,5 +1,6 @@
 import './../../Login.css';
 import {CiLock, CiRead, CiUnread} from 'react-icons/ci'
+import { BiInfoSquare } from "react-icons/bi";
 
 function InputsFomrType2() {
 
@@ -34,6 +35,7 @@ function InputsFomrType2() {
 
     return (
         <div className='formInputs'>
+            <div id='error-divType2' className='error-msg'> <BiInfoSquare/> <span id='error-spanType2'>ERROR MSG</span></div>
            <div className='InputLogin'>
                 <span><CiLock size={25} color='#f14a2c'/></span>
                 <div className="inputboxLogin">
