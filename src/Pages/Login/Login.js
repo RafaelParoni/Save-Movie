@@ -10,7 +10,7 @@ function LoginPage() {
 
     setTimeout(function TypeSelector(){
 
-        if(window.localStorage.getItem('login') !== null){
+        if(window.localStorage.getItem('login') !== 'undefined'){
             // Mostar Login 1 (Com conta)
             document.getElementById('loginType2').style.display = 'none'
             document.getElementById('loginType1').style.display = 'flex'
