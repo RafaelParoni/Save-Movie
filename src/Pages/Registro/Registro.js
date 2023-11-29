@@ -9,6 +9,8 @@ import ProgressBar from './components/ProgressBar';
 import NewStage from './components/NewStage';
 import CreateNewAccount from './components/CreateNewAccount';
 
+import { BiInfoSquare } from 'react-icons/bi';
+
 
 
 function RegistroPage() {
@@ -26,6 +28,7 @@ function RegistroPage() {
                 <h1>Sign Up</h1>
                 <CreateNewAccount/>
                 <ProgressBar/>
+                <div id='errorregister-div' className='error-msg'> <BiInfoSquare/> <span id='errorregister-span'>TESTE</span></div>
                 <FormOne />
                 <FormTwo />
                 <FormThree />

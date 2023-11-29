@@ -1,10 +1,44 @@
 import { useState } from 'react';
 import './../Registro.css';
 import { StartNewAccont } from './CreateNewAccount';
-import { UrlImr } from './FormTwo';
+import { profileImg } from './FormTwo';
 
 
 function NewStage() {
+
+    var Language = {
+        password_error: ' wrong password',
+        valid_email: ' enter a valid email',
+        valid_password: ' Confirm the Password',
+        noPassword_error: ' put a password!',
+        noEmail_error: ' put an e-mail',
+        diffrente_password: ' different passwords',
+        noName_error: ' Enter a profile name!!',
+        noPhoto_error: ' Upload a profile photo!',
+        checkData: ' check the data entered',
+        acceptTerms: ' accept the terms of service',
+   
+    }
+    
+    function setLanguage(){
+        if(window.location.pathname.includes("/pt/")){
+            Language = {
+                password_error: ' senha incorreta',
+                valid_email: ' coloque um email valido',
+                valid_password: ' confirme a senha',
+                noPassword_error: ' coloque uma senha!',
+                noEmail_error: ' coloque um e-mail!',
+                diffrente_password: ' senhas diferentes',
+                noName_error: ' Coloque um nome de perfil!',
+                noPhoto_error: ' Envie uma foto de perfil!',
+                checkData: ' confira os dados inseridos',
+                acceptTerms: ' aceite o termos de serviço',
+               
+            }
+        }
+    }
+    setLanguage()
+
 
     const [stage, setStage] = useState(1)
 
@@ -42,7 +76,7 @@ function NewStage() {
 
     function NewStageForm(){
         let NameInput = document.getElementById('name')
-        let ImgInput = UrlImr()
+        let ImgInput = profileImg().Url
         let EmailInput = document.getElementById('email')
         let PasswordInput = document.getElementById('password')
         let PasswordConfirmInput = document.getElementById('ConfirmPassword')
@@ -53,31 +87,36 @@ function NewStage() {
         switch (stage) {
             case 2:
                 if(!NameInput.value > 0){
-                    alert('coloca um nome ai fiu')
+                    document.getElementById('errorregister-div').style.display = 'flex'
+                    document.getElementById('errorregister-span').innerText = Language.noName_error
                     return
                 }
                 if(ImgInput === ''){
-                    alert('CADE A FOTO!')
+                    document.getElementById('errorregister-div').style.display = 'flex'
+                    document.getElementById('errorregister-span').innerText = Language.noPhoto_error
                     return
                 }
 
                 NewProgess(stage + 1)
+                document.getElementById('errorregister-div').style.display = 'none'
                 document.getElementById('Form-One').style.display = 'none'
                 document.getElementById('Form-Two').style.display = 'none'
                 document.getElementById('Form-Three').style.display = 'flex'
                 break;
             case 3:
                 if(!DataCheck.checked === true){
-                    alert('OPA CONFERE AI OS SEUS DADOS')
+                    document.getElementById('errorregister-div').style.display = 'flex'
+                    document.getElementById('errorregister-span').innerText = Language.checkData
                     return
                 }
                 if(!TermosCheck.checked === true){
-                    alert('OPA CONMFIRMA AI OS TERMOS DE SERVIÇO')
+                    document.getElementById('errorregister-div').style.display = 'flex'
+                    document.getElementById('errorregister-span').innerText = Language.acceptTerms
                     return
                 }
 
 
-
+                document.getElementById('errorregister-div').style.display = 'none'
                 document.getElementById('Form-One').style.display = 'none'
                 document.getElementById('Form-Two').style.display = 'none'
                 document.getElementById('Form-Three').style.display = 'none'
@@ -89,28 +128,35 @@ function NewStage() {
             default:
                 
                 if(EmailInput.value === '' || EmailInput.value === undefined){
-                    alert('coloque um email')
+                    document.getElementById('errorregister-div').style.display = 'flex'
+                    document.getElementById('errorregister-span').innerText = Language.noEmail_error
                     return
                 }
                 if(!emailValidation.test(EmailInput.value)){
-                    alert('coloque um email valido')
+                    document.getElementById('errorregister-div').style.display = 'flex'
+                    document.getElementById('errorregister-span').innerText = Language.valid_email
                     return
                 }
                 if(PasswordInput.value === '' || PasswordInput.value === undefined){
-                    alert('coloque uma senha')
+                    document.getElementById('errorregister-div').style.display = 'flex'
+                    document.getElementById('errorregister-span').innerText = Language.noPassword_error
+
                     return
                 }
                 if(PasswordConfirmInput.value === '' || PasswordConfirmInput.value === undefined){
-                    alert('confirme a senha')
+                    document.getElementById('errorregister-div').style.display = 'flex'
+                    document.getElementById('errorregister-span').innerText = Language.valid_password
                     return
                 }
                 if(PasswordConfirmInput.value !== PasswordInput.value){
-                    alert('senhas diferentes')
+                    document.getElementById('errorregister-div').style.display = 'flex'
+                    document.getElementById('errorregister-span').innerText = Language.diffrente_password
                     return
                 }
     
 
                 NewProgess(stage + 1)
+                document.getElementById('errorregister-div').style.display = 'none'
                 document.getElementById('Form-One').style.display = 'none'
                 document.getElementById('Form-Two').style.display = 'flex'
                 document.getElementById('Form-Three').style.display = 'none'

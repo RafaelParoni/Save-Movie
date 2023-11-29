@@ -5,7 +5,7 @@ import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
 import { FIREBASE_KEY } from '../../../Components/Functions/keys/importKey';
 import bcrypt from "bcryptjs-react";
 
-import { UrlImr } from './FormTwo';
+import { profileImg } from './FormTwo';
 
 const firebaseApp = initializeApp({
     apiKey: FIREBASE_KEY,
@@ -46,7 +46,7 @@ async function CreateNewAccountFunciton(){
     let Email = document.getElementById('email').value
     let Password = document.getElementById('password').value
     let Name = document.getElementById('name').value
-    let Img = UrlImr().teste
+    let Img = profileImg().Url
     let Termos = document.getElementById('TermosCheck').checked
 
     var i = 0

@@ -1,10 +1,10 @@
 import './../Registro.css';
 import {CiAt, CiImageOn} from 'react-icons/ci'
 
-var teste = ''
+var Url = ''
 
-export function UrlImr(){
-    return{teste}
+export function profileImg(){
+    return{Url}
 }
 
 function FormTwo() {
@@ -15,7 +15,7 @@ function FormTwo() {
         }
         var r = new FileReader();
         r.onload = function() {
-            teste = r.result
+            Url = r.result
         }
         document.getElementById('name-image').innerHTML = evt.target.files[0].name
         r.readAsDataURL(evt.target.files[0]);
@@ -23,7 +23,7 @@ function FormTwo() {
 
     function testeFunciton(){
         setTimeout(function(){
-            document.getElementById('userImage').setAttribute('src', teste)
+            document.getElementById('userImage').setAttribute('src', Url)
         },100)
     }
  
