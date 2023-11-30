@@ -1,5 +1,4 @@
 import './Details.css';
-import Navbar from './../../Components/NavBar/NavBar'
 
 
 // import function Details movie search
@@ -127,7 +126,6 @@ function DetailsPage() {
     }
 
     function ServicesDisplay({item}){
-        console.log(item)
         var NameService = ''
         var IconService = ''
         switch(item.service){
@@ -227,7 +225,6 @@ function DetailsPage() {
 
     return (
         <>
-            <Navbar/>
             <main className='DetailsPage'>
                 <div className='DetailsMovieDiv'>
                     {Object.keys(Details).length === 0 && (<div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>)}

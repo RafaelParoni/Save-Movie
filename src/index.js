@@ -14,6 +14,7 @@ import ProfilePage from './Pages/Profile/Profile';
 import SearchMoviePage from './Pages/SearchMovie/SearchMovie';
 import DetailsPage from './Pages/DetailsMovie/Details';
 import SavesPage from './Pages/Saves/Saves';
+import Navbar from './Components/NavBar/NavBar';
 
 
 function DetectMode(){
@@ -69,6 +70,7 @@ setLanguage()
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
+    <Navbar/>
     <Routes>
         <Route  path='/pt/' element={<HomePage/>}/>
         <Route  path='/pt/saves' element={<SavesPage/>}/>

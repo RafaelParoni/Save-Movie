@@ -1,5 +1,4 @@
 import './Home.css';
-import Navbar from './../../Components/NavBar/NavBar' // BiChevronDown
 import {BiSend, BiHomeAlt2, BiBookmark, BiUser, BiConfused,BiTrophy, BiTagAlt, BiSearchAlt2, BiSad, BiTrashAlt} from 'react-icons/bi'
 
 
@@ -191,7 +190,6 @@ function HomePage() {
 
     return (
         <>
-            <Navbar/>
             <main className='HomePage'>
                 <div className='Options'>
                     <BiSend/> {Language.suggestions}

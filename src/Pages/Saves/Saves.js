@@ -1,8 +1,6 @@
 // Imports Style Page
 import './Saves.css';
 
-// import NavBar
-import Navbar from './../../Components/NavBar/NavBar' 
 
 
 // import icons 
@@ -103,7 +101,6 @@ function SavesPage() {
 
     return (
         <main className='SavesPage'>
-            <Navbar/>
             <div  className='content'>
                 <h2>  {Language.TitlePage}</h2>
                 <div className='ListMoviesSaves'>

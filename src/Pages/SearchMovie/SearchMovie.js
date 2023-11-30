@@ -1,5 +1,4 @@
 import './SearchMovie.css';
-import Navbar from './../../Components/NavBar/NavBar'
 
 import { BiSearchAlt,BiSolidChevronLeft ,BiSolidChevronRight,BiGhost,BiInfoSquare     } from "react-icons/bi";
 import { setMovieSearch } from '../../Components/NavBar/components/SearchBtn';
@@ -149,7 +148,6 @@ function SearchMoviePage() {
     }
     return (
         <>
-            <Navbar/>
             <main className='SearchPage'>
                 <div className='TitlesMovies'><h1 id='MovieNameId'>Movie Name</h1> <BiSearchAlt  size={30}/></div>
                 {Object.keys(Topics).length > 5 && (

@@ -2,8 +2,6 @@
 // import css
 import './Profile.css';
 
-// import components
-import Navbar from './../../Components/NavBar/NavBar'
 
 // import icons
 import { BiEraser,BiConfused } from "react-icons/bi";
@@ -150,7 +148,6 @@ function ProfilePage() {
 
     return (
         <>
-        <Navbar/>
         <main className='profile-page'>
             {profileValue === 'session' && (
                 <div className='content-profile'>
