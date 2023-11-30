@@ -17,6 +17,8 @@ function NewStage() {
         noPhoto_error: ' Upload a profile photo!',
         checkData: ' check the data entered',
         acceptTerms: ' accept the terms of service',
+        btn_next: 'Next',
+        btn_return: 'Return',
    
     }
     
@@ -33,6 +35,8 @@ function NewStage() {
                 noPhoto_error: ' Envie uma foto de perfil!',
                 checkData: ' confira os dados inseridos',
                 acceptTerms: ' aceite o termos de serviço',
+                btn_next: 'próximo',
+                btn_return: 'Anterior',
                
             }
         }
@@ -194,8 +198,8 @@ function NewStage() {
     }
     return (
         <div id='BtnStage'  className='NewStage'>
-            {stage !== 1 && (<button onClick={()=> ReturnStageForm()}>Return</button>)}
-            <button onClick={()=> NewStageForm()}>Next</button>
+            {stage !== 1 && (<button onClick={()=> ReturnStageForm()}>{Language.btn_return}</button>)}
+            <button onClick={()=> NewStageForm()}>{Language.btn_next}</button>
         </div>
     );
   }

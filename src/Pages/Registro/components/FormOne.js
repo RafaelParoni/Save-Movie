@@ -68,6 +68,32 @@ function FormOne() {
         }
     }
 
+    var Language = {
+        password: ' Password..',
+        confirm_pass: ' confirm pass...',
+        Password_strength: 'Password strength',
+        week: 'Week',
+        average: 'Average',
+        strong: 'Strong',
+
+   
+    }
+    
+    function setLanguage(){
+        if(window.location.pathname.includes("/pt/")){
+            Language = {
+                password: ' Senha...',
+                confirm_pass: 'confirme a senha...',
+                Password_strength: 'Força da senha',
+                week: 'Fraca',
+                average: 'Média',
+                strong: 'Forte',
+               
+            }
+        }
+    }
+    setLanguage()
+
     return (
         <main id='Form-One' className='FormRegisterValues'>
             <div className='IconInput'>
@@ -81,7 +107,7 @@ function FormOne() {
                 <span><CiUnlock size={25} color='#f14a2c'/></span>
                 <div className="inputbox">
                     <input type="password" name="password" onChange={(e)=> PasswordStrong(e.target.value)} id="password" autoComplete='off' className="inputUser" required />
-                    <label  className="labelInput" id='Password' >Password...</label>
+                    <label  className="labelInput" id='Password' >{Language.password}</label>
                 </div>
                 <button onClick={()=> ViewPassword(true)}><span id='ViewPasswordOne'><CiRead size={25}/></span> <span id='NoViewPasswordOne'><CiUnread size={25}/></span></button>
             </div>
@@ -89,14 +115,14 @@ function FormOne() {
                 <span><CiUnlock size={25} color='#f14a2c'/></span>
                 <div className="inputbox">
                     <input type="password" name="ConfirmPassword" id="ConfirmPassword" autoComplete='off' className="inputUser" required />
-                    <label  className="labelInput" id='ConfirmPassword' >Confirm Pass..</label>
+                    <label  className="labelInput" id='ConfirmPassword' >{Language.confirm_pass}</label>
                 </div>
                 <button onClick={()=> ViewPassword(false)}><span id='ViewPasswordTwo'><CiRead size={25}/></span> <span id='NoViewPasswordTwo'><CiUnread size={25}/></span></button>
             </div>
             <div className='PasswordStrong'>
-                <span>Password strength:</span>
+                <span>{Language.Password_strength}</span>
                 <div id='passwordStrongIndicator'>
-                    <span id='passwordWeak'>Weak<CiFaceFrown/></span>  <span id='passwordMedium'>Average <CiFaceMeh/> </span>  <span id='passwordStrong'>Strong <CiFaceSmile/> </span>
+                    <span id='passwordWeak'>{Language.week}<CiFaceFrown/></span>  <span id='passwordMedium'>{Language.average} <CiFaceMeh/> </span>  <span id='passwordStrong'>{Language.strong} <CiFaceSmile/> </span>
                 </div>
             </div>
         </main>

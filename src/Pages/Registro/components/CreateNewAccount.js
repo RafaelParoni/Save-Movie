@@ -106,10 +106,27 @@ async function CreateNewAccountFunciton(){
 
 function CreateNewAccount() {
 
+
+    var Language = {
+        creating: 'Creating the account!'
+
+   
+    }
+    
+    function setLanguage(){
+        if(window.location.pathname.includes("/pt/")){
+            Language = {
+                creating: 'Criando sua conta!'
+               
+            }
+        }
+    }
+    setLanguage()
+
     
     return (
         <div id='LoadDiv' className='LoadingDiv'>
-            <h3>Creating the account!</h3>
+            <h3>{Language.creating}</h3>
             <h4 id='progressText' >0%</h4>
             <div id='progress' className='progressLoading'/>
         </div>

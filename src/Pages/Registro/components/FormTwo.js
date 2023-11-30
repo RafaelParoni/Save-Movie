@@ -26,6 +26,23 @@ function FormTwo() {
             document.getElementById('userImage').setAttribute('src', Url)
         },100)
     }
+
+    var Language = {
+        choosePhoto: 'Choose a profile photo',
+        BrowseFiles: 'Browse files...'
+   
+    }
+    
+    function setLanguage(){
+        if(window.location.pathname.includes("/pt/")){
+            Language = {
+                choosePhoto: 'Escolha uma foto de perfil',
+                BrowseFiles: 'Procurar foto...'
+               
+            }
+        }
+    }
+    setLanguage()
  
 
     return (
@@ -38,9 +55,9 @@ function FormTwo() {
                 </div>
             </div>
             <div className='selectImg'>
-                <h4>Choose a profile photo <CiImageOn size={25}/> </h4>
+                <h4>{Language.choosePhoto}<CiImageOn size={25}/> </h4>
                 <span className="btn-file">
-                Browse files...<input onChange={(evt)=> {LoadImg(evt); testeFunciton()}} type='file' accept='image/png, image/jpg' id='input-image'/>
+                {Language.BrowseFiles}<input onChange={(evt)=> {LoadImg(evt); testeFunciton()}} type='file' accept='image/png, image/jpg' id='input-image'/>
                 </span>
                 <img alt='' src='' id='userImage' height={150} />
                 <span id='name-image'></span>

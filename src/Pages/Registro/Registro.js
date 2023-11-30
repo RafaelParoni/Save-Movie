@@ -21,19 +21,40 @@ function RegistroPage() {
         // Mandar de voltar caso tenha session ativa
     }
 
+    var Language = {
+        singUp: 'Sign Up',
+        havaAccount: 'Already have an account? Click',
+        toLogin: 'to login',
+        here: 'HERE'
+   
+    }
+    
+    function setLanguage(){
+        if(window.location.pathname.includes("/pt/")){
+            Language = {
+                singUp: 'registrar-se',
+                havaAccount: 'já tem uma conta? Clique',
+                toLogin: 'para fazer login',
+                here: 'AQUI'
+               
+            }
+        }
+    }
+    setLanguage()
+
 
     return (
         <main className='RegisterPage'>
             <div className='FormRegister'>
-                <h1>Sign Up</h1>
+                <h1>{Language.singUp}</h1>
                 <CreateNewAccount/>
                 <ProgressBar/>
-                <div id='errorregister-div' className='error-msg'> <BiInfoSquare/> <span id='errorregister-span'>TESTE</span></div>
+                <div id='errorregister-div' className='error-msg'> <BiInfoSquare/> <span id='errorregister-span'></span></div>
                 <FormOne />
                 <FormTwo />
                 <FormThree />
                 <NewStage/>
-                <span>Already have an account? Click <a href='/login' >HERE </a> to login</span>
+                <span>{Language.havaAccount} <a href='/login' >{Language.here} </a> {Language.toLogin}</span>
             </div>
         </main>
     );
