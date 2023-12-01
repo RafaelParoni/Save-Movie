@@ -1,6 +1,6 @@
 // Banco de dados
 import { initializeApp   } from "firebase/app";
-import {collection, getDocs, getFirestore, setDoc, doc, deleteDoc} from "firebase/firestore";
+import { getFirestore, setDoc, doc, deleteDoc} from "firebase/firestore";
 import { FIREBASE_KEY } from "./keys/importKey";
 
 const firebaseApp = initializeApp({
@@ -22,29 +22,20 @@ export async function SaveMovie(NameMovie, IdMovie, PosterMovie, type){
         id: IdMovie,
         poster: PosterMovie,
     }
+    console.log(MovieSave)
+    console.log(PosterMovie)
 
     const db = getFirestore(firebaseApp);
     var collectionUser = 'saves-' + window.localStorage.getItem('id')
-    const SavesUserID = collection(db, collectionUser);
     const userDoc = doc(db, collectionUser, IdMovie)
 
-    const data = await getDocs(SavesUserID);
-    var SavesUser = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
+    console.log(IdMovie)
+
 
     if(type === '2'){
         
         await deleteDoc(userDoc);
     }else{
-        var u = 0
-         while(u < SavesUser.length){
-             if(SavesUser[u].id === IdMovie ){ // Verifica se já tem um Filme salvo se se for true deleta o filme do bd
-                if(!window.confirm('Deseja Deletar ' + NameMovie + ' de sua conta?')){return}
-                await deleteDoc(userDoc);
-                return
-             }
-             u++
-         }
-         if(!window.confirm('Deseja salvar ' + NameMovie + ' em sua conta?')){return}
          await setDoc(doc(db, collectionUser, IdMovie), MovieSave); // Salva um filme no bd
     }
 
