@@ -19,35 +19,6 @@ var loading = false
 
 function SavesPage() {
 
-    function LinkMovie(MovieID){
-        window.location = '/details?d=' + MovieID
-    }
-
-    const [MoviesList, setMoviesList] = useState([])
-    async function SearchMovies(){
-        if(window.sessionStorage.getItem('session') !== 'on'){
-            loading = false
-            return
-        }
-        var listMovies = []
-        if(Object.keys(MoviesList).length > 0){
-            return
-        }
-        await SearchSavesList().then(function(result){
-            listMovies = result
-        })
-        setMoviesList(listMovies)
-        loading = false
-    }
-    setTimeout(SearchMovies,10)
-
-    function confirmRemoveMovie(movie){
-        if(!window.confirm('Deseja Deletar ' + movie.name + ' de sua conta?')){return}
-        SaveMovie(movie.name, movie.id, movie.poster, '2');
-        document.getElementById(movie.id).remove()
-    }
-
-
     var Language = {
         TitlePage: 'Save Movies',
         Nosessions: 'No sessions connected',
@@ -83,6 +54,38 @@ function SavesPage() {
         }
     }
     setLanguage()
+
+
+    function LinkMovie(MovieID){
+        window.location = '/details?d=' + MovieID
+    }
+
+    const [MoviesList, setMoviesList] = useState([])
+    async function SearchMovies(){
+        if(window.sessionStorage.getItem('session') !== 'on'){
+            loading = false
+            return
+        }
+        var listMovies = []
+        if(Object.keys(MoviesList).length > 0){
+            return
+        }
+        await SearchSavesList().then(function(result){
+            listMovies = result
+        })
+        setMoviesList(listMovies)
+        loading = false
+    }
+    setTimeout(SearchMovies,10)
+
+    function confirmRemoveMovie(movie){
+        if(!window.confirm(Language.deletMovie1 + movie.name + Language.deletMovie2)){return}
+        SaveMovie(movie.name, movie.id, movie.poster, '2');
+        document.getElementById(movie.id).remove()
+    }
+
+
+
 
     function MovieListDisplay({movie}){
 
