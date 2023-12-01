@@ -24,6 +24,55 @@ import { TbBrandDisney,TbError404  } from "react-icons/tb";
 
 function DetailsPage() {
 
+    var Language = {
+
+        NoSession: 'No sessions connected ',
+        NoSessionDescription: 'Try logging in ',
+
+
+        serivceNotFound: 'Services not found',
+        trailerNotFound: 'Trailer not found',
+
+        here: 'Here',
+
+        genres: 'Genres:',
+        Services: 'Services:',
+
+        saveMovie1: 'Do you want to save ',
+        saveMovie2: ' in your account? ',
+
+        deletMovie1: 'Do you want to delete ',
+        deletMovie2: ' from your account?',
+   
+    }
+    
+    function setLanguage(){
+        if(window.location.pathname.includes("/pt/")){
+            Language = {
+
+                NoSession: 'Nenhuma conta conectada',
+                NoSessionDescription: 'Tente fazer login por ',
+
+
+                serivceNotFound: 'Serviços não encontrados',
+                trailerNotFound: 'Trailer não encontrado',
+
+                here: 'Aqui',
+
+                genres: 'Gêneros:',
+                Services: 'Serviços:',
+
+                saveMovie1: 'Deseja Salvar ',
+                saveMovie2: 'em sua conta? ',
+        
+                deletMovie1: 'Deseja Deletar ',
+                deletMovie2: 'em sua conta? ',
+               
+            }
+        }
+    }
+    setLanguage()
+
     const urlParams = new URLSearchParams(window.location.search);
     var MovieId = urlParams.get("d")
     const [Details, setDetails] = useState([])
@@ -223,6 +272,21 @@ function DetailsPage() {
         )
     }
 
+    function confirmSaveMovie(movie){
+        if(!window.confirm(Language.saveMovie1 + movie.name + Language.saveMovie2)){return}
+        SaveMovie(movie.name, movie.id, movie.banner, '1');
+        setSaveMovie(true)
+    }
+    function confirmDeletMovie(movie){
+        if(!window.confirm(Language.deletMovie1 + movie.name + Language.deletMovie2)){return}
+        SaveMovie(movie.name, movie.id, movie.banner, '2');
+        setSaveMovie(false)
+    }
+
+
+
+
+    
     return (
         <>
             <main className='DetailsPage'>
@@ -237,7 +301,7 @@ function DetailsPage() {
                                 </div>
                                 <div className='MoviePlot'>
                                     <span> <BiMessageAltDetail/> {Details[0].plot}</span>
-                                    <p>Genres</p>
+                                    <p>{Language.genres}</p>
                                     <div className='genre-list'>{Generos.map((genero) => <GenreDisplay key={genero.text} item={genero} />)}</div>
                                 </div>
                             </div>
@@ -245,7 +309,7 @@ function DetailsPage() {
                                 <span>Trailer:</span>
                                 {Trailer.trailerType === 'NotFound' && (
                                     <div className='TrailerNotFound'> 
-                                        <h2><BiSad/> Trailer NotFound</h2>
+                                        <h2><BiSad/> {Language.trailerNotFound}</h2>
                                     </div>
                                         
                                 )}
@@ -255,10 +319,10 @@ function DetailsPage() {
                                     </iframe>
                                 )}
                             </div>
-                            <span>Services:</span>
+                            <span>{Language.Services}</span>
                             {Services === 'NotFound' && (
                                 <div className='StremingMovieNotFound'>
-                                    <h1><BiMehBlank/>Services not found</h1>
+                                    <h1><BiMehBlank/>{Language.serivceNotFound}</h1>
                                 </div>
                              )}
                              {Services !== 'NotFound' && (
@@ -272,15 +336,15 @@ function DetailsPage() {
                              <h4>Save Movie:</h4>
                              {window.sessionStorage.getItem('session') !== null && (
                                 <>
-                                    {SavesMovie === false && (<button className='BtnSaveMovie' onClick={()=> {SaveMovie(Details[0].name, Details[0].id, Details[0].banner); setSaveMovie(true)}}> <BiBookmarkPlus/> To save</button>)}
-                                    {SavesMovie === true &&  (<button className='BtnSaveMovie' onClick={()=> {SaveMovie(Details[0].name, Details[0].id, Details[0].banner); setSaveMovie(false)}}> <BiBookmarkAltMinus/> Delete</button>)}
+                                    {SavesMovie === false && (<button className='BtnSaveMovie' onClick={()=> confirmSaveMovie(Details[0])}> <BiBookmarkPlus/> To save</button>)}
+                                    {SavesMovie === true &&  (<button className='BtnSaveMovie' onClick={()=> confirmDeletMovie(Details[0])}> <BiBookmarkAltMinus/> Delete</button>)}
                                 </>
 
                              )}
                              {window.sessionStorage.getItem('session') === null && (
                                 <div id='History-NoSession' className='History-Error'>
-                                    <h2><BiConfused/> No sessions connected </h2>
-                                    <span>Try logging in <a href='/login'>here</a></span>
+                                    <h2><BiConfused/> {Language.NoSession} </h2>
+                                    <span>{Language.NoSessionDescription} <a href='/login'>{Language.here}</a></span>
                                 </div>
                              )}
                         </>
