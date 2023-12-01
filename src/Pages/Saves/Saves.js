@@ -31,6 +31,9 @@ function SavesPage() {
         DownloadBanner: 'Downloader banner',
 
         here: 'Here',
+
+        deletMovie1: 'Deseja Deletar ',
+        deletMovie2: ' from your account?',
    
     }
     
@@ -49,6 +52,9 @@ function SavesPage() {
 
 
                 here: 'Aqui',
+        
+                deletMovie1: 'Deseja Deletar ',
+                deletMovie2: ' em sua conta? ',
                
             }
         }
