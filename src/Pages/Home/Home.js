@@ -34,7 +34,7 @@ function HomePage() {
 
     
     function hrefFunc(value){
-        window.location = value
+       window.location = value
     }
 
     const db = getFirestore(firebaseApp);
@@ -193,8 +193,8 @@ function HomePage() {
             <main className='HomePage'>
                 <div className='Options'>
                     <BiSend/> {Language.suggestions}
-                    <button onClick={()=> hrefFunc('/saves')}> <BiBookmark/> {Language.home}</button> 
-                    <button onClick={()=> hrefFunc('/')}> <BiHomeAlt2/> {Language.saves}</button> 
+                    <button onClick={()=> hrefFunc('/')}> <BiBookmark/> {Language.home}</button> 
+                    <button onClick={()=> hrefFunc('/saves')}> <BiHomeAlt2/> {Language.saves}</button> 
                     <button onClick={()=> hrefFunc('/profile')}> <BiUser/> {Language.Profile}</button>
                 </div>
                 <div className='DispleyHome'>
